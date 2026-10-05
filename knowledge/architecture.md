@@ -1,33 +1,30 @@
 # VibePlatform Architecture
 
-> Canonical architecture/build plan is maintained in the private VibeDB development control repository.
+Status: DECIDED / Stage 26B IMPLEMENTED — NOT YET VALIDATED
 
-Status: DECIDED design / Stage 25 VALIDATED
-
-## Public architecture contract
-VibeDB provides a developer-first, agent-native database layer over PostgreSQL, Apache AGE and pgvector.
-
-Trusted request context
-→ Query/Retrieval/Mutation IR
-→ schema/security/cost validation
-→ planner/compiler
+## Core execution architecture
+Developer/Agent
+→ SDK / REST / CLI / Studio / MCP
+→ engine-neutral IR
+→ validation
+→ trusted tenant/capability context
+→ planner
 → Secure Execution
-→ PostgreSQL/AGE/pgvector/RLS
-→ normalized result
+→ PostgreSQL / AGE / pgvector / RLS
 
-Client surfaces must not bypass these boundaries.
+## Agent-native context
+Stage 26B adds Context IR as a declarative request contract:
 
-## Developer and agent priority
-SDK, REST/API, CLI, Studio and MCP converge on the same engine-neutral contracts. MCP is not privileged; tenant identity, capabilities, validation, mutation approval, RLS and secure execution remain server-authoritative.
+Agent/Application
+→ Context IR
+→ server validation
+→ authorization-aware non-executing explanation
 
-## OSS boundary
-The self-hostable Core contains portable database, developer and agent capabilities. Hosted infrastructure, billing, managed operations and enterprise control-plane services are outside Core.
+Context IR can reference existing Query/Retrieval IR but does not execute them itself. It never accepts tenant identity, credentials, authorization grants, physical engine names or raw SQL/Cypher.
 
-## Engine neutrality
-Apache AGE, PostgreSQL recursive execution and pgvector are implementation capabilities behind VibeDB contracts. Clients should express intent rather than select physical execution engines directly.
+## Repository boundary
+- vibeDB-internal: internal development control, strategy, agent rules and decisions.
+- vibeDB-development: private implementation history and active engineering.
+- vibeDB: public OSS release target, populated only through explicit allowlisted export.
 
-## Security
-PostgreSQL/RLS remains authoritative for tenant isolation. Raw database execution is not a normal client contract. Destructive agent operations require explicit safety policy and auditability.
-
-## Stage 26A
-The repository model is OSS-first: Core must remain independently useful and must never depend on private Cloud or Enterprise services.
+Cloud/Enterprise must depend on Core, never the reverse.
