@@ -1,6 +1,7 @@
 name: Stage 26A - OSS Product Boundary
 
 on:
+  workflow_dispatch:
   pull_request:
     paths:
       - "knowledge/**"
@@ -13,9 +14,14 @@ on:
       - main
       - "stage26-*"
 
+concurrency:
+  group: stage-26a-oss-boundary-${{ github.ref }}
+  cancel-in-progress: false
+
 jobs:
   oss-boundary:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
