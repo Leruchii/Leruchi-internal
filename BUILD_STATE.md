@@ -6,29 +6,29 @@ Agents must verify this state against Git history, implementation, tests, CI, an
 
 ## Current checkpoint
 
+- Current stage: 27 — Agent Intent → VibeDB IR Boundary
+- Current status: IMPLEMENTED — NOT YET VALIDATED
 - Last validated stage: 26C — Context Resolution & Secure Execution Contract
-- Stage 26C merge commit: 107ed19e72ac22fcd0b8dfdbeae5f20c0e8bb41e
+- Last validated development main commit: 107ed19e72ac22fcd0b8dfdbeae5f20c0e8bb41e
 - Stage 26C candidate validation: 26/26 exact-head PR workflows passed.
 - Stage 26C post-merge main validation: 22/22 workflows passed.
-- Current stage: 27 — Agent Intent → VibeDB IR Boundary
-- Current status: READY_TO_DEFINE
 - Active implementation repository: Fikunmii/vibeDB-development
+- Active branch: stage27-agent-intent-ir
 - Internal control repository: Fikunmii/vibeDB-internal
 - Public OSS release repository: Fikunmii/vibeDB
 
-Validated Stage 26C contract:
-- trusted ExecutionContext is required;
-- all Context sources preflight before Schema Catalog/database access;
-- query Context reuses Query IR validation/planner/compiler/Secure Execution;
-- retrieval Context reuses Retrieval IR validation/planning/execution;
-- source parameters stay outside Context IR;
-- vector capability is derived from nested Retrieval IR;
-- item/byte/input budgets fail closed;
-- records resolution remains unsupported pending a safe record-selection contract;
-- SDK/API/MCP converge on one read-only Context Resolution boundary;
-- no autonomous authorization or second executor exists.
+Stage 27 implemented:
+- closed Agent Intent v1 wrapper around Query/Retrieval/Context/Mutation IR;
+- deterministic action/IR-kind validation and canonical hashing;
+- trusted ExecutionContext preflight and server-derived capabilities;
+- non-executing safety explanation with read-only/destructive/idempotent/approval metadata;
+- tenant/credential override rejection and bounded bindings;
+- authenticated /v1/agent/intent/explain;
+- SDK, CLI and MCP explanation surfaces;
+- fail-fast capability denial before catalog/database access;
+- sanitized observability without tenant IDs, bindings or raw target IR.
 
-Stage 27 must build on canonical IRs rather than replace them. It must remain provider-neutral and deterministic; natural-language/LLM interpretation must not become an authorization boundary.
+Stage 27 remains NOT YET VALIDATED until the newest exact-head focused run plus the complete PR regression matrix are green. Natural language/model output remains untrusted and is not an authorization boundary.
 
 Repository authority:
 - vibeDB-internal: internal engineering control and source of truth for build/strategy/agent rules.
