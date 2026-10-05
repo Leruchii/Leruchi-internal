@@ -6,26 +6,32 @@ Agents must verify this state against Git history, implementation, tests, CI, an
 
 ## Current checkpoint
 
-- Current stage: 26B — Agent-Native Context IR
+- Current stage: 26C — Context Resolution & Secure Execution Contract
 - Current status: IMPLEMENTED — NOT YET VALIDATED
-- Last validated stage: 26A — OSS Product Boundary & Repository Separation
-- Last validated main commit: 337fe0dd8da74863378dd30c9e3784b2200eb144
+- Last validated stage: 26B — Agent-Native Context IR
+- Last validated development main commit: 5afe3a9cd3154c7812161bf5c8167f5a702f53d4
+- Stage 26B candidate validation: 25/25 workflows passed.
+- Stage 26B post-merge main validation: 22/22 workflows passed.
 - Active implementation repository: Fikunmii/vibeDB-development
-- Active branch: stage26b-agent-context-ir
+- Active branch: stage26c-context-resolution
 - Internal control repository: Fikunmii/vibeDB-internal
 - Public OSS release repository: Fikunmii/vibeDB
 
-Stage 26B implementation:
-- Context IR v1 schema and deterministic hash.
-- Bounded context source/budget/freshness validation.
-- Tenant/credential injection rejection.
-- Non-executing Context explanation boundary.
-- SDK Context Builder and explain transport.
-- MCP context.explain diagnostic tool.
-- Authenticated Graph API /v1/context/explain.
-- Focused Stage 26B workflow.
+Stage 26C implemented:
+- trusted, preflighted Context Resolution contract;
+- all sources denied/validated before Schema Catalog or database access;
+- query context reuses existing Query IR validation/planner/compiler/Secure Execution;
+- retrieval context reuses existing Retrieval IR validation/planning/execution;
+- source parameters remain outside Context IR;
+- vector capability is derived from nested Retrieval IR;
+- bounded aggregate item, byte and parameter-envelope limits;
+- authenticated /v1/context/resolve;
+- SDK ContextBuilder.resolve();
+- MCP context.resolve;
+- records resolution fails closed pending a safe contract;
+- focused Stage 26C CI plus resolver/API/SDK/MCP tests.
 
-Validation remains pending until focused tests and the exact-head full regression matrix pass. Do not mark VALIDATED based on implementation alone.
+Stage 26C remains NOT YET VALIDATED until the final exact-head focused workflow, architecture/state gates and required full regression matrix pass. Do not merge based on implementation alone.
 
 Repository authority:
 - vibeDB-internal: internal engineering control and source of truth for build/strategy/agent rules.
