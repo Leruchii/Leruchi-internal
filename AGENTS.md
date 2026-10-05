@@ -108,6 +108,23 @@ Stages 26B–26C establish Context IR and Context Resolution as portable OSS Cor
 - `records` resolution remains unsupported until an explicit safe record-selection contract is validated.
 - Do not add autonomous authorization or a second query/retrieval executor.
 
+## 3E. Agent Intent contract
+
+Stage 27 introduces a structured Agent Intent envelope around the existing canonical IRs.
+
+- Agent Intent targets exactly one Query IR, Retrieval IR, Context IR, or Mutation IR.
+- Agent Intent never replaces the canonical IR it wraps.
+- Action/IR-kind matching is deterministic and server-validated.
+- Required capabilities are derived from the target IR; callers cannot grant themselves capabilities.
+- Natural language and model output are untrusted inputs, never authorization.
+- Agent Intent explanation is non-executing.
+- Mutation intent may describe destructive/approval-required semantics but Stage 27 does not execute it.
+- Tenant identity, credentials, raw SQL/Cypher, provider-specific engine selectors and authorization grants are forbidden in the intent contract.
+- Bindings are bounded and are not an authorization mechanism.
+- Agent Intent diagnostics must not log tenant IDs, bindings, raw IR payloads, credentials or catalog internals.
+- SDK, CLI, REST and MCP must converge on the same authenticated intent boundary.
+- Do not add an LLM/provider adapter, autonomous capability issuance, or a second executor in Stage 27.
+
 ## 4. Schema Catalog
 
 The Schema Catalog is the authoritative source for relational, graph and vector metadata consumed by:
@@ -220,6 +237,7 @@ Build stages are sequential unless an explicit architecture decision changes the
 26A. OSS Product Boundary & Repository Separation
 26B. Agent-Native Context IR
 26C. Context Resolution & Secure Execution Contract
+27. Agent Intent → VibeDB IR Boundary
 
 Do not implement later stages simply because they are interesting.
 
