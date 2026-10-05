@@ -6,22 +6,31 @@ Agents must verify this state against Git history, implementation, tests, CI, an
 
 ## Current checkpoint
 
-- Current stage: 26A — OSS Product & Cloud Boundary Foundation
-- Current status: IN_PROGRESS — product/architecture boundary foundation implemented; validation and guardrails remain
-- Last completed stage: 25 — MCP Agent Tool Contract & Input-Safety Boundary
-- Last validated merge checkpoint: `1cd6a9ab42e7c681fe7c134890b8e360efa819a3`
-- Default branch: `main`
-- Current branch: `stage26-oss-product-boundary`
-- Open-source priority: ACTIVE
-- Cloud implementation: DEFERRED until OSS readiness gate
-- Enterprise implementation: DEFERRED until OSS readiness gate and a concrete requirement
-- New product-strategy source of truth: `NORTH_STAR.md`
-- New repository boundary source of truth: `OSS_BOUNDARY.md`
-- Exact next action: complete OSS boundary CI/architecture guardrails, validate the documentation checkpoint, merge Stage 26A, then begin the Agent-Native Context IR implementation.
+- Current stage: 26B — Agent-Native Context IR
+- Current status: IMPLEMENTED — NOT YET VALIDATED
+- Last validated stage: 26A — OSS Product Boundary & Repository Separation
+- Last validated main commit: 337fe0dd8da74863378dd30c9e3784b2200eb144
+- Active implementation repository: Fikunmii/vibeDB-development
+- Active branch: stage26b-agent-context-ir
+- Internal control repository: Fikunmii/vibeDB-internal
+- Public OSS release repository: Fikunmii/vibeDB
 
-Stage 25 is closed. Do not reopen it unless new executable evidence contradicts the validated checkpoint.
+Stage 26B implementation:
+- Context IR v1 schema and deterministic hash.
+- Bounded context source/budget/freshness validation.
+- Tenant/credential injection rejection.
+- Non-executing Context explanation boundary.
+- SDK Context Builder and explain transport.
+- MCP context.explain diagnostic tool.
+- Authenticated Graph API /v1/context/explain.
+- Focused Stage 26B workflow.
 
-Stage 26A establishes the durable product rule that VibeDB Core is the public, self-hostable product and future Cloud/Enterprise layers remain outside the public repository. The Core must never depend on private Cloud or Enterprise services.
+Validation remains pending until focused tests and the exact-head full regression matrix pass. Do not mark VALIDATED based on implementation alone.
+
+Repository authority:
+- vibeDB-internal: internal engineering control and source of truth for build/strategy/agent rules.
+- vibeDB-development: private implementation/source history.
+- vibeDB: public OSS release target via explicit allowlisted export.
 
 
 ## Verified state
