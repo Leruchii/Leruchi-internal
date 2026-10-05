@@ -6,34 +6,16 @@ Agents must verify this state against Git history, implementation, tests, CI, an
 
 ## Current checkpoint
 
-- Current stage: 27 — Agent Intent → VibeDB IR Boundary
+- Current stage: 28 — Cross-Modal Planning
 - Current status: IMPLEMENTED — NOT YET VALIDATED
-- Last validated stage: 26C — Context Resolution & Secure Execution Contract
-- Last validated development main commit: 107ed19e72ac22fcd0b8dfdbeae5f20c0e8bb41e
-- Stage 26C candidate validation: 26/26 exact-head PR workflows passed.
-- Stage 26C post-merge main validation: 22/22 workflows passed.
+- Last validated stage: 27 — Agent Intent → VibeDB IR Boundary
+- Last validated main commit: 0e089d3cd066f89a6ccbc7ffa86852caedbdc62b
 - Active implementation repository: Fikunmii/vibeDB-development
-- Active branch: stage27-agent-intent-ir
+- Active branch: stage28-cross-modal-planning
 - Internal control repository: Fikunmii/vibeDB-internal
 - Public OSS release repository: Fikunmii/vibeDB
 
-Stage 27 implemented:
-- closed Agent Intent v1 wrapper around Query/Retrieval/Context/Mutation IR;
-- deterministic action/IR-kind validation and canonical hashing;
-- trusted ExecutionContext preflight and server-derived capabilities;
-- non-executing safety explanation with read-only/destructive/idempotent/approval metadata;
-- tenant/credential override rejection and bounded bindings;
-- authenticated /v1/agent/intent/explain;
-- SDK, CLI and MCP explanation surfaces;
-- fail-fast capability denial before catalog/database access;
-- sanitized observability without tenant IDs, bindings or raw target IR.
-
-Stage 27 remains NOT YET VALIDATED until the newest exact-head focused run plus the complete PR regression matrix are green. Natural language/model output remains untrusted and is not an authorization boundary.
-
-Repository authority:
-- vibeDB-internal: internal engineering control and source of truth for build/strategy/agent rules.
-- vibeDB-development: private implementation/source history.
-- vibeDB: public OSS release target via explicit allowlisted export.
+Stage 28 is planning-only. Cross-modal plans compose canonical Query/Retrieval/Context/Mutation IR but do not execute. Authorization remains derived from trusted ExecutionContext and existing execution boundaries remain authoritative.
 
 
 ## Verified state
