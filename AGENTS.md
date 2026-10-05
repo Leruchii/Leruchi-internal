@@ -199,6 +199,7 @@ Build stages are sequential unless an explicit architecture decision changes the
 21. Engine-Neutral Planner + PostgreSQL Fallback Foundation
 22. Retrieval-Aware Engine-Neutral Planner
 23. Unified Retrieval Developer/Agent Surface
+24. Agent-Native Context IR
 
 Do not implement later stages simply because they are interesting.
 
