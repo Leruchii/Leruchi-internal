@@ -92,6 +92,22 @@ Stage 25 establishes a deterministic MCP admission boundary:
 - Tenant identity, capabilities, mutation approval and execution remain server-authoritative.
 - Do not turn MCP annotations into an autonomous authorization engine or create an MCP-specific executor.
 
+## 3D. Agent Context contract
+
+Stages 26B–26C establish Context IR and Context Resolution as portable OSS Core capabilities.
+
+- Context IR is declarative and engine-neutral.
+- Tenant identity, credentials and authorization grants never belong in Context IR.
+- Context explanation is non-executing.
+- Context Resolution must preflight all sources before Schema Catalog or database access.
+- Query context reuses Query IR validation/planner/compiler/Secure Execution.
+- Retrieval context reuses Retrieval IR validation/planning/execution.
+- Per-source execution parameters live outside Context IR in the request envelope.
+- Aggregate item/byte/input budgets are bounded and fail closed.
+- MCP Context tools are never privileged bypasses.
+- `records` resolution remains unsupported until an explicit safe record-selection contract is validated.
+- Do not add autonomous authorization or a second query/retrieval executor.
+
 ## 4. Schema Catalog
 
 The Schema Catalog is the authoritative source for relational, graph and vector metadata consumed by:
@@ -199,7 +215,11 @@ Build stages are sequential unless an explicit architecture decision changes the
 21. Engine-Neutral Planner + PostgreSQL Fallback Foundation
 22. Retrieval-Aware Engine-Neutral Planner
 23. Unified Retrieval Developer/Agent Surface
-24. Agent-Native Context IR
+24. Retrieval Explainability, Evaluation & Agent Safety
+25. MCP Agent Tool Contract & Input Safety
+26A. OSS Product Boundary & Repository Separation
+26B. Agent-Native Context IR
+26C. Context Resolution & Secure Execution Contract
 
 Do not implement later stages simply because they are interesting.
 
