@@ -1067,7 +1067,7 @@ Do not introduce an LLM planner, autonomous authorization, a second retrieval ex
 
 ## Stage 26A — OSS Product & Cloud Boundary Foundation
 
-Status: IN_PROGRESS
+Status: VALIDATED — repository separation and explicit OSS export boundary established; PR #53 merged in vibeDB-development as `337fe0dd8da74863378dd30c9e3784b2200eb144`.
 
 Objective:
 - Lock VibeDB's OSS-first strategy before the next major feature.
@@ -1107,3 +1107,45 @@ Required direction:
 - add adversarial tests proving oversized/deep agent input is rejected before transport and tool metadata cannot imply authorization.
 
 Do not add autonomous authorization, a second executor, client-controlled tenant identity, or a physical-engine API.
+
+
+## Stage 26B — Agent-Native Context IR
+
+Status: VALIDATED — PR #54 merged as `5afe3a9cd3154c7812161bf5c8167f5a702f53d4`.
+
+Validated direction:
+- engine-neutral Context IR v1;
+- bounded source/item/byte/freshness contract;
+- tenant/credential injection rejection;
+- non-executing explanation;
+- SDK and MCP convergence;
+- authenticated API boundary;
+- candidate head 25/25 workflows green;
+- post-merge main 22/22 workflows green.
+
+
+## Stage 26C — Context Resolution & Secure Execution Contract
+
+Status: IMPLEMENTED — NOT YET VALIDATED.
+
+Purpose:
+Resolve validated Context IR through existing tenant-aware Query/Retrieval execution paths without creating a new executor or authorization system.
+
+Required:
+- preflight all Context sources before catalog/database access;
+- require trusted ExecutionContext;
+- keep source parameters outside Context IR;
+- reuse Query IR validation, planner/compiler and Secure Execution;
+- reuse Retrieval IR validation/planning/execution;
+- derive graph/vector capability requirements from nested source intent;
+- enforce aggregate item/byte/input limits;
+- fail closed on unsupported source types;
+- expose the same read-only contract through SDK, API and MCP;
+- emit bounded observability only.
+
+Deferred:
+- autonomous authorization;
+- LLM intent translation;
+- write-capable Context Resolution;
+- generic `records` execution;
+- a second query/retrieval executor.
