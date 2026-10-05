@@ -1,6 +1,6 @@
 # VibePlatform Architecture
 
-Status: DECIDED / Stage 26B VALIDATED / Stage 26C IMPLEMENTED — NOT YET VALIDATED
+Status: DECIDED / Stage 26C VALIDATED / Stage 27 IMPLEMENTED — NOT YET VALIDATED
 
 ## Core execution architecture
 
@@ -15,16 +15,9 @@ Developer / Agent
 
 ## Agent-native context
 
-Stage 26B validated Context IR as the declarative contract for context needs:
+Stage 26B validates Context IR as the declarative contract for bounded context needs.
 
-Agent/Application
-→ Context IR
-→ validation
-→ authorization-aware explanation
-
-Context IR may reference Query/Retrieval IR, but never carries tenant identity, credentials, authorization grants, physical engine selectors, raw SQL or raw Cypher.
-
-Stage 26C adds bounded Context Resolution:
+Stage 26C validates Context Resolution:
 
 Context IR + source parameter envelope
 → trusted ExecutionContext
@@ -34,16 +27,30 @@ Context IR + source parameter envelope
 → existing Secure Execution / Retrieval Execution
 → bounded normalized context result
 
-Rules:
-- preflight happens before catalog/database access;
-- query context reuses the canonical Query IR executor;
-- retrieval context reuses the canonical Retrieval IR executor;
-- vector retrieval requires vector:read; graph/schema/query context requires graph:read;
-- source parameters are execution bindings, not part of Context IR;
-- aggregate item/byte/input budgets fail closed;
-- records resolution is unsupported until a safe record-selection IR is explicitly decided;
-- Context Resolution is read-only and cannot grant capabilities or authorize writes;
-- no second execution path is introduced.
+Context Resolution does not introduce a second executor. `records` remains unsupported until a safe record-selection contract is decided.
+
+## Agent intent
+
+Stage 27 adds a closed, provider-neutral Agent Intent layer above the canonical IRs:
+
+Agent / future model adapter
+→ Agent Intent
+→ trusted ExecutionContext preflight
+→ deterministic action ↔ target-IR validation
+→ capability/safety derivation
+→ canonical Query / Retrieval / Context / Mutation IR validation
+→ non-executing explanation
+
+Agent Intent does not replace the target IR and does not execute it in Stage 27.
+
+Security rules:
+- tenant identity and credentials are never caller-controlled through Agent Intent;
+- required capabilities are derived by VibeDB from the canonical target IR;
+- model output/natural language is untrusted input, never authorization;
+- destructive mutation intent can report approval-required semantics without executing;
+- bindings are bounded and are not an authorization mechanism;
+- diagnostics expose only bounded policy metadata and request correlation, never tenant IDs, bindings, raw IR, credentials or catalog internals;
+- no provider-specific model contract or second execution path is introduced.
 
 ## Repository boundary
 
