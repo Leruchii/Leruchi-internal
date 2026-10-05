@@ -6,32 +6,29 @@ Agents must verify this state against Git history, implementation, tests, CI, an
 
 ## Current checkpoint
 
-- Current stage: 26C — Context Resolution & Secure Execution Contract
-- Current status: IMPLEMENTED — NOT YET VALIDATED
-- Last validated stage: 26B — Agent-Native Context IR
-- Last validated development main commit: 5afe3a9cd3154c7812161bf5c8167f5a702f53d4
-- Stage 26B candidate validation: 25/25 workflows passed.
-- Stage 26B post-merge main validation: 22/22 workflows passed.
+- Last validated stage: 26C — Context Resolution & Secure Execution Contract
+- Stage 26C merge commit: 107ed19e72ac22fcd0b8dfdbeae5f20c0e8bb41e
+- Stage 26C candidate validation: 26/26 exact-head PR workflows passed.
+- Stage 26C post-merge main validation: 22/22 workflows passed.
+- Current stage: 27 — Agent Intent → VibeDB IR Boundary
+- Current status: READY_TO_DEFINE
 - Active implementation repository: Fikunmii/vibeDB-development
-- Active branch: stage26c-context-resolution
 - Internal control repository: Fikunmii/vibeDB-internal
 - Public OSS release repository: Fikunmii/vibeDB
 
-Stage 26C implemented:
-- trusted, preflighted Context Resolution contract;
-- all sources denied/validated before Schema Catalog or database access;
-- query context reuses existing Query IR validation/planner/compiler/Secure Execution;
-- retrieval context reuses existing Retrieval IR validation/planning/execution;
-- source parameters remain outside Context IR;
+Validated Stage 26C contract:
+- trusted ExecutionContext is required;
+- all Context sources preflight before Schema Catalog/database access;
+- query Context reuses Query IR validation/planner/compiler/Secure Execution;
+- retrieval Context reuses Retrieval IR validation/planning/execution;
+- source parameters stay outside Context IR;
 - vector capability is derived from nested Retrieval IR;
-- bounded aggregate item, byte and parameter-envelope limits;
-- authenticated /v1/context/resolve;
-- SDK ContextBuilder.resolve();
-- MCP context.resolve;
-- records resolution fails closed pending a safe contract;
-- focused Stage 26C CI plus resolver/API/SDK/MCP tests.
+- item/byte/input budgets fail closed;
+- records resolution remains unsupported pending a safe record-selection contract;
+- SDK/API/MCP converge on one read-only Context Resolution boundary;
+- no autonomous authorization or second executor exists.
 
-Stage 26C remains NOT YET VALIDATED until the final exact-head focused workflow, architecture/state gates and required full regression matrix pass. Do not merge based on implementation alone.
+Stage 27 must build on canonical IRs rather than replace them. It must remain provider-neutral and deterministic; natural-language/LLM interpretation must not become an authorization boundary.
 
 Repository authority:
 - vibeDB-internal: internal engineering control and source of truth for build/strategy/agent rules.
