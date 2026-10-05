@@ -1126,7 +1126,7 @@ Validated direction:
 
 ## Stage 26C — Context Resolution & Secure Execution Contract
 
-Status: IMPLEMENTED — NOT YET VALIDATED.
+Status: VALIDATED — PR #55 merged as `107ed19e72ac22fcd0b8dfdbeae5f20c0e8bb41e`; exact PR head passed 26/26 workflows and post-merge main passed 22/22.
 
 Purpose:
 Resolve validated Context IR through existing tenant-aware Query/Retrieval execution paths without creating a new executor or authorization system.
@@ -1149,3 +1149,30 @@ Deferred:
 - write-capable Context Resolution;
 - generic `records` execution;
 - a second query/retrieval executor.
+
+
+## Stage 27 — Agent Intent → VibeDB IR Boundary
+
+Status: IMPLEMENTED — NOT YET VALIDATED.
+
+Purpose:
+Provide a closed, provider-neutral intent envelope around one canonical VibeDB IR so developers, agents and future model adapters can declare intended operation semantics without becoming authorization or execution authorities.
+
+Required:
+- target exactly one Query/Retrieval/Context/Mutation IR;
+- deterministic action ↔ IR-kind matching;
+- trusted ExecutionContext preflight;
+- derive required capabilities from target IR;
+- non-executing policy explanation;
+- report read-only/destructive/idempotent/approval semantics;
+- reject tenant/credential injection;
+- bound bindings independently from IR;
+- sanitize diagnostics;
+- converge SDK/CLI/MCP on one authenticated endpoint.
+
+Deferred:
+- free-form natural language interpretation;
+- model-provider adapters;
+- autonomous capability grants;
+- direct Agent Intent execution;
+- any second Query/Retrieval/Context/Mutation executor.
