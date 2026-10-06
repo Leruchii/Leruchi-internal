@@ -1,6 +1,6 @@
-# VibeDB Public Product Strategy
+# Leruchi Public Product Strategy
 
-VibeDB is a developer-first database platform and safe agent-native data platform bridging relational, graph and vector workloads behind common contracts.
+Leruchi is a developer-first database platform and safe agent-native data platform bridging relational, graph and vector workloads behind common contracts.
 
 ## First-class interfaces
 - CLI
