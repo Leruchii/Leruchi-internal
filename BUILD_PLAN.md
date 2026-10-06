@@ -1,4 +1,4 @@
-# VibePlatform / VibeDB — Canonical Architecture & Build Plan
+# Leruchi / Leruchi — Canonical Architecture & Build Plan
 
 > **Primary source of truth for architecture and implementation order.**
 >
@@ -10,7 +10,7 @@
 
 ## 1. Product definition
 
-VibePlatform / VibeDB is a secure developer/database platform that makes **relational, graph, vector, realtime, and AI-agent access feel like one database**.
+Leruchi / Leruchi is a secure developer/database platform that makes **relational, graph, vector, realtime, and AI-agent access feel like one database**.
 
 The product is not "Supabase plus a graph feature." Its differentiated layer is the Vibe abstraction and developer experience across PostgreSQL, Apache AGE, pgvector, security, query compilation, graph mutations, realtime, and agent access.
 
@@ -170,7 +170,7 @@ Normalized mutation result
 
 ## 3A. Agent action and developer experience priority
 
-VibeDB must support two complementary usage modes without creating separate database semantics:
+Leruchi must support two complementary usage modes without creating separate database semantics:
 
 1. **Developer-first:** SDK, REST/Graph API, SQL/PostgreSQL compatibility, CLI and Studio provide ergonomic direct access.
 2. **Agent-first:** MCP and AI agents can read data and, when explicitly authorized, create/update/delete data and relationships on behalf of a human.
@@ -731,7 +731,7 @@ Observability must not leak secrets, tenant data or raw database errors.
 
 **Status:** VALIDATED.
 
-PR #42 merged as `e3926c7a14a524b08266f7e45d69b2d74a025cbc`. Dedicated observability, Graph API telemetry, audit, execution, mutation and architecture checks passed. The GitHub Advanced Security external Processing Request failure is tracked as infrastructure/tooling noise rather than a VibeDB regression.
+PR #42 merged as `e3926c7a14a524b08266f7e45d69b2d74a025cbc`. Dedicated observability, Graph API telemetry, audit, execution, mutation and architecture checks passed. The GitHub Advanced Security external Processing Request failure is tracked as infrastructure/tooling noise rather than a Leruchi regression.
 
 ## Stage 17 — Backup + Recovery
 
@@ -1067,10 +1067,10 @@ Do not introduce an LLM planner, autonomous authorization, a second retrieval ex
 
 ## Stage 26A — OSS Product & Cloud Boundary Foundation
 
-Status: VALIDATED — repository separation and explicit OSS export boundary established; PR #53 merged in vibeDB-development as `337fe0dd8da74863378dd30c9e3784b2200eb144`.
+Status: VALIDATED — repository separation and explicit OSS export boundary established; PR #53 merged in Leruchi-development as `337fe0dd8da74863378dd30c9e3784b2200eb144`.
 
 Objective:
-- Lock VibeDB's OSS-first strategy before the next major feature.
+- Lock Leruchi's OSS-first strategy before the next major feature.
 - Make the public repository boundary explicit for all future coding agents.
 - Keep developer/agent capabilities portable and prevent Cloud dependencies from leaking into Core.
 - Define the future Cloud/Enterprise repository split without creating those repositories prematurely.
@@ -1151,12 +1151,12 @@ Deferred:
 - a second query/retrieval executor.
 
 
-## Stage 27 — Agent Intent → VibeDB IR Boundary
+## Stage 27 — Agent Intent → Leruchi IR Boundary
 
 Status: IMPLEMENTED — NOT YET VALIDATED.
 
 Purpose:
-Provide a closed, provider-neutral intent envelope around one canonical VibeDB IR so developers, agents and future model adapters can declare intended operation semantics without becoming authorization or execution authorities.
+Provide a closed, provider-neutral intent envelope around one canonical Leruchi IR so developers, agents and future model adapters can declare intended operation semantics without becoming authorization or execution authorities.
 
 Required:
 - target exactly one Query/Retrieval/Context/Mutation IR;
@@ -1204,4 +1204,4 @@ Validated contract:
 
 ## OSS Core Readiness Gate
 
-The first public VibeDB Core release is a readiness gate, not an arbitrary stage number. Before public export, validate architecture stability, security boundaries, developer UX, required CI/regression evidence, and the explicit public OSS export allowlist/history audit. Private Cloud/Enterprise concerns remain outside the OSS runtime contract.
+The first public Leruchi Core release is a readiness gate, not an arbitrary stage number. Before public export, validate architecture stability, security boundaries, developer UX, required CI/regression evidence, and the explicit public OSS export allowlist/history audit. Private Cloud/Enterprise concerns remain outside the OSS runtime contract.
