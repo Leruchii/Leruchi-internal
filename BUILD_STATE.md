@@ -7,11 +7,11 @@ Agents must verify this state against Git history, implementation, tests, CI, an
 ## Current checkpoint
 
 - Current stage: 29 — Agent Evaluation & Observability
-- Current status: IN_PROGRESS
-- Last validated stage: 28 — Cross-Modal Planning
-- Last validated main commit: 04f0f7c6ff0d2dc3c595c409b77fd5fe6c880e3e
+- Current status: VALIDATED — MERGED
+- Last validated stage: 29 — Agent Evaluation & Observability
+- Last validated main commit: 93022678b151b1945640967ecc09642271c23e62e
 - Active implementation repository: Fikunmii/vibeDB-development
-- Active branch: stage29-agent-evaluation-observability
+- Active branch: main
 - Internal control repository: Fikunmii/vibeDB-internal
 - Public OSS release repository: Fikunmii/vibeDB
 
@@ -723,3 +723,8 @@ PR #50 merged as `1cd6a9ab42e7c681fe7c134890b8e360efa819a3`. The Stage 25 merge 
 ## Stage 29 handoff
 
 Development PR #58 is implementing bounded non-executing agent evaluation across REST, SDK, CLI and MCP, with sanitized evaluation telemetry. Focused CI currently has prior fixture and contract fixes applied; final focused CI, architecture/state gates and exact-head regression remain before merge.
+
+
+## Stage 29 validation
+
+PR #58 merged to development main at `93022678b151b1945640967ecc09642271c23e62`. Focused evaluation/observability CI plus Stage State Gate and Architecture Regression Audit passed. Evaluation is bounded and non-executing; raw IR, credentials, tenant identity and database fragments are excluded from telemetry.
