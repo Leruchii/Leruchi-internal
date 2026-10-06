@@ -6,24 +6,22 @@ Agents must verify this state against Git history, implementation, tests, CI, an
 
 ## Current checkpoint
 
-- Current stage: 30 — Agent Trace & Replay
-- Current status: VALIDATED — MERGED
+- Current stage: OSS Core Readiness Gate
+- Current status: BLOCKED
 - Last validated stage: 30 — Agent Trace & Replay
 - Last validated development main merge commit: 2bf62dc138667d834728d0dbddbdd8c29dd1fda9
-- Last validated Stage 30 candidate head: d6105f32338d9d4461fc2099cc0485061c763aa2
-- Stage 30 PR: #59 (merged)
-- Active implementation repository: Fikunmii/vibeDB-development
-- Active branch: main
-- Internal control repository: Fikunmii/vibeDB-internal
-- Public OSS release repository: Fikunmii/vibeDB
+- Active readiness branch: Fikunmii/vibeDB-development:oss-core-readiness
+- OSS readiness PR: #60
+- OSS release blocker: license selection / LICENSE file
+- Public OSS repository: Fikunmii/vibeDB
 
-Stage 30 validation evidence:
-- exact candidate head d6105f32338d9d4461fc2099cc0485061c763aa2 passed 30/30 repository workflows;
-- Stage 30 focused trace/replay workflow passed;
-- Stage State Gate passed;
-- Architecture Regression Audit passed;
-- no exact-head workflow failed;
-- PR #59 was merged only after all 30 workflows were green.
+OSS readiness evidence:
+- public export allowlist audit passes: 278 tracked files, 177 export-eligible, 101 explicitly private;
+- Node 24 runtime policy passes;
+- public CONTRIBUTING.md and SECURITY.md are prepared;
+- public `Fikunmii/vibeDB` history is currently a clean one-commit release target containing only README.md;
+- readiness gate fails closed only because the candidate has no LICENSE file;
+- do not publish or merge the OSS readiness branch until a license decision is recorded and the readiness gate passes.
 
 ## Verified state
 
