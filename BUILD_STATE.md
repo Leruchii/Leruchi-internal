@@ -22,6 +22,8 @@ OSS readiness evidence:
 - public `Fikunmii/vibeDB` history is currently a clean one-commit release target containing only README.md;
 - Apache-2.0 license decision is recorded in the Stage 31 development decision record; root LICENSE and package SPDX metadata are now present on the candidate;
 - do not publish or merge the OSS readiness branch until the exact candidate readiness gate and required regression matrix pass.
+- Current Stage 31 candidate head: dc56694190750ec7aae8f2a260cb859992428849.
+- CI currently fails immediately at the GitHub Actions job level (4–7 seconds, no step output) across Stage 31 and repository regression checks; this is being treated as CI infrastructure evidence, not as a code pass. Do not mark Stage 31 VALIDATED until a real job reaches and passes the test steps.
 
 ## Verified state
 
