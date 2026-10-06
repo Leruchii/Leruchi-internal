@@ -7,12 +7,12 @@ Agents must verify this state against Git history, implementation, tests, CI, an
 ## Current checkpoint
 
 - Current stage: OSS Core Readiness Gate
-- Current status: BLOCKED
+- Current status: IN_PROGRESS
 - Last validated stage: 30 — Agent Trace & Replay
 - Last validated development main merge commit: 2bf62dc138667d834728d0dbddbdd8c29dd1fda9
-- Active readiness branch: Fikunmii/vibeDB-development:oss-core-readiness
-- OSS readiness PR: #60
-- OSS release blocker: license selection / LICENSE file
+- Active readiness branch: Fikunmii/vibeDB-development:stage31-oss-core-readiness
+- OSS readiness PR: #62
+- OSS release blocker: none; Apache-2.0 selected and LICENSE added to the Stage 31 candidate
 - Public OSS repository: Fikunmii/vibeDB
 
 OSS readiness evidence:
@@ -20,8 +20,8 @@ OSS readiness evidence:
 - Node 24 runtime policy passes;
 - public CONTRIBUTING.md and SECURITY.md are prepared;
 - public `Fikunmii/vibeDB` history is currently a clean one-commit release target containing only README.md;
-- readiness gate fails closed only because the candidate has no LICENSE file;
-- do not publish or merge the OSS readiness branch until a license decision is recorded and the readiness gate passes.
+- Apache-2.0 license decision is recorded in the Stage 31 development decision record; root LICENSE and package SPDX metadata are now present on the candidate;
+- do not publish or merge the OSS readiness branch until the exact candidate readiness gate and required regression matrix pass.
 
 ## Verified state
 
@@ -733,3 +733,8 @@ Development PR #58 is implementing bounded non-executing agent evaluation across
 ## Stage 29 validation
 
 PR #58 merged to development main at `93022678b151b1945640967ecc09642271c23e62`. Focused evaluation/observability CI plus Stage State Gate and Architecture Regression Audit passed. Evaluation is bounded and non-executing; raw IR, credentials, tenant identity and database fragments are excluded from telemetry.
+
+
+## Stage 31 license decision update
+
+Apache License 2.0 (Apache-2.0) is selected for VibeDB Core. The Stage 31 development branch now contains the standard root LICENSE file and root package metadata declares the SPDX identifier `Apache-2.0`. This resolves the prior license-selection blocker; validation remains required before Stage 31 can be marked VALIDATED.
