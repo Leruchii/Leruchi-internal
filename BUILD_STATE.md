@@ -1,4 +1,4 @@
-# VibePlatform Build State
+# Leruchi Build State
 
 This file is the canonical handoff checkpoint for coding agents.
 
@@ -10,16 +10,16 @@ Agents must verify this state against Git history, implementation, tests, CI, an
 - Current status: IN_PROGRESS
 - Last validated stage: 30 — Agent Trace & Replay
 - Last validated development main merge commit: 2bf62dc138667d834728d0dbddbdd8c29dd1fda9
-- Active readiness branch: Fikunmii/vibeDB-development:stage31-oss-core-readiness
+- Active readiness branch: Fikunmii/Leruchi-development:stage31-oss-core-readiness
 - OSS readiness PR: #62
 - OSS release blocker: none; Apache-2.0 selected and LICENSE added to the Stage 31 candidate
-- Public OSS repository: Fikunmii/vibeDB
+- Public OSS repository: Fikunmii/Leruchi
 
 OSS readiness evidence:
 - public export allowlist audit passes: 278 tracked files, 177 export-eligible, 101 explicitly private;
 - Node 24 runtime policy passes;
 - public CONTRIBUTING.md and SECURITY.md are prepared;
-- public `Fikunmii/vibeDB` history is currently a clean one-commit release target containing only README.md;
+- public `Fikunmii/Leruchi` history is currently a clean one-commit release target containing only README.md;
 - Apache-2.0 license decision is recorded in the Stage 31 development decision record; root LICENSE and package SPDX metadata are now present on the candidate;
 - do not publish or merge the OSS readiness branch until the exact candidate readiness gate and required regression matrix pass.
 - Current Stage 31 candidate head: dc56694190750ec7aae8f2a260cb859992428849.
@@ -532,7 +532,7 @@ Exact next action:
 
 ## Stage 17 handoff
 
-Stage 16 is merged to main. Repository-wide checks on the final Stage 16 head were green for the product test suites, including the dedicated observability gate, tenant isolation, query validation, retrieval, SDK, CLI and state checks. The GitHub Advanced Security `github-advanced-security` job failed in its external Processing Request step; it is not a VibeDB test or architecture regression and is not treated as a code failure.
+Stage 16 is merged to main. Repository-wide checks on the final Stage 16 head were green for the product test suites, including the dedicated observability gate, tenant isolation, query validation, retrieval, SDK, CLI and state checks. The GitHub Advanced Security `github-advanced-security` job failed in its external Processing Request step; it is not a Leruchi test or architecture regression and is not treated as a code failure.
 
 Stage 17 is now READY_TO_BUILD.
 
@@ -675,7 +675,7 @@ Stage 23 was merged to main in PR #48.
 - Stage State Gate passed.
 - The repository regression matrix passed its required product/architecture workflows.
 
-The separate Code Scanning AI review workflow failed because GitHub's Copilot code-scanning agent exceeded its monthly model quota. This was infrastructure/quota failure, not a VibeDB test, build, security, or product-code failure, and it was not used as a product validation signal.
+The separate Code Scanning AI review workflow failed because GitHub's Copilot code-scanning agent exceeded its monthly model quota. This was infrastructure/quota failure, not a Leruchi test, build, security, or product-code failure, and it was not used as a product validation signal.
 
 ## Stage 24 handoff
 
@@ -739,4 +739,4 @@ PR #58 merged to development main at `93022678b151b1945640967ecc09642271c23e62`.
 
 ## Stage 31 license decision update
 
-Apache License 2.0 (Apache-2.0) is selected for VibeDB Core. The Stage 31 development branch now contains the standard root LICENSE file and root package metadata declares the SPDX identifier `Apache-2.0`. This resolves the prior license-selection blocker; validation remains required before Stage 31 can be marked VALIDATED.
+Apache License 2.0 (Apache-2.0) is selected for Leruchi Core. The Stage 31 development branch now contains the standard root LICENSE file and root package metadata declares the SPDX identifier `Apache-2.0`. This resolves the prior license-selection blocker; validation remains required before Stage 31 can be marked VALIDATED.
