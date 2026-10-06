@@ -1180,6 +1180,28 @@ Deferred:
 
 ## Stage 29 — Agent Evaluation & Observability
 
-Status: IN_PROGRESS.
+Status: VALIDATED — PR #58 merged as `93022678b151b1945640967ecc09642271c23e62e`.
 
 Establish a bounded non-executing evaluation boundary for Agent Intent and Cross-Modal Plan artifacts. Evaluation reuses validation/explanation paths, returns only bounded metadata and deterministic hashes, and never exposes tenant identity, credentials, bindings, raw IR or database fragments through telemetry. REST, SDK, CLI and MCP converge on the same contract. Merge requires focused CI, architecture/state gates and exact-head full regression.
+
+
+## Stage 30 — Agent Trace & Replay
+
+Status: VALIDATED — PR #59 merged as `2bf62dc138667d834728d0dbddbdd8c29dd1fda9` after exact candidate head `d6105f32338d9d4461fc2099cc0485061c763aa2` passed 30/30 workflows.
+
+Purpose:
+Make agent decisions durable, replayable and comparable without adding execution authority.
+
+Validated contract:
+- bounded Agent Trace v1 for Agent Intent and Cross-Modal Plan artifacts;
+- sanitization of tenant identity, credentials, bindings/parameter values, embeddings, raw SQL/Cypher and private engine fragments;
+- deterministic hashing over sanitized artifacts;
+- bounded expected/observed outcomes;
+- non-executing replay through existing explanation boundaries;
+- bounded regression diff;
+- REST, SDK, CLI and MCP convergence;
+- no new executor, authorization authority or capability grant.
+
+## OSS Core Readiness Gate
+
+The first public VibeDB Core release is a readiness gate, not an arbitrary stage number. Before public export, validate architecture stability, security boundaries, developer UX, required CI/regression evidence, and the explicit public OSS export allowlist/history audit. Private Cloud/Enterprise concerns remain outside the OSS runtime contract.
