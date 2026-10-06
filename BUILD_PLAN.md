@@ -1176,3 +1176,10 @@ Deferred:
 - autonomous capability grants;
 - direct Agent Intent execution;
 - any second Query/Retrieval/Context/Mutation executor.
+
+
+## Stage 29 — Agent Evaluation & Observability
+
+Status: IN_PROGRESS.
+
+Establish a bounded non-executing evaluation boundary for Agent Intent and Cross-Modal Plan artifacts. Evaluation reuses validation/explanation paths, returns only bounded metadata and deterministic hashes, and never exposes tenant identity, credentials, bindings, raw IR or database fragments through telemetry. REST, SDK, CLI and MCP converge on the same contract. Merge requires focused CI, architecture/state gates and exact-head full regression.
