@@ -1,13 +1,13 @@
-# VibeDB Open-Source Boundary
+# Leruchi Open-Source Boundary
 
 Status: DECIDED — repository boundary contract
 
 ## Purpose
-This document defines what belongs in the public VibeDB repository and what must remain in future private Cloud/Enterprise repositories.
+This document defines what belongs in the public Leruchi repository and what must remain in future private Cloud/Enterprise repositories.
 
-VibeDB Core must remain independently buildable, self-hostable, and useful without access to VibeDB Cloud.
+Leruchi Core must remain independently buildable, self-hostable, and useful without access to Leruchi Cloud.
 
-## Public repository: VibeDB Core
+## Public repository: Leruchi Core
 The public repository may contain:
 - PostgreSQL, Apache AGE, and pgvector integration.
 - Query IR, Mutation IR, Retrieval IR, Context IR, and future portable IR contracts.
@@ -45,7 +45,7 @@ Enterprise-only capabilities may include:
 The exact enterprise boundary is a future decision and must not be invented early merely to justify proprietary code.
 
 ## Hard dependency rule
-VibeDB Core must never require a private Cloud or Enterprise service to install, start locally, run tests, authenticate through a supported self-hosted path, execute core database operations, use CLI/SDK/API, use MCP safely, or build an application.
+Leruchi Core must never require a private Cloud or Enterprise service to install, start locally, run tests, authenticate through a supported self-hosted path, execute core database operations, use CLI/SDK/API, use MCP safely, or build an application.
 
 Cloud and Enterprise may depend on Core. Core must not depend on Cloud or Enterprise.
 
@@ -66,4 +66,4 @@ UNKNOWN must not silently become private or public code.
 Progressively automate the boundary through documentation/architecture checks, dependency checks, secret scanning, public-repository hygiene checks, architecture regression tests, and stage exit gates.
 
 ## Release principle
-Open source should be released when the OSS readiness gate is satisfied, not when Cloud is finished. A public release must leave developers with a complete, credible, self-hostable VibeDB experience.
+Open source should be released when the OSS readiness gate is satisfied, not when Cloud is finished. A public release must leave developers with a complete, credible, self-hostable Leruchi experience.
