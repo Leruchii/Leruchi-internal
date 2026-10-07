@@ -61,3 +61,8 @@ Do not publish `Leruchii/Leruchi` until:
 - the production tenant authorization blocker is resolved or explicitly redesigned;
 - public export audit passes;
 - final release review is explicitly approved.
+
+
+## Authentication trust-boundary update
+
+The development Graph API now supports explicit JWT issuer and audience validation in addition to signature, expiry and tenant-claim validation. This establishes the verifier-side trust boundary, but it does not by itself prove production identity-provider claim issuance. Production deployment must configure a trusted issuer and audience and provide executable evidence that the tenant claim is bound by that identity system.
