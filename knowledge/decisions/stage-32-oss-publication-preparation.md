@@ -144,3 +144,6 @@ The Auth-signup test candidate `10e736a2fc16c34e0fdfd288c129642fb6192b94` succes
 
 
 Shell expansion fix candidate `d3b251ddee29e9d16a12a42fa0bbfc87d551962f` removes unintended backslashes from the integration script's variable references. It is not yet on the validation branch and has not run CI. Keep the production claim issuance blocker open until the real Auth-issued claim and RLS assertions pass.
+
+
+Validation branch advanced to `d3b251ddee29e9d16a12a42fa0bbfc87d551962f` to correct shell variable expansion. CI runs were not visible at the first check; inspect Stage 03 and record exact results in `BUILD_STATE.md`. Do not merge or publish.
