@@ -135,13 +135,13 @@ Before continuing:
 6. Treat executable evidence as authoritative over stale documentation.
 7. Do not publish or merge Stage 32 without explicit release approval.
 
-## CI result update — 2026-10-08, Auth fixture follow-up
+## CI result update — 2026-10-08, Auth signup integration candidate prepared
 
-The exact-head matrix for `b651a880f72474a7dbe09557f6efaa291ebea8c7` has **14 successes, 1 failure, 2 in progress**. Stage 03 still fails the password-grant login with `400 invalid_credentials` even after adding `auth.identities` rows: https://github.com/Leruchii/Leruchi-development/actions/runs/37773172780. Hook installation, grants and fail-closed SQL checks passed before login.
+The last head `b651a880f72474a7dbe09557f6efaa291ebea8c7` produced **14 successes, 1 Stage 03 failure, 2 in progress**. Directly inserted Auth users still returned `400 invalid_credentials` despite email identity rows: https://github.com/Leruchii/Leruchi-development/actions/runs/37773172780.
 
-The direct-SQL user fixture remains unreliable for GoTrue authentication. Next correction: create both test users through the supported Auth signup endpoint in a test-only Compose override (signup enabled, email provider enabled, auto-confirm enabled), then add their server-managed membership rows, sign in again, and assert issued claims plus PostgREST isolation. The default Compose settings must remain unchanged outside the test override. This proposed change has not been made or run yet.
+Candidate commit `10e736a2fc16c34e0fdfd288c129642fb6192b94` changes the test setup to create users through the supported Auth `/signup` endpoint under one-run overrides (email provider enabled, signup enabled, auto-confirm enabled), then adds membership rows and verifies password-grant token claims plus PostgREST RLS isolation. Compose defaults remain restrictive (signup disabled, auto-confirm disabled, email provider disabled). The candidate has not been pushed to the validation branch and has not run CI.
 
-Keep production tenant-claim issuance blocked until the real Auth-issued token test passes. PR #64 remains draft; PR #63 unchanged. Do not merge or publish.
+Before advancing the branch, confirm this handoff. Then inspect Stage 03 and the exact-head matrix, and update this record after results. Keep the production tenant-claim blocker open until the Auth-issued token assertions pass. PR #64 remains draft; PR #63 unchanged. Do not merge or publish.
 
 ## Next checkpoint
 
