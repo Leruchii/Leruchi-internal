@@ -175,3 +175,6 @@ Stage 02 failed on candidate `6ed63d32f395ed30f1105bfa13d98cc7383ab575` because 
 
 
 Candidate `d754c43aa666cf37cbfba8fe874411e5ff27add1` contains the graph-query/mutation capability denial fix, updates the Stage 02 expectation to 403/CAPABILITY_DENIED, pins Node.js 24 in Stage 02/06/07/08, and refreshes the development handoff. It has not run CI yet. The previous Stage 02 failure and Node.js 22 gap are documented in `BUILD_STATE.md`. Next run must verify Stage 02, Stage 14, Stage 25 and the full matrix. Production capability-grant issuance/revocation remains open.
+
+
+The Node.js 24 and MCP route authorization candidate `d754c43aa666cf37cbfba8fe874411e5ff27add1` is now on the validation branch. Exact-head Actions runs were not visible at the first check; inspect Stage 02/14/25 and record results. Do not merge or publish.
