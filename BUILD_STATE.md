@@ -135,13 +135,11 @@ Before continuing:
 6. Treat executable evidence as authoritative over stale documentation.
 7. Do not publish or merge Stage 32 without explicit release approval.
 
-## CI result update — 2026-10-08, shell expansion fix candidate
+## CI result update — 2026-10-08, shell expansion fix validation head `d3b251ddee29e9d16a12a42fa0bbfc87d551962f`
 
-The previous head `10e736a2fc16c34e0fdfd288c129642fb6192b94` had 15 successes, 1 Stage 03 failure, and 1 workflow still in progress. Signup for both test users succeeded and the hook ran, but the integration script failed before claim assertions because 21 shell variables were written with literal backslashes and therefore did not expand. Run: https://github.com/Leruchii/Leruchi-development/actions/runs/37773534349.
+The isolated validation branch has advanced to `d3b251ddee29e9d16a12a42fa0bbfc87d551962f`. This commit removes the 21 unintended backslashes from the real Auth integration workflow's shell variable references. Exact-head Actions runs were not visible at the first check.
 
-Candidate fix commit `d3b251ddee29e9d16a12a42fa0bbfc87d551962f` removes those unintended backslashes from the Stage 03 workflow. It has not yet been advanced to the validation branch or run in CI.
-
-Next: advance the isolated validation branch after confirming this handoff, then inspect Stage 03 and update the handoff after the run. Keep the production tenant-claim blocker open until actual Auth-issued token claims and RLS assertions pass. PR #64 remains draft; PR #63 unchanged. Do not merge or publish.
+Inspect Stage 03 and the full matrix when runs appear, then update this handoff with the exact results. The previous integration attempt proved Auth signup and hook execution but failed before claim assertions. Production tenant-claim issuance remains blocked until active/revoked claim assertions and RLS isolation pass. PR #64 remains draft; PR #63 unchanged; no merge or publication.
 
 ## Next checkpoint
 
