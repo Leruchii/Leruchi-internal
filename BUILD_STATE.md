@@ -135,13 +135,11 @@ Before continuing:
 6. Treat executable evidence as authoritative over stale documentation.
 7. Do not publish or merge Stage 32 without explicit release approval.
 
-## CI result update — 2026-10-08, MCP route authorization + Node.js 24 workflow fix candidate
+## CI result update — 2026-10-08, Node.js 24 and MCP route authorization candidate head `d754c43aa666cf37cbfba8fe874411e5ff27add1`
 
-The previous exact-head matrix on `6ed63d32f395ed30f1105bfa13d98cc7383ab575` completed with **26 successes and 1 failure**. Stage 02 failed because the tenant-isolation test expected 400/VALIDATION_FAILED, while the new Graph API capability guard correctly returns 403/CAPABILITY_DENIED before query validation. The same logs showed Node.js 22 because Stage 02 had no explicit setup-node. Run: https://github.com/Leruchii/Leruchi-development/actions/runs/37774717752.
+The isolated validation branch has advanced to `d754c43aa666cf37cbfba8fe874411e5ff27add1`. This includes the Graph API route capability guards, corrected 403 expectation in the tenant isolation matrix, explicit Node.js 24 setup in Stage 02/06/07/08, and a refreshed development `BUILD_STATE.md`. Exact-head Actions runs were not visible at the first check.
 
-Candidate code commit `f552e568ba57561599b7b1d7737ac5d180797ca2` updates the stale assertion and adds `actions/setup-node@v6` with Node.js 24 to Stage 02, Stage 06, Stage 07 and Stage 08. Candidate checkpoint commit `d754c43aa666cf37cbfba8fe874411e5ff27add1` also updates the development repository's `BUILD_STATE.md` handoff. Neither has run CI yet; the validation branch has not advanced to this candidate.
-
-Before triggering the next run, this handoff has been rechecked and records the candidate and test scope. Next: advance the isolated validation branch to `d754c43aa666cf37cbfba8fe874411e5ff27add1`, then inspect Stage 02, Stage 14, Stage 25 and the complete exact-head matrix. Update this handoff after the run. Scoped capability grant issuance/revocation through a production control plane remains open. PR #64 draft; PR #63 unchanged; no merge or publication.
+Inspect Stage 02, Stage 14, Stage 25 and the full exact-head matrix as runs appear, then update this handoff with results. Capability grant issuance/revocation control-plane integration remains open. PR #64 draft; PR #63 unchanged; do not merge or publish.
 
 ## Next checkpoint
 
