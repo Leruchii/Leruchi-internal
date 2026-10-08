@@ -225,3 +225,10 @@ Latest snapshot: 29 successes, 1 in progress, zero failures. Stage 13 has now pa
 ## CI result — Stage 13 workflow fix candidate b806511f854b33b125e04d6c787351813acf1fd5
 
 The exact-head matrix completed with 29 successes and one failure. Stage 13 now starts the strict Graph API successfully; database startup, control-plane stub readiness, Graph API health, renderer benchmark and tenant-render contract all passed. The remaining Stage 13 failure is Browser tenant/responsive evidence: https://github.com/Leruchii/Leruchi-development/actions/runs/37778312543. This is a different failure from the fixed launcher configuration issue. Do not rerun until the browser failure log is inspected, diagnosed, and this handoff is re-read. No other failures are reported on this exact head.
+
+
+## Stage 13 browser failure diagnosis — exact head b806511f854b33b125e04d6c787351813acf1fd5
+
+The strict launcher/configuration fix worked: Graph API startup and health checks passed. The remaining failure is in `tests/browser/live-composition.spec.ts`: its cookie token is legacy-shaped and lacks the new signed-grant claims (`iss`, `jti`, `aud=leruchi`), so `/api/studio/catalog` never returns the expected HTTP 200 and Playwright times out waiting for that response. Six other browser tests passed. This is test-fixture drift from strict grant enforcement, not a Studio renderer failure.
+
+Fix plan: update the browser test token helper to include the configured issuer, unique jti, audience, tenant, expiry and canonical graph capabilities; the test control-plane stub already authorizes active JTIs. Then record a new candidate SHA here before moving the branch, and re-read this handoff before the next run. Keep production control-plane deployment as a release blocker.
