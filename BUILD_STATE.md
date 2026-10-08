@@ -12,7 +12,7 @@ This file is the canonical handoff checkpoint for coding agents. Verify it again
 - Stage 32 candidate branch: `stage32-oss-publication-prep`.
 - Current candidate HEAD: `d39c49aeb2c9a1aae62cf44279494a235361da56`.
 - [PR #63](https://github.com/Leruchii/Leruchi-development/pull/63) is OPEN and DRAFT. Stage 32 is not merged into `main`; public publication has NOT occurred.
-- GitHub compare reports candidate is 0 commits behind but 355 commits ahead of `main`; PR diff is 148 files (5,784 additions / 557 deletions). This is a broad integration diff, not a small Stage 32-only metadata change. Review the full diff and agree on integration strategy before merge.
+- GitHub compare reports candidate is 0 commits behind but 357 commits ahead of `main`; PR diff is 148 files (5,818 additions / 556 deletions). This is a broad integration diff, not a small Stage 32-only metadata change. Review the full diff and agree on integration strategy before merge.
 
 ### Exact-head CI
 - Candidate SHA `d39c49aeb2c9a1aae62cf44279494a235361da56`: **36/36 workflow runs completed successfully; 0 failures**.
@@ -46,7 +46,7 @@ Their branches and histories remain available for reference. Do not merge heavil
 ### Blockers and required next actions
 1. **Repository visibility is user-owned.** The user will handle remediation. Before integration, re-query and verify the required private settings for both development and internal repositories; do not assume the change is complete.
 2. Product-name clearance remains pending. Keep the public brand provisional until clearance is documented.
-3. Review the full 355-commit / 148-file PR diff and agree on the integration strategy before merge.
+3. Review the full 357-commit / 148-file PR diff and agree on the integration strategy before merge.
 4. Re-query live PR #63 head, full CI, and exact-head artifact if the branch changes.
 5. Integrate Stage 32 only after all blockers are closed. Integration into development `main` is not public publication.
 6. Copy/export to `Leruchii/Leruchi` or create a public release only after separate explicit user approval and the controlled export gate.
