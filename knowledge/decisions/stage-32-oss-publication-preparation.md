@@ -109,3 +109,10 @@ Next action is to align the two optional-role passwords and add a config consist
 The first unreferenced candidate commit was reviewed and found to have an incomplete workflow: it called the hook without installing it. The corrected workflow is now in commit `e93dde43445fd2f665e04679a049640abb72c4dc` on isolated branch `stage32-tenant-claim-hook-validation`. It runs the hook contract test, installs the SQL hook after Auth/PostgREST initialization, verifies least-privilege grants, and checks fail-closed behavior.
 
 The validation branch has not run CI yet. The next step is a validation PR targeting `stage32-oss-publication-prep`, then inspect the exact-head Stage 03 run and update the handoff. The current PR #63 branch remains unchanged. Actual Auth-issued token claim issuance has not been proven; keep the production tenant-claim release blocker open. Do not merge or publish.
+
+
+## Validation PR #64 result — 2026-10-08
+
+Validation commit `e93dde43445fd2f665e04679a049640abb72c4dc` completed its exact-head matrix with 17 successes and zero failures. Stage 03 passed with hook SQL installation, contract/permission checks, fail-closed unbound-claim behavior and the existing signed-JWT RLS test: https://github.com/Leruchii/Leruchi-development/actions/runs/37772310562. Stage 13 Graph Studio also passed: https://github.com/Leruchii/Leruchi-development/actions/runs/37772310466.
+
+This does not yet validate actual Auth-issued token claims for valid and revoked memberships. Keep the production tenant-claim issuance release blocker open. PR #64 is a draft validation PR targeting the active Stage 32 branch; PR #63 remains unchanged. Next: add real Auth-issued token integration coverage, then scoped MCP/agent capability authorization and audit/revocation. Do not merge or publish.
