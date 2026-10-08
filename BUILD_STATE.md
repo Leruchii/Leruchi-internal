@@ -135,11 +135,11 @@ Before continuing:
 6. Treat executable evidence as authoritative over stale documentation.
 7. Do not publish or merge Stage 32 without explicit release approval.
 
-## CI result update — 2026-10-08, shell expansion fix validation head `d3b251ddee29e9d16a12a42fa0bbfc87d551962f`
+## CI result update — 2026-10-08, shell expansion fix head `d3b251ddee29e9d16a12a42fa0bbfc87d551962f`
 
-The isolated validation branch has advanced to `d3b251ddee29e9d16a12a42fa0bbfc87d551962f`. This commit removes the 21 unintended backslashes from the real Auth integration workflow's shell variable references. Exact-head Actions runs were not visible at the first check.
+The exact-head matrix snapshot is **6 successes, 11 in progress, 0 failures**. Stage 32 candidate, Stage State Gate, Architecture Regression Audit, Stages 05/06/10 have passed. Stage 03 is running at https://github.com/Leruchii/Leruchi-development/actions/runs/37773858431.
 
-Inspect Stage 03 and the full matrix when runs appear, then update this handoff with the exact results. The previous integration attempt proved Auth signup and hook execution but failed before claim assertions. Production tenant-claim issuance remains blocked until active/revoked claim assertions and RLS isolation pass. PR #64 remains draft; PR #63 unchanged; no merge or publication.
+This head removes unintended backslashes from shell variable references in the Auth signup integration test. Watch the Stage 03 step that creates users, adds memberships, obtains Auth-issued tokens, and asserts tenant claims and PostgREST isolation. Wait for exact-head results and update this handoff after completion. Production tenant-claim issuance remains blocked until those assertions pass. PR #64 remains draft; PR #63 unchanged; no merge or publication.
 
 ## Next checkpoint
 
