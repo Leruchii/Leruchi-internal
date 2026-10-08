@@ -207,3 +207,8 @@ On exact head `e268ade8f5caf265e5277fbbccd239fecde69396`, Stage 14 MCP Agent Gat
 ## Capability grant candidate CI result — 2026-10-08
 
 Exact-head matrix for `e268ade8f5caf265e5277fbbccd239fecde69396` completed with 29 successes and one failure. The only failure is Stage 13 Graph Studio: https://github.com/Leruchii/Leruchi-development/actions/runs/37777685084. Stage 14 passed. Inspect the Stage 13 logs before any further run or branch change; update BUILD_STATE.md with diagnosis and next action. Do not call this matrix green.
+
+
+## Stage 13 failure diagnosis — 2026-10-08
+
+Stage 13 failed because its workflow starts the now-strict production Graph API launcher without `LERUCHI_CAPABILITY_ISSUER` or control-plane URL/token. The launcher exits before health check; Graph Studio tests are skipped. This is a workflow fixture/configuration regression, not evidence of a renderer regression. Fix Stage 13 workflow to start the test-only control-plane stub and pass strict grant configuration, then revalidate exact head. See BUILD_STATE.md. Do not run again until the handoff confirms this diagnosis and fix plan.
