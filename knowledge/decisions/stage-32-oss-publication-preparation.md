@@ -166,3 +166,6 @@ Active membership issues the expected `tenant_id`; revoked tenant selection omit
 ## MCP Graph API capability gap found — 2026-10-08
 
 The green tenant-claim integration matrix was followed by a source audit. Graph query and mutation route handlers did not explicitly enforce `graph:read` / `graph:write` at the API boundary, and delete operations did not explicitly require `graph:delete`. Candidate `6ed63d32f395ed30f1105bfa13d98cc7383ab575` adds those checks before catalog/database access, focused denial tests, and Stage 14 workflow coverage. It is not yet on the validation branch and has not run CI. Scoped grant issuance and revocation integration remain a separate gap.
+
+
+MCP route capability candidate `6ed63d32f395ed30f1105bfa13d98cc7383ab575` is now on the isolated validation branch. Exact-head Actions runs were not visible at the first check. Inspect Stage 14/02/25 and update `BUILD_STATE.md` with the exact results. Capability grant issuance/revocation control-plane integration remains open.
