@@ -349,3 +349,10 @@ Latest snapshot: 29 successes, 1 in progress, zero failures. Stage 14 MCP Agent 
 - Architecture Regression Audit passed: https://github.com/Leruchii/Leruchi-development/actions/runs/37780390421
 
 The OSS data plane now verifies EdDSA-signed grants with a key-id-selected public-key ring; private signing keys are not included in the runtime. Revocation checks remain mandatory and fail-closed. CI uses ephemeral test keys and a test-only revocation stub. Production control-plane issuer deployment, private-key custody/rotation, membership-aware grant issuance, revocation propagation/availability targets, and production Supabase tenant-claim deployment remain release gates. Stages 18/19 Cloud Control Plane and Billing/Metering remain deferred per BUILD_PLAN.md; do not add private cloud services to the OSS runtime. PR #64 remains draft; PR #63 remains unchanged. No merge or public publication without release-gate completion and explicit approval.
+
+
+## Pre-run checkpoint — live control-plane revocation integration test, 2026-10-08
+
+The previous exact-head matrix on 0116e012955d05681ee943d8e89f9d31e99b8c2f passed 30 workflows with zero failures. The next candidate commit is 7442116a9d1857cb1e8409c97fe80b563333bbd6. It adds a live MCP-to-Graph API test where the test control-plane stub marks one grant jti revoked; the request must be rejected through the real HTTP revocation adapter. The Stage 14 workflow configures that test jti as revoked. No production control-plane service is added to OSS.
+
+Candidate has not run CI. Re-read this handoff and verify the isolated validation branch is still at 0116e012955d05681ee943d8e89f9d31e99b8c2f before advancing. After the run, update this file with exact-head results. Production control-plane deployment, key custody/rotation, issuance policy and operational revocation remain release gates.
