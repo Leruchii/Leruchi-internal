@@ -135,13 +135,13 @@ Before continuing:
 6. Treat executable evidence as authoritative over stale documentation.
 7. Do not publish or merge Stage 32 without explicit release approval.
 
-## CI result update — 2026-10-08, active branch head `07c76120856165c5a4dc98cb9aa223f20cbc8b06`
+## CI result update — 2026-10-08, before tenant-hook validation run
 
-The active branch's exact-head matrix is green: 35 successes, 0 failures. Stage 03 compatibility passed with the four-role credential test at https://github.com/Leruchii/Leruchi-development/actions/runs/37770360944, and final Stage 13 Graph Studio passed at https://github.com/Leruchii/Leruchi-development/actions/runs/37770360696.
+The previously validated Stage 32 branch remains `07c76120856165c5a4dc98cb9aa223f20cbc8b06`, with 35 successful workflow runs and zero failures. Its handoff links are unchanged.
 
-The next security design is a Supabase Auth custom access-token hook backed by private, server-managed tenant memberships. Candidate commit object `a22dee14c274f0c9abfddbd0ed45bf3181b2374c` was created with hook SQL, Compose configuration, contract test and Stage 03 checks, but the active PR branch was not advanced to it. It has not run CI and must not be treated as implemented or validated. The current branch remains `07c76120856165c5a4dc98cb9aa223f20cbc8b06`.
+Candidate `a22dee14c274f0c9abfddbd0ed45bf3181b2374c` was reviewed and found incomplete: its Stage 03 workflow did not install the hook before invoking it. This has been corrected in commit `e93dde43445fd2f665e04679a049640abb72c4dc`, on isolated branch `stage32-tenant-claim-hook-validation`. The corrected workflow now runs the contract test, installs `infra/supabase/tenant-claim-hook.sql` after Auth initializes, verifies role/table grants, and exercises fail-closed behavior using the database function.
 
-Before proceeding, inspect the candidate change and establish a safe, supported way to apply it to the active branch. Do not merge or publish; production tenant-claim issuance remains a release blocker.
+This validation branch has **not yet run CI** and is not yet the head of PR #63. No claim is made that real Supabase Auth-issued tokens have been tested; production issuance remains a blocker. Next action: open a validation PR targeting `stage32-oss-publication-prep`, inspect the automatically triggered Stage 03 run, and update this handoff after it completes. Do not merge or publish.
 
 ## Next checkpoint
 
