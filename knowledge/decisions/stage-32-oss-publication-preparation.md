@@ -212,3 +212,8 @@ Exact-head matrix for `e268ade8f5caf265e5277fbbccd239fecde69396` completed with 
 ## Stage 13 failure diagnosis — 2026-10-08
 
 Stage 13 failed because its workflow starts the now-strict production Graph API launcher without `LERUCHI_CAPABILITY_ISSUER` or control-plane URL/token. The launcher exits before health check; Graph Studio tests are skipped. This is a workflow fixture/configuration regression, not evidence of a renderer regression. Fix Stage 13 workflow to start the test-only control-plane stub and pass strict grant configuration, then revalidate exact head. See BUILD_STATE.md. Do not run again until the handoff confirms this diagnosis and fix plan.
+
+
+## Signed capability grant validation result — 2026-10-08
+
+Exact head 57dd4815d7137945945c234f5d7ca9970e637bef completed with 30 successes and zero failures. Stage 13 Graph Studio and Stage 14 MCP Agent Gateway passed after the Stage 13 strict-grant fixture was corrected. See BUILD_STATE.md for exact run links. CI validates the adapter with a test-only control-plane stub; production issuer/revocation deployment, key lifecycle, issuance policy and operational revocation propagation remain release gates. No merge or public publication without explicit approval.
