@@ -135,11 +135,11 @@ Before continuing:
 6. Treat executable evidence as authoritative over stale documentation.
 7. Do not publish or merge Stage 32 without explicit release approval.
 
-## CI result update — 2026-10-08, MCP route capability candidate head `6ed63d32f395ed30f1105bfa13d98cc7383ab575`
+## CI result update — 2026-10-08, MCP capability route checks need Stage 02 fixture updates
 
-The exact-head matrix snapshot is **14 successes, 1 failure, 12 in progress**. Stage 02 RLS and AGE security failed: https://github.com/Leruchii/Leruchi-development/actions/runs/37774717752. Stage 14 MCP Agent Gateway remains in progress: https://github.com/Leruchii/Leruchi-development/actions/runs/37774717740. Stage 03 tenant-claim integration is also running: https://github.com/Leruchii/Leruchi-development/actions/runs/37774717640.
+On head `6ed63d32f395ed30f1105bfa13d98cc7383ab575`, the matrix snapshot was 14 successes, 1 failure, 12 in progress. Stage 02 failed because `tests/security/tenant-isolation-matrix.test.mjs` still expected an invalid query without `graph:read` to reach query validation and return 400; the new route-level guard correctly denies earlier with HTTP 403 and `CAPABILITY_DENIED`. Run: https://github.com/Leruchii/Leruchi-development/actions/runs/37774717752.
 
-This candidate adds explicit Graph API checks: query requires `graph:read`; mutation requires `graph:write`; destructive delete also requires `graph:delete`. The Stage 02 failure may reveal an existing test token that lacks the newly enforced graph-read capability; inspect logs before making any changes. Do not assume the failure is harmless. Wait for remaining runs, diagnose, and update this handoff before the next candidate. Capability grant revocation integration remains open. PR #64 draft; PR #63 unchanged; no merge or publication.
+The same logs show Stage 02 ran under Node.js 22 because its workflow did not explicitly configure Node.js 24. This is a missed workflow-policy gap. Next fix: update that test to expect 403/`CAPABILITY_DENIED`, add `actions/setup-node@v6` with `node-version: 24` to Stage 02, and audit remaining workflows for missing explicit Node.js 24 setup. Do not treat the test failure as harmless; the capability change alters the authorization boundary. Wait for all other current runs before advancing the branch. PR #64 remains draft; PR #63 unchanged; no merge or publication.
 
 ## Next checkpoint
 
