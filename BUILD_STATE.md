@@ -215,3 +215,8 @@ Latest exact-head snapshot: 10 successes, 20 in progress, zero failures. Stage 1
 ## CI progress refresh — exact head b806511f854b33b125e04d6c787351813acf1fd5
 
 Latest snapshot: 25 successes, 5 in progress, zero failures. Stage 13 and Stage 14 are still running; Stage 03, Stage 02, Stage 09 and Stage 15 are also in progress. No failures are reported so far. Keep waiting for the complete exact-head matrix before calling it green.
+
+
+## CI progress refresh — exact head b806511f854b33b125e04d6c787351813acf1fd5
+
+Latest snapshot: 29 successes, 1 in progress, zero failures. Stage 13 has now passed database build/startup, live tenant fixture seeding, test control-plane startup, strict Graph API startup/health, renderer benchmark and tenant-render contract. Chromium/browser tests and final build/audits remain to complete.
