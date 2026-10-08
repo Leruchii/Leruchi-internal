@@ -116,3 +116,10 @@ The validation branch has not run CI yet. The next step is a validation PR targe
 Validation commit `e93dde43445fd2f665e04679a049640abb72c4dc` completed its exact-head matrix with 17 successes and zero failures. Stage 03 passed with hook SQL installation, contract/permission checks, fail-closed unbound-claim behavior and the existing signed-JWT RLS test: https://github.com/Leruchii/Leruchi-development/actions/runs/37772310562. Stage 13 Graph Studio also passed: https://github.com/Leruchii/Leruchi-development/actions/runs/37772310466.
 
 This does not yet validate actual Auth-issued token claims for valid and revoked memberships. Keep the production tenant-claim issuance release blocker open. PR #64 is a draft validation PR targeting the active Stage 32 branch; PR #63 remains unchanged. Next: add real Auth-issued token integration coverage, then scoped MCP/agent capability authorization and audit/revocation. Do not merge or publish.
+
+
+## Real Auth-issued token test candidate — 2026-10-08
+
+The prior validation head `e93dde43445fd2f665e04679a049640abb72c4dc` passed 17 workflows. Candidate commit `b1b2ce78a0cc2e2ef47b1c9700638fae56e8a23a` adds a deterministic auth.users/membership fixture and a Stage 03 integration step that signs in through Supabase Auth, verifies active-membership tenant claim issuance, verifies revoked selection omits the claim, and checks PostgREST RLS isolation. The test workflow enables email/password only through a one-run environment override; the Compose default remains disabled. Candidate is not yet on the validation branch and has not run CI.
+
+Next: advance the validation branch only after confirming this handoff, then record exact-head CI results. Keep the release blocker open until the actual Auth-issued token test passes. Do not merge or publish.
