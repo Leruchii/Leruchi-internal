@@ -135,6 +135,28 @@ Before continuing:
 6. Treat executable evidence as authoritative over stale documentation.
 7. Do not publish or merge Stage 32 without explicit release approval.
 
+## Live continuation checkpoint — 2026-10-08
+
+This live checkpoint supersedes any older head SHA recorded in conversation summaries or handoff snippets.
+
+- Development PR: [#63](https://github.com/Leruchii/Leruchi-development/pull/63), open draft, not merged.
+- Active branch: `stage32-oss-publication-prep`.
+- Verified current development head before this checkpoint update: `db3c71af8b3a5275401ba5c77a64cd2b77a5bd3a`.
+- Public publication: NOT PERFORMED.
+- Exact-head Stage 32 candidate workflow: PASS on `db3c71af8b3a5275401ba5c77a64cd2b77a5bd3a`.
+- Exact-head Stage 31 readiness and architecture regression audit: PASS.
+- Exact-head Stage 03 Supabase compatibility: FAIL in `Wait for Auth and PostgREST`.
+- Verified failure cause from job logs: Auth and PostgREST cannot authenticate to PostgreSQL because `infra/supabase/roles.sql` creates compatibility roles with `vibe_compat_authenticator` / `vibe_compat_auth`, while `infra/supabase/docker-compose.yml` supplies `leruchi_compat_authenticator` / `leruchi_compat_auth`. This is a credentials mismatch, not the duplicate YAML key reported in an older snapshot. The current compose file has one `GOTRUE_JWT_AUD` key.
+- Last run inspected: [Stage 03 Supabase compatibility run 37765214108](https://github.com/Leruchii/Leruchi-development/actions/runs/37765214108).
+- Node runtime policy remains Node.js 24 only. Before declaring the whole workflow layer compliant, audit any remaining legacy action pins that run on Node 20.
+
+### Next action (do not skip)
+
+1. Fix the Stage 03 compatibility role passwords in `infra/supabase/roles.sql` to match the corresponding compose service credentials.
+2. Update this handoff after the resulting workflow run, recording the exact tested head, run URL, and pass/fail evidence.
+3. Recheck all required workflows on the exact new head. Do not merge or publish.
+4. After CI is healthy, resume the security sequence at authoritative production tenant-claim issuance, then scoped MCP/agent authorization and revocation/audit controls.
+
 ## Next checkpoint
 
 Complete the tenant authorization/security hardening and ASVS Level-2 evidence work in development, synchronize the resulting durable decisions here, then perform the final controlled OSS export review before publication.
