@@ -137,15 +137,14 @@ Before continuing:
 
 ## CI result update — 2026-10-08, exact head `07c76120856165c5a4dc98cb9aa223f20cbc8b06`
 
-The optional Supabase credential fix matrix now has **33 successes, 2 in progress, 0 failures**.
+The optional Supabase credential fix matrix now has **34 successes, 1 in progress, 0 failures**.
 
-Stage 03 Supabase compatibility passed, including the new four-role SQL/Compose credential consistency tests and Auth/PostgREST RLS integration: https://github.com/Leruchii/Leruchi-development/actions/runs/37770360944
+- Stage 03 Supabase compatibility PASS, including four-role credential consistency tests: https://github.com/Leruchii/Leruchi-development/actions/runs/37770360944
+- Stage 14 MCP Agent Gateway PASS: https://github.com/Leruchii/Leruchi-development/actions/runs/37770360721
 
-Only Stage 13 Graph Studio and Stage 14 MCP Agent Gateway remain in progress:
-- https://github.com/Leruchii/Leruchi-development/actions/runs/37770360696
-- https://github.com/Leruchii/Leruchi-development/actions/runs/37770360721
+Only Stage 13 Graph Studio remains in progress: https://github.com/Leruchii/Leruchi-development/actions/runs/37770360696
 
-Wait for both results, then update this handoff again before the next development change. Do not merge or publish; production tenant-claim issuance remains a release blocker.
+Wait for the final workflow result and update this handoff again. Do not merge or publish; production tenant-claim issuance remains a release blocker.
 
 ## Next checkpoint
 
