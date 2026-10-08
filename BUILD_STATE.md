@@ -160,3 +160,12 @@ Handoff was re-read before advancing the validation branch. Baseline exact-head 
 Candidate commit prepared on top of the validated baseline: `e268ade8f5caf265e5277fbbccd239fecde69396`. It wires signed capability-grant validation into Graph API authentication, requires a control-plane revocation decision in strict mode, fails closed on missing/revoked/unavailable decisions, enforces optional route/graph scope, adds an authenticated HTTPS-enforcing control-plane adapter, enables strict mode in the production launcher, and adds unit/API/MCP integration coverage using a test-only control-plane stub.
 
 **No CI has run on this candidate yet.** Next: advance only the isolated validation branch, inspect all exact-head workflow results (especially Stage 14 and Stage 02), then update this handoff and the Stage 32 decision record with actual results. The test stub does not prove production control-plane deployment. Do not merge or publish.
+
+
+## CI checkpoint — signed capability grant candidate, exact head e268ade8f5caf265e5277fbbccd239fecde69396
+
+The isolated validation branch now points to `e268ade8f5caf265e5277fbbccd239fecde69396`. The full PR workflow matrix has started. Initial snapshot: 30 workflows discovered, 4 in progress and 26 queued; no completed conclusions yet. Stage 14 MCP Agent Gateway is currently in progress after the capability vocabulary, catalog capability, Graph API route capability and MCP contract test steps passed; the capability-grant contract test is running.
+
+Stage 32 candidate workflow is also in progress: https://github.com/Leruchii/Leruchi-development/actions/runs/37777679790. Stage 14 run: https://github.com/Leruchii/Leruchi-development/actions/runs/37777685258.
+
+Do not claim this candidate passed until every exact-head workflow finishes. After completion, inspect any failure logs, fix only after updating this handoff, and rerun the exact new head. Production control-plane deployment remains a release gate.
