@@ -135,18 +135,13 @@ Before continuing:
 6. Treat executable evidence as authoritative over stale documentation.
 7. Do not publish or merge Stage 32 without explicit release approval.
 
-## CI result update — 2026-10-08, real Auth-issued tenant claims validated
+## CI result update — 2026-10-08, tenant claim issuance green; MCP authorization audit next
 
-**Exact-head matrix complete: 17 successes, 0 failures** on `d3b251ddee29e9d16a12a42fa0bbfc87d551962f`.
+The exact-head matrix on `d3b251ddee29e9d16a12a42fa0bbfc87d551962f` is complete: **17 successes, 0 failures**. Stage 03 actual Auth-issued tenant claim and PostgREST RLS integration passed at https://github.com/Leruchii/Leruchi-development/actions/runs/37773858431; Stage 13 was final and passed at https://github.com/Leruchii/Leruchi-development/actions/runs/37773858093.
 
-- Stage 03 Supabase compatibility, including real Auth-issued tenant claim and PostgREST RLS assertions: PASS — https://github.com/Leruchii/Leruchi-development/actions/runs/37773858431
-- Stage 13 Graph Studio, final workflow: PASS — https://github.com/Leruchii/Leruchi-development/actions/runs/37773858093
-- Stage 32 candidate: PASS — https://github.com/Leruchii/Leruchi-development/actions/runs/37773847082
-- Validation PR #64: https://github.com/Leruchii/Leruchi-development/pull/64
+Before continuing Stage 32, the MCP/agent authorization code is under review. The current implementation has canonical capability vocabulary, scoped grant validation helpers, route-level checks for catalog/retrieval/context/agent intent, and mutation approval checks. Initial inspection suggests graph query and general graph mutation paths may not enforce `graph:read` / `graph:write` at the Graph API boundary; destructive delete must additionally require `graph:delete`. Verify with current tests, add fail-closed route checks and tests if missing, and keep capability grant/revocation control-plane integration explicit rather than pretending it already exists.
 
-The Stage 03 integration creates users through Auth signup under test-only overrides, adds authoritative memberships, signs in via password grant, verifies active membership issues `tenant_id=tenant_a`, verifies a revoked tenant selector omits `tenant_id`, and verifies PostgREST tenant isolation. It also validates private membership grants, hook installation, fail-closed behavior and the existing signed-JWT RLS path.
-
-This proves the self-hosted test deployment's issuance flow. Production readiness still requires confirming that the supported production deployment uses the same trusted hook configuration and server-side membership provisioning. Next development area after this security gate: scoped MCP/agent capabilities tied to trusted identity/tenant context, tool-level authorization, revocation and audit. PR #64 remains draft; PR #63 unchanged. Do not merge or publish until production configuration is validated and explicit approval is given.
+No new workflow run has been triggered for this audit yet. Before triggering the next matrix, update this handoff with the exact candidate SHA and test scope. PR #64 remains draft; PR #63 unchanged. Production rollout configuration still needs confirmation. Do not merge or publish.
 
 ## Next checkpoint
 
