@@ -135,11 +135,11 @@ Before continuing:
 6. Treat executable evidence as authoritative over stale documentation.
 7. Do not publish or merge Stage 32 without explicit release approval.
 
-## CI result update — 2026-10-08, Auth token fixture fix under validation
+## CI result update — 2026-10-08, identity fixture retry head `b651a880f72474a7dbe09557f6efaa291ebea8c7`
 
-The validation branch has advanced to `b651a880f72474a7dbe09557f6efaa291ebea8c7`, adding the missing `auth.identities` email-provider rows. The prior head `b1b2ce78a0cc2e2ef47b1c9700638fae56e8a23a` failed Stage 03's actual Auth login with `400 invalid_credentials`; all hook installation and fail-closed checks before that step passed: https://github.com/Leruchii/Leruchi-development/actions/runs/37772846771.
+The exact-head matrix has started: **6 successes, 11 in progress, 0 failures**. Stage 03 Supabase compatibility is in progress: https://github.com/Leruchii/Leruchi-development/actions/runs/37773172780.
 
-The branch update has completed; exact-head workflow runs were not visible at the first check. Inspect the new Stage 03 run and full matrix, then update this handoff with the result. Production tenant-claim issuance remains blocked until the Auth-issued token test passes. PR #64 remains draft; PR #63 unchanged. Do not merge or publish.
+This head adds the missing email-provider identity rows to the fixture after the previous Auth password-grant attempt returned `400 invalid_credentials`. Inspect the Stage 03 integration step carefully; it must demonstrate that Auth issues `tenant_id=tenant_a` for active membership and omits `tenant_id` for the revoked selection, then verify PostgREST isolation. Wait for the full matrix before further code changes. Production tenant-claim issuance remains blocked until that test passes. PR #64 draft; PR #63 unchanged; no merge or publication.
 
 ## Next checkpoint
 
