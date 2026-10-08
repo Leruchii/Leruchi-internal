@@ -135,27 +135,51 @@ Before continuing:
 6. Treat executable evidence as authoritative over stale documentation.
 7. Do not publish or merge Stage 32 without explicit release approval.
 
-## Live continuation checkpoint — 2026-10-08
+## CI result update — 2026-10-08, exact head `199e5100557c533cc287573baf2483e377608868`
 
-This live checkpoint supersedes any older head SHA recorded in conversation summaries or handoff snippets.
+The Stage 03 credential alignment was committed to `stage32-oss-publication-prep`. GitHub Actions has started the exact-head regression matrix. Snapshot at this handoff update: {"in_progress":15,"success":20}.
 
-- Development PR: [#63](https://github.com/Leruchii/Leruchi-development/pull/63), open draft, not merged.
-- Active branch: `stage32-oss-publication-prep`.
-- Verified current development head before this checkpoint update: `db3c71af8b3a5275401ba5c77a64cd2b77a5bd3a`.
-- Public publication: NOT PERFORMED.
-- Exact-head Stage 32 candidate workflow: PASS on `db3c71af8b3a5275401ba5c77a64cd2b77a5bd3a`.
-- Exact-head Stage 31 readiness and architecture regression audit: PASS.
-- Exact-head Stage 03 Supabase compatibility: FAIL in `Wait for Auth and PostgREST`.
-- Verified failure cause from job logs: Auth and PostgREST cannot authenticate to PostgreSQL because `infra/supabase/roles.sql` creates compatibility roles with `vibe_compat_authenticator` / `vibe_compat_auth`, while `infra/supabase/docker-compose.yml` supplies `leruchi_compat_authenticator` / `leruchi_compat_auth`. This is a credentials mismatch, not the duplicate YAML key reported in an older snapshot. The current compose file has one `GOTRUE_JWT_AUD` key.
-- Last run inspected: [Stage 03 Supabase compatibility run 37765214108](https://github.com/Leruchii/Leruchi-development/actions/runs/37765214108).
-- Node runtime policy remains Node.js 24 only. Before declaring the whole workflow layer compliant, audit any remaining legacy action pins that run on Node 20.
+- Stage 32 OSS Core Publication Candidate: **PASS** — [run 37769250397](https://github.com/Leruchii/Leruchi-development/actions/runs/37769250397). Candidate creation, runtime-policy enforcement, ASVS verification gate, tenant/realtime boundary checks, export manifest, export audit, packaging and artifact upload all passed.
+- Stage State Gate: **PASS** — [run 37769251598](https://github.com/Leruchii/Leruchi-development/actions/runs/37769251598).
+- Stage 03 Supabase compatibility: still running at snapshot — [run 37769250756](https://github.com/Leruchii/Leruchi-development/actions/runs/37769250756). Do not claim the credential fix validated until this run completes successfully.
+- Other exact-head workflow statuses at snapshot:
+- Stage 12 Graph Realtime: in_progress — [run 37769251173](https://github.com/Leruchii/Leruchi-development/actions/runs/37769251173)
+- Stage State Gate: success — [run 37769251598](https://github.com/Leruchii/Leruchi-development/actions/runs/37769251598)
+- Stage 14 MCP Agent Gateway: in_progress — [run 37769250488](https://github.com/Leruchii/Leruchi-development/actions/runs/37769250488)
+- Stage 01 database foundation: in_progress — [run 37769250713](https://github.com/Leruchii/Leruchi-development/actions/runs/37769250713)
+- Stage 07 Apache AGE Compiler: in_progress — [run 37769250826](https://github.com/Leruchii/Leruchi-development/actions/runs/37769250826)
+- Stage 13 Graph Studio: in_progress — [run 37769250709](https://github.com/Leruchii/Leruchi-development/actions/runs/37769250709)
+- Stage 02 RLS and AGE security: in_progress — [run 37769250482](https://github.com/Leruchii/Leruchi-development/actions/runs/37769250482)
+- Stage 17 Backup and Recovery: in_progress — [run 37769250805](https://github.com/Leruchii/Leruchi-development/actions/runs/37769250805)
+- Stage 21 PostgreSQL Recursive Compiler: in_progress — [run 37769250711](https://github.com/Leruchii/Leruchi-development/actions/runs/37769250711)
+- Stage 15 GraphRAG: in_progress — [run 37769250920](https://github.com/Leruchii/Leruchi-development/actions/runs/37769250920)
+- Stage 10 JavaScript SDK: success — [run 37769250646](https://github.com/Leruchii/Leruchi-development/actions/runs/37769250646)
+- Stage 25 MCP Agent Tool Contract and Input Safety: success — [run 37769250429](https://github.com/Leruchii/Leruchi-development/actions/runs/37769250429)
+- Stage 26B - Agent Native Context IR: success — [run 37769250849](https://github.com/Leruchii/Leruchi-development/actions/runs/37769250849)
+- Stage 16 Observability: success — [run 37769250722](https://github.com/Leruchii/Leruchi-development/actions/runs/37769250722)
+- Stage 26A - Repository Separation: success — [run 37769250787](https://github.com/Leruchii/Leruchi-development/actions/runs/37769250787)
+- Architecture Regression Audit: success — [run 37769250441](https://github.com/Leruchii/Leruchi-development/actions/runs/37769250441)
+- Stage 27 - Agent Intent Boundary: success — [run 37769250570](https://github.com/Leruchii/Leruchi-development/actions/runs/37769250570)
+- Stage 23 Unified Retrieval Surface: success — [run 37769250582](https://github.com/Leruchii/Leruchi-development/actions/runs/37769250582)
+- Stage 28 - Cross-Modal Planning: success — [run 37769250733](https://github.com/Leruchii/Leruchi-development/actions/runs/37769250733)
+- Stage 29 - Agent Evaluation & Observability: success — [run 37769250439](https://github.com/Leruchii/Leruchi-development/actions/runs/37769250439)
+- Stage 32 - OSS Core Publication Candidate: success — [run 37769250397](https://github.com/Leruchii/Leruchi-development/actions/runs/37769250397)
+- Stage 06 Query Validation: success — [run 37769250446](https://github.com/Leruchii/Leruchi-development/actions/runs/37769250446)
+- Stage 22 Retrieval Planner: success — [run 37769250753](https://github.com/Leruchii/Leruchi-development/actions/runs/37769250753)
+- Stage 26C - Context Resolution: success — [run 37769250393](https://github.com/Leruchii/Leruchi-development/actions/runs/37769250393)
+- Stage 11 CLI: in_progress — [run 37769250776](https://github.com/Leruchii/Leruchi-development/actions/runs/37769250776)
+- Stage 03 Supabase compatibility: in_progress — [run 37769250756](https://github.com/Leruchii/Leruchi-development/actions/runs/37769250756)
+- Stage 08 Secure Execution Engine: in_progress — [run 37769250458](https://github.com/Leruchii/Leruchi-development/actions/runs/37769250458)
+- Stage 20 Production Readiness: in_progress — [run 37769250847](https://github.com/Leruchii/Leruchi-development/actions/runs/37769250847)
+- Stage 09 Graph Mutations: in_progress — [run 37769250616](https://github.com/Leruchii/Leruchi-development/actions/runs/37769250616)
+- Stage 05 Query IR: success — [run 37769250991](https://github.com/Leruchii/Leruchi-development/actions/runs/37769250991)
+- Stage 31 - OSS Core Readiness: success — [run 37769250470](https://github.com/Leruchii/Leruchi-development/actions/runs/37769250470)
+- Stage 24 Retrieval Explainability and Agent Safety: success — [run 37769250453](https://github.com/Leruchii/Leruchi-development/actions/runs/37769250453)
+- Stage 30 Agent Trace Checks: success — [run 37769250412](https://github.com/Leruchii/Leruchi-development/actions/runs/37769250412)
+- Stage 04 Schema Catalog: in_progress — [run 37769250653](https://github.com/Leruchii/Leruchi-development/actions/runs/37769250653)
+- Stage 32 - OSS Core Publication Candidate: success — [run 37769243099](https://github.com/Leruchii/Leruchi-development/actions/runs/37769243099)
 
-### Next action (do not skip)
-
-1. Fix the Stage 03 compatibility role passwords in `infra/supabase/roles.sql` to match the corresponding compose service credentials.
-2. Update this handoff after the resulting workflow run, recording the exact tested head, run URL, and pass/fail evidence.
-3. Recheck all required workflows on the exact new head. Do not merge or publish.
-4. After CI is healthy, resume the security sequence at authoritative production tenant-claim issuance, then scoped MCP/agent authorization and revocation/audit controls.
+Do not start another change until the currently running exact-head workflows complete and their failures, if any, are diagnosed. Update this handoff again after each meaningful workflow completion. Do not merge or publish; production identity-provider tenant-claim issuance remains a release blocker.
 
 ## Next checkpoint
 
