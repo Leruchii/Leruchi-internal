@@ -337,3 +337,15 @@ Latest snapshot: 24 successes, 6 in progress, zero failures. Stage 13 and Stage 
 ## CI progress refresh — exact head 0116e012955d05681ee943d8e89f9d31e99b8c2f
 
 Latest snapshot: 29 successes, 1 in progress, zero failures. Stage 14 MCP Agent Gateway passed with EdDSA signed grants, public-key verification, mandatory revocation lookup, and live MCP-to-Graph API integration: https://github.com/Leruchii/Leruchi-development/actions/runs/37780390447. Stage 13 Graph Studio is the only remaining workflow and has passed strict Graph API startup/health and its pre-browser checks; browser tests/build remain.
+
+
+## CI result — asymmetric capability grants, exact head 0116e012955d05681ee943d8e89f9d31e99b8c2f
+
+**Exact-head matrix complete: 30 successes, 0 failures.**
+
+- Stage 32 publication candidate passed, including the OWASP ASVS credential/private-key scan after removing static key material: https://github.com/Leruchii/Leruchi-development/actions/runs/37780381790
+- Stage 14 MCP Agent Gateway passed EdDSA grant verification, control-plane revocation adapter tests, and live MCP-to-Graph API integration: https://github.com/Leruchii/Leruchi-development/actions/runs/37780390447
+- Stage 13 Graph Studio passed ephemeral test-key setup, strict Graph API startup, browser tenant/responsive evidence, typecheck, build and Base UI audit: https://github.com/Leruchii/Leruchi-development/actions/runs/37780390518
+- Architecture Regression Audit passed: https://github.com/Leruchii/Leruchi-development/actions/runs/37780390421
+
+The OSS data plane now verifies EdDSA-signed grants with a key-id-selected public-key ring; private signing keys are not included in the runtime. Revocation checks remain mandatory and fail-closed. CI uses ephemeral test keys and a test-only revocation stub. Production control-plane issuer deployment, private-key custody/rotation, membership-aware grant issuance, revocation propagation/availability targets, and production Supabase tenant-claim deployment remain release gates. Stages 18/19 Cloud Control Plane and Billing/Metering remain deferred per BUILD_PLAN.md; do not add private cloud services to the OSS runtime. PR #64 remains draft; PR #63 remains unchanged. No merge or public publication without release-gate completion and explicit approval.
