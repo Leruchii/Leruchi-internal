@@ -356,3 +356,8 @@ The OSS data plane now verifies EdDSA-signed grants with a key-id-selected publi
 The previous exact-head matrix on 0116e012955d05681ee943d8e89f9d31e99b8c2f passed 30 workflows with zero failures. The next candidate commit is 7442116a9d1857cb1e8409c97fe80b563333bbd6. It adds a live MCP-to-Graph API test where the test control-plane stub marks one grant jti revoked; the request must be rejected through the real HTTP revocation adapter. The Stage 14 workflow configures that test jti as revoked. No production control-plane service is added to OSS.
 
 Candidate has not run CI. Re-read this handoff and verify the isolated validation branch is still at 0116e012955d05681ee943d8e89f9d31e99b8c2f before advancing. After the run, update this file with exact-head results. Production control-plane deployment, key custody/rotation, issuance policy and operational revocation remain release gates.
+
+
+## CI restart — live revocation integration test candidate 7442116a9d1857cb1e8409c97fe80b563333bbd6
+
+After re-reading the handoff and confirming the branch was at 0116e012955d05681ee943d8e89f9d31e99b8c2f, the isolated branch advanced to 7442116a9d1857cb1e8409c97fe80b563333bbd6. The first observed run is Stage 32 candidate, queued: https://github.com/Leruchii/Leruchi-development/actions/runs/37781034783. Other exact-head workflows were not yet visible. No pass claim until the full matrix completes.
