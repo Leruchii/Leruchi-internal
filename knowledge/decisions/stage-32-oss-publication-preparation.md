@@ -172,3 +172,6 @@ MCP route capability candidate `6ed63d32f395ed30f1105bfa13d98cc7383ab575` is now
 
 
 Stage 02 failed on candidate `6ed63d32f395ed30f1105bfa13d98cc7383ab575` because a tenant isolation test expected HTTP 400 validation failure, while the new explicit graph-read guard correctly returns HTTP 403 `CAPABILITY_DENIED` before validation. The workflow also lacked setup-node and ran Node.js 22, so it must be pinned to Node.js 24. Fix the test expectation, pin Node.js 24, and audit remaining workflows before the next matrix.
+
+
+Candidate `d754c43aa666cf37cbfba8fe874411e5ff27add1` contains the graph-query/mutation capability denial fix, updates the Stage 02 expectation to 403/CAPABILITY_DENIED, pins Node.js 24 in Stage 02/06/07/08, and refreshes the development handoff. It has not run CI yet. The previous Stage 02 failure and Node.js 22 gap are documented in `BUILD_STATE.md`. Next run must verify Stage 02, Stage 14, Stage 25 and the full matrix. Production capability-grant issuance/revocation remains open.
