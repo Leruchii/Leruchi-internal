@@ -1,33 +1,59 @@
 # Leruchi Build State
 
-This file is the canonical handoff checkpoint for coding agents.
-
-Agents must verify this state against Git history, implementation, tests, CI, and `BUILD_PLAN.md` before continuing. If evidence conflicts with this file, executable repository evidence wins and this file must be corrected.
+This file is the canonical handoff checkpoint for coding agents. Verify it against live Git history, implementation, tests, CI, and `BUILD_PLAN.md` before continuing. Executable evidence wins over stale documentation. The dated checkpoint archive below is historical context only; the current checkpoint in this section takes precedence.
 
 ## Current checkpoint — synchronized 2026-10-09
 
-- Development repository: [`Leruchii/Leruchi-development`](https://github.com/Leruchii/Leruchi-development)
-- Internal control repository: [`Leruchii/Leruchi-internal`](https://github.com/Leruchii/Leruchi-internal)
-- Public OSS destination: [`Leruchii/Leruchi`](https://github.com/Leruchii/Leruchi)
-- Development `main` HEAD observed: `2e3997a75c709b58da14c454b356ae9778d1e1be`
-- Stage 32 candidate branch: `stage32-oss-publication-prep`
-- Stage 32 PR: [#63](https://github.com/Leruchii/Leruchi-development/pull/63), OPEN/DRAFT; current head observed: `4b95b5a278ef092d3fd791b4f8216b936fd3a432`
-- Current candidate CI snapshot: checkpoint-only commit triggered a new matrix; **24 runs were queued** on the exact observed head at the last query. Do not claim the matrix is green until all required checks finish on the live head.
-- Stage 32 remains pre-integration. Public publication: **NOT PERFORMED**. No public release/tag has been created.
-- Node.js 24 only; Node.js 20 is prohibited.
-- Product-name clearance remains open. Production deployments must provide a trusted capability-grant issuer/revocation authority; test-only control-plane fixtures do not establish production deployment readiness.
+### Repository and branch state
+- Development repository: [`Leruchii/Leruchi-development`](https://github.com/Leruchii/Leruchi-development).
+- Internal control repository: [`Leruchii/Leruchi-internal`](https://github.com/Leruchii/Leruchi-internal).
+- Public OSS destination: [`Leruchii/Leruchi`](https://github.com/Leruchii/Leruchi).
+- Development `main` HEAD: `2e3997a75c709b58da14c454b356ae9778d1e1be`.
+- Stage 32 candidate branch: `stage32-oss-publication-prep`.
+- Current candidate HEAD: `820ffbf7db6e7f523b8e40b5743c36fd5ebc0eb2`.
+- [PR #63](https://github.com/Leruchii/Leruchi-development/pull/63) is OPEN and DRAFT. Stage 32 is not merged into `main`; public publication has NOT occurred.
+- GitHub compare reports candidate is 0 commits behind but 355 commits ahead of `main`; PR diff is 148 files (5,784 additions / 557 deletions). This is a broad integration diff, not a small Stage 32-only metadata change. The full diff and integration strategy require deliberate review before merge.
+- The validated Stage 32 source candidate and checkpoint metadata commit both have successful exact-head validation, detailed below. Re-query the live PR head before integration; never transfer CI evidence to a changed SHA.
 
-## Blocking security issue — repository visibility
+### Exact-head CI
+- Candidate SHA `820ffbf7db6e7f523b8e40b5743c36fd5ebc0eb2`: **36/36 workflow runs completed successfully; 0 failures**.
+- Stage 32 sanitized candidate: [run 37830711075](https://github.com/Leruchii/Leruchi-development/actions/runs/37830711075) — success.
+- Stage 31 OSS Core Readiness: [run 37830711001](https://github.com/Leruchii/Leruchi-development/actions/runs/37830711001) — success.
+- Stage 11 CLI: [run 37830710788](https://github.com/Leruchii/Leruchi-development/actions/runs/37830710788) — success.
+- Stage 13 Graph Studio: [run 37830710871](https://github.com/Leruchii/Leruchi-development/actions/runs/37830710871) — success.
+- Architecture Regression Audit: [run 37830711224](https://github.com/Leruchii/Leruchi-development/actions/runs/37830711224) — success.
+- Node.js 24 only (`.nvmrc = 24`, package engine `>=24 <25`); Node.js 20 is prohibited.
+- OWASP ASVS 5.0.0 is a verification profile, not a claim of full ASVS compliance.
 
-GitHub currently reports both `Leruchii/Leruchi-development` and `Leruchii/Leruchi-internal` as PUBLIC (`private: false`), despite the intended private topology. This is a security-boundary blocker. An authorized organization/repository administrator must change both repositories to private and verify the setting before Stage 32 integration or public publication. The current GitHub connector cannot change repository visibility. Do not export or copy internal-control material while this remains unresolved.
+### Sanitized OSS artifact — exact candidate SHA
+- Artifact `leruchi-oss-core-candidate`, ID `11574105534`, produced by Stage 32 run `37830711075` for exact SHA `820ffbf7db6e7f523b8e40b5743c36fd5ebc0eb2`.
+- Packaged tar.gz SHA-256: `436efd61f12dbc084fd881ef97ce8596629c1f7c4c1f372ee18d37f78f806ca6`.
+- Downloaded artifact ZIP SHA-256: `1c61483b348868ecec5b8e8e15afddb479a93f6c0ce3a50ac34cdbfd16e6168f`.
+- Independent archive inspection: 184 files, `.nvmrc = 24`, package engine `>=24 <25`; no retired VibeDB-name or GitHub PAT-pattern matches in exported files.
+- Manifest validation, source export audit, sanitized candidate readiness audit, and reproducible rebuild/package comparison passed.
+- Docker image metadata and OSS readiness/backup test fixtures now use the current Leruchi identity.
 
-## Next actions
+### Legacy pull requests
+Closed as superseded with an explanatory comment; none was merged:
+- [PR #14](https://github.com/Leruchii/Leruchi-development/pull/14) — old `packages/vibe-cli` branch; canonical CLI/migration implementation is under `packages/leruchi-cli` and covered by Stage 11 integration tests.
+- [PR #22](https://github.com/Leruchii/Leruchi-development/pull/22) — superseded Graph API runtime branch.
+- [PR #26](https://github.com/Leruchii/Leruchi-development/pull/26) — superseded Studio browser-validation branch.
+- [PR #29](https://github.com/Leruchii/Leruchi-development/pull/29) — superseded renderer benchmark branch; maintained benchmark is `apps/studio/tests/browser/renderer-benchmark.spec.ts`.
+Their branches and histories remain available for reference. Do not merge heavily diverged branches wholesale; port any uncovered safety gaps into the canonical implementation and test them.
 
-1. Change development and internal-control repositories to private through authorized GitHub administration, then verify `private: true` for both.
-2. Reconcile legacy development PRs #14, #22, #26 and #29 individually; port relevant migration-runner safeguards/tests from #14 and run focused Stage 11 plus full regression checks.
-3. Re-query PR #63 and all required workflows on its live exact head; inspect and fix failures, then rerun checks.
-4. Review exact-head sanitized artifact, allowlist, license, provenance and public diff.
-5. Integrate Stage 32 into development main only after blockers and checks pass. Public publication requires a separate explicit approval.
+### Blockers and required next actions
+1. **Repository visibility is user-owned.** The user will handle visibility remediation. Before integration, re-query and verify the required private settings for both development and internal repositories; do not assume the change is complete.
+2. Product-name clearance remains pending. Keep the public brand provisional until clearance is documented.
+3. Review the full 355-commit / 148-file PR diff and agree on the integration strategy before merge.
+4. Re-query live PR #63 head, full CI, and exact-head artifact if the branch changes.
+5. Integrate Stage 32 only after all gates are closed. Integration into development `main` is not public publication.
+6. Copy/export to `Leruchii/Leruchi` or create a public release only after separate explicit user approval and the controlled export gate.
+7. Production deployments must provide a trusted capability-grant issuer and revocation authority; test-only fixtures do not prove production deployment readiness.
+
+### Synchronization rules
+- `BUILD_PLAN.md` is the canonical architecture/stage plan; `AGENTS.md` is the engineering process; this file is the handoff checkpoint; `knowledge/` stores durable decisions/evidence.
+- Branches may intentionally differ while a PR is open. State exact SHAs, ancestry, and checks; never imply the candidate and `main` are identical.
+- After every repository-changing commit, inspect the live head and CI status again. Never claim a change was tested, merged, or published unless GitHub confirms it.
 
 
 ## Stage 31 validation
@@ -148,7 +174,7 @@ Before continuing:
 6. Treat executable evidence as authoritative over stale documentation.
 7. Do not publish or merge Stage 32 without explicit release approval.
 
-## Pre-run checkpoint — Node.js 24 artifact action cleanup, 2026-10-09
+## Historical checkpoint archive — Node.js 24 artifact action cleanup, 2026-10-09
 
 Confirmed from the previous exact-head Stage 32 run (`c42da68705390cd9e8651d5640ec10b56874c0ab`): the OSS export gate passed with 186 files audited and ASVS 5.0.0 passed, but GitHub warned that `actions/upload-artifact@v5` targets Node.js 20 and was being forced to Node.js 24.
 
@@ -156,12 +182,12 @@ Candidate `2337d3a2fd52345ecff15a3b4a4b50682887baf8` changes only the Stage 32 O
 
 Before the next run, this checkpoint must be treated as the source of truth. After the run, update the handoff with the exact head and every result. Node.js 20 is prohibited by project policy. PR #64 remains draft; PR #63 unchanged. No merge/public publication.
 
-## Next checkpoint
+## Historical next-checkpoint note
 
 Complete the tenant authorization/security hardening and ASVS Level-2 evidence work in development, synchronize the resulting durable decisions here, then perform the final controlled OSS export review before publication.
 
 
-## Pre-run checkpoint — signed capability grant enforcement, 2026-10-08
+## Historical checkpoint archive — signed capability grant enforcement, 2026-10-08
 
 Handoff was re-read before advancing the validation branch. Baseline exact-head matrix: `d754c43aa666cf37cbfba8fe874411e5ff27add1`, 30 successes and zero failures. Primary Stage 32 PR #63 remains separate; PR #64 is draft and targets the Stage 32 branch.
 
@@ -170,7 +196,7 @@ Candidate commit prepared on top of the validated baseline: `e268ade8f5caf265e52
 **No CI has run on this candidate yet.** Next: advance only the isolated validation branch, inspect all exact-head workflow results (especially Stage 14 and Stage 02), then update this handoff and the Stage 32 decision record with actual results. The test stub does not prove production control-plane deployment. Do not merge or publish.
 
 
-## CI checkpoint — signed capability grant candidate, exact head e268ade8f5caf265e5277fbbccd239fecde69396
+## Historical CI checkpoint — signed capability grant candidate, exact head e268ade8f5caf265e5277fbbccd239fecde69396
 
 The isolated validation branch now points to `e268ade8f5caf265e5277fbbccd239fecde69396`. The full PR workflow matrix has started. Initial snapshot: 30 workflows discovered, 4 in progress and 26 queued; no completed conclusions yet. Stage 14 MCP Agent Gateway is currently in progress after the capability vocabulary, catalog capability, Graph API route capability and MCP contract test steps passed; the capability-grant contract test is running.
 
@@ -205,7 +231,7 @@ Root cause confirmed from Stage 13 job log: `scripts/start-stage13-graph-api.mjs
 Fix plan before the next run: update Stage 13 workflow to start the same test-only control-plane stub, wait for readiness, pass the issuer/control-plane configuration to the launcher, and update any signed tokens in the Stage 13 workflow to include `iss`, `jti`, `aud=leruchi`, `tenant_id`, canonical capabilities and `exp`. Keep production control-plane deployment as a release blocker. No new run should start until the handoff is re-read after this diagnosis.
 
 
-## Pre-run checkpoint — Stage 13 workflow fix, 2026-10-08
+## Historical checkpoint archive — Stage 13 workflow fix, 2026-10-08
 
 The prior head e268ade8f5caf265e5277fbbccd239fecde69396 had 29 successes and one Stage 13 failure. The log showed the launcher exited because the Stage 13 workflow omitted required strict capability-grant configuration. Candidate b806511f854b33b125e04d6c787351813acf1fd5 adds the test-only control-plane service and passes its configuration to the launcher. It has not run CI. Before advancing the branch, re-read this handoff and confirm the branch is still on e268ade8f5caf265e5277fbbccd239fecde69396. Production control-plane deployment remains a release blocker; do not merge or publish.
 
@@ -242,7 +268,7 @@ The strict launcher/configuration fix worked: Graph API startup and health check
 Fix plan: update the browser test token helper to include the configured issuer, unique jti, audience, tenant, expiry and canonical graph capabilities; the test control-plane stub already authorizes active JTIs. Then record a new candidate SHA here before moving the branch, and re-read this handoff before the next run. Keep production control-plane deployment as a release blocker.
 
 
-## Pre-run checkpoint — Stage 13 browser signed-grant fixture, 2026-10-08
+## Historical checkpoint archive — Stage 13 browser signed-grant fixture, 2026-10-08
 
 Prior exact head b806511f854b33b125e04d6c787351813acf1fd5 completed with 29 successes and one failure in Stage 13 browser evidence. The log showed Playwright timed out waiting for /api/studio/catalog to return 200 because the browser test token lacked strict grant claims. Graph API startup/health and six other browser tests passed.
 
@@ -291,7 +317,7 @@ Latest snapshot: 29 successes, 1 in progress, zero failures. Stage 20 Production
 Strict grant mode now validates signed tenant-bound grants and checks jti revocation through an authenticated control-plane adapter; optional route/graph scopes are enforced. CI used a test-only control-plane stub. This does not prove production control-plane deployment, secure key lifecycle, production grant issuance, or operational revocation propagation. Those remain release gates. PR #64 remains a draft validation PR; PR #63 remains unchanged. Do not merge or publish without release-gate completion and explicit approval.
 
 
-## Pre-run checkpoint — EdDSA capability grant verifier, 2026-10-08
+## Historical checkpoint archive — EdDSA capability grant verifier, 2026-10-08
 
 Handoff was re-read after the 30/0 matrix on exact head 57dd4815d7137945945c234f5d7ca9970e637bef. Next candidate commit: d1a5a2e308e46875045ec39a15f0b1ecfd8bbdf3. It replaces strict-mode HS256/shared-secret grant verification with EdDSA JWT verification using a kid-selected public-key ring, requires actor sub and canonical signed claims, documents public-key rotation, and updates Stage 13/14 integration tests to use a test-only Ed25519 key fixture. The production launcher now needs public keys and issuer configuration, not a shared signing secret. Revocation remains a mandatory external fail-closed check.
 
@@ -315,7 +341,7 @@ The Stage 32 publication candidate failed the OWASP ASVS credential/private-key 
 Fix plan: remove the static PEM from the repository. Generate an ephemeral Ed25519 keypair during Stage 13/14 CI; pass the public DER key to the Graph API launcher and point the test token helper at the ephemeral private-key file. For unit tests, the helper may generate an in-memory ephemeral pair. This preserves asymmetric signing tests without a committed private key. Re-read this handoff before creating a new candidate and do not rerun until the candidate SHA is recorded here.
 
 
-## Pre-run checkpoint — ephemeral EdDSA CI keys, 2026-10-08
+## Historical checkpoint archive — ephemeral EdDSA CI keys, 2026-10-08
 
 The previous candidate d1a5a2e308e46875045ec39a15f0b1ecfd8bbdf3 failed only the Stage 32 OWASP ASVS credential scan because a PEM private test key was committed under tests/fixtures. The fix removes the static key and generates an ephemeral Ed25519 keypair in Stage 13/14 workflows. The Graph API receives the public DER key; test helpers use the runner's temporary private key. Unit tests generate an in-memory pair. No private key material is embedded in source.
 
@@ -359,7 +385,7 @@ Latest snapshot: 29 successes, 1 in progress, zero failures. Stage 14 MCP Agent 
 The OSS data plane now verifies EdDSA-signed grants with a key-id-selected public-key ring; private signing keys are not included in the runtime. Revocation checks remain mandatory and fail-closed. CI uses ephemeral test keys and a test-only revocation stub. Production control-plane issuer deployment, private-key custody/rotation, membership-aware grant issuance, revocation propagation/availability targets, and production Supabase tenant-claim deployment remain release gates. Stages 18/19 Cloud Control Plane and Billing/Metering remain deferred per BUILD_PLAN.md; do not add private cloud services to the OSS runtime. PR #64 remains draft; PR #63 remains unchanged. No merge or public publication without release-gate completion and explicit approval.
 
 
-## Pre-run checkpoint — live control-plane revocation integration test, 2026-10-08
+## Historical checkpoint archive — live control-plane revocation integration test, 2026-10-08
 
 The previous exact-head matrix on 0116e012955d05681ee943d8e89f9d31e99b8c2f passed 30 workflows with zero failures. The next candidate commit is 7442116a9d1857cb1e8409c97fe80b563333bbd6. It adds a live MCP-to-Graph API test where the test control-plane stub marks one grant jti revoked; the request must be rejected through the real HTTP revocation adapter. The Stage 14 workflow configures that test jti as revoked. No production control-plane service is added to OSS.
 
@@ -411,7 +437,7 @@ The OSS strict-grant runtime does require a configured authorization authority f
 Next: add a public self-hosting security guide for the capability authority contract and confirm the guide is included by OSS_EXPORT_MANIFEST.json. Preserve the current 30/0 exact-head result on 7442116a9d1857cb1e8409c97fe80b563333bbd6 as the validated code baseline. Re-read this handoff before the next workflow run.
 
 
-## Pre-run checkpoint — public self-hosted capability authority guide, 2026-10-08
+## Historical checkpoint archive — public self-hosted capability authority guide, 2026-10-08
 
 The previous exact-head matrix on 7442116a9d1857cb1e8409c97fe80b563333bbd6 passed 30 workflows with zero failures. Canonical BUILD_PLAN.md and OSS_BOUNDARY.md say managed Cloud Control Plane/Billing are deferred and must not be prerequisites for OSS Core. The OSS runtime currently supplies the EdDSA grant verifier and revocation adapter, not a production issuer. A self-hosted/third-party authority is required for strict agent capabilities, and the runtime fails closed without it; this must be documented without requiring Leruchi Cloud.
 
