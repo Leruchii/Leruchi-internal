@@ -135,13 +135,13 @@ Before continuing:
 6. Treat executable evidence as authoritative over stale documentation.
 7. Do not publish or merge Stage 32 without explicit release approval.
 
-## CI result update — 2026-10-08, before tenant-hook validation run
+## CI result update — 2026-10-08, validation PR #64, exact head `e93dde43445fd2f665e04679a049640abb72c4dc`
 
-The previously validated Stage 32 branch remains `07c76120856165c5a4dc98cb9aa223f20cbc8b06`, with 35 successful workflow runs and zero failures. Its handoff links are unchanged.
+Validation PR #64 is open as a draft targeting the active Stage 32 branch: https://github.com/Leruchii/Leruchi-development/pull/64. This PR is an isolated validation branch; PR #63 remains unchanged.
 
-Candidate `a22dee14c274f0c9abfddbd0ed45bf3181b2374c` was reviewed and found incomplete: its Stage 03 workflow did not install the hook before invoking it. This has been corrected in commit `e93dde43445fd2f665e04679a049640abb72c4dc`, on isolated branch `stage32-tenant-claim-hook-validation`. The corrected workflow now runs the contract test, installs `infra/supabase/tenant-claim-hook.sql` after Auth initializes, verifies role/table grants, and exercises fail-closed behavior using the database function.
+The first automatic exact-head matrix snapshot has 1 success, 3 in progress, and 13 queued. Stage 32 candidate passed: https://github.com/Leruchii/Leruchi-development/actions/runs/37772233615. Stage 03 Supabase compatibility is queued: https://github.com/Leruchii/Leruchi-development/actions/runs/37772310562.
 
-This validation branch has **not yet run CI** and is not yet the head of PR #63. No claim is made that real Supabase Auth-issued tokens have been tested; production issuance remains a blocker. Next action: open a validation PR targeting `stage32-oss-publication-prep`, inspect the automatically triggered Stage 03 run, and update this handoff after it completes. Do not merge or publish.
+The candidate now installs the hook SQL after Auth/PostgREST startup, runs the hook contract test, verifies function/table grants and exercises fail-closed behavior. This does not yet prove a real Auth-issued JWT includes the authoritative tenant claim. Wait for the matrix and inspect failures before changing code. Keep production tenant-claim issuance as a release blocker; do not merge or publish.
 
 ## Next checkpoint
 
