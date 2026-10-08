@@ -239,3 +239,8 @@ Fix plan: update the browser test token helper to include the configured issuer,
 Prior exact head b806511f854b33b125e04d6c787351813acf1fd5 completed with 29 successes and one failure in Stage 13 browser evidence. The log showed Playwright timed out waiting for /api/studio/catalog to return 200 because the browser test token lacked strict grant claims. Graph API startup/health and six other browser tests passed.
 
 Candidate commit 57dd4815d7137945945c234f5d7ca9970e637bef updates the Playwright token to include the test control-plane issuer, unique jti, tenant_id, aud=leruchi, expiry and graph:read capability, using the configured JWT secret. The candidate has not run CI. Next: re-read this handoff, confirm the branch still points to b806511f854b33b125e04d6c787351813acf1fd5, then advance the isolated branch and inspect the exact-head matrix. Production control-plane deployment remains a release blocker.
+
+
+## CI restart — Stage 13 browser grant fixture candidate 57dd4815d7137945945c234f5d7ca9970e637bef
+
+After re-reading the handoff, the isolated validation branch advanced from b806511f854b33b125e04d6c787351813acf1fd5 to 57dd4815d7137945945c234f5d7ca9970e637bef. The first observed run is Stage 32 candidate, queued: https://github.com/Leruchii/Leruchi-development/actions/runs/37778842705. The rest of the exact-head matrix was not yet visible at this check. No pass claim until all workflows finish.
