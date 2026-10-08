@@ -135,23 +135,16 @@ Before continuing:
 6. Treat executable evidence as authoritative over stale documentation.
 7. Do not publish or merge Stage 32 without explicit release approval.
 
-## CI result update — 2026-10-08, exact head `6a3a507c2b4494c33115fbf2672cceeb32fda250`
+## CI result update — 2026-10-08, current head `07c76120856165c5a4dc98cb9aa223f20cbc8b06`
 
-**Exact-head matrix complete: 35 successes, 0 failures, 0 in progress.**
+The previous head `6a3a507c2b4494c33115fbf2672cceeb32fda250` completed with 35 successes and zero failures.
 
-The Stage 03 Auth/PostgREST credential correction passed. Legacy action pins were updated across 26 workflow files to checkout v5 and setup-node v6, preserving Node.js 24 setup. Key runs:
-- Stage 32 candidate: https://github.com/Leruchii/Leruchi-development/actions/runs/37769880841
-- Stage 31 readiness: https://github.com/Leruchii/Leruchi-development/actions/runs/37769880835
-- Stage 20 readiness: https://github.com/Leruchii/Leruchi-development/actions/runs/37769881124
-- Stage 13 Graph Studio: https://github.com/Leruchii/Leruchi-development/actions/runs/37769880831
-- Stage 03 compatibility: https://github.com/Leruchii/Leruchi-development/actions/runs/37769881251
-- Stage State Gate: https://github.com/Leruchii/Leruchi-development/actions/runs/37769881298
+The next compatibility fix is committed as `07c76120856165c5a4dc98cb9aa223f20cbc8b06`:
+- Align optional Storage and Realtime/Supavisor role passwords with Compose.
+- Add `tests/security/supabase-role-credentials.test.mjs` to assert all four Supabase role credentials match between SQL and Compose.
+- Run this test under Node.js 24 in Stage 03.
 
-### Next discovered gap
-
-Read-only audit found the optional Storage and Realtime/Supavisor service profiles still have credential mismatches: roles.sql defines storage/admin role passwords with legacy values while Compose expects the Leruchi-prefixed values. Stage 03 validates Auth + PostgREST but does not start those optional profiles. Next action: align both passwords and add a config consistency regression test, then run and record a fresh exact-head matrix.
-
-Do not merge or publish; production identity-provider tenant-claim issuance remains a release blocker.
+The exact-head matrix is now running. Do not make another development change until it completes. Do not merge or publish; production identity-provider tenant-claim issuance remains a release blocker.
 
 ## Next checkpoint
 
