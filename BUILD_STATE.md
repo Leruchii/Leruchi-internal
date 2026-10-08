@@ -135,11 +135,11 @@ Before continuing:
 6. Treat executable evidence as authoritative over stale documentation.
 7. Do not publish or merge Stage 32 without explicit release approval.
 
-## CI result update — 2026-10-08, Auth signup integration head `10e736a2fc16c34e0fdfd288c129642fb6192b94`
+## CI result update — 2026-10-08, Auth signup integration shell fix needed
 
-Current exact-head matrix snapshot: **6 successes, 11 in progress, 0 failures**. Stage 03 Supabase compatibility is running: https://github.com/Leruchii/Leruchi-development/actions/runs/37773534349. Stage 32 candidate, Stage State Gate, Architecture Regression Audit, Stages 05/06/10 have passed.
+The exact-head matrix for `10e736a2fc16c34e0fdfd288c129642fb6192b94` has **15 successes, 1 Stage 03 failure, 1 in progress**. Auth signup itself succeeded and the custom access-token hook ran for both users, but the integration step then failed while parsing the signup response: the workflow file contains literal backslashes before shell variable references (for example `\${SIGNUP_A}`), so the variables do not expand correctly. Run: https://github.com/Leruchii/Leruchi-development/actions/runs/37773534349.
 
-The integration now creates users through the Auth signup endpoint under test-only overrides, adds membership records, signs in, asserts tenant claims, and verifies RLS isolation. Watch Stage 03's token assertions; this is the first candidate using Auth-managed user and identity creation. Wait for the exact-head matrix before further code changes. Keep production tenant-claim issuance blocked until these assertions pass. PR #64 draft; PR #63 unchanged; no merge or publication.
+Next fix: remove the unintended backslashes from the workflow shell variable references, preserving normal `${VAR}` expansion; then rerun Stage 03 and the exact-head matrix. Auth signup and hook execution are now demonstrated, but the assertions on actual Auth-issued token claims and RLS have not yet completed successfully. Keep the release blocker open. PR #64 remains draft; PR #63 unchanged. Do not merge or publish.
 
 ## Next checkpoint
 
