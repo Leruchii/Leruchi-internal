@@ -244,3 +244,8 @@ Candidate commit 57dd4815d7137945945c234f5d7ca9970e637bef updates the Playwright
 ## CI restart — Stage 13 browser grant fixture candidate 57dd4815d7137945945c234f5d7ca9970e637bef
 
 After re-reading the handoff, the isolated validation branch advanced from b806511f854b33b125e04d6c787351813acf1fd5 to 57dd4815d7137945945c234f5d7ca9970e637bef. The first observed run is Stage 32 candidate, queued: https://github.com/Leruchii/Leruchi-development/actions/runs/37778842705. The rest of the exact-head matrix was not yet visible at this check. No pass claim until all workflows finish.
+
+
+## CI progress — Stage 13 browser grant fixture candidate 57dd4815d7137945945c234f5d7ca9970e637bef
+
+Exact-head matrix snapshot: 7 successes, 22 in progress, 1 queued, zero failures. Stage 13 Graph Studio is running: https://github.com/Leruchii/Leruchi-development/actions/runs/37778853869. Stage 14 MCP Agent Gateway is running: https://github.com/Leruchii/Leruchi-development/actions/runs/37778853920. Continue checking the exact SHA and update this handoff as results change; no overall pass claim yet.
