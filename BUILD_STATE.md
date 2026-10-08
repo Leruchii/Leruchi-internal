@@ -135,11 +135,11 @@ Before continuing:
 6. Treat executable evidence as authoritative over stale documentation.
 7. Do not publish or merge Stage 32 without explicit release approval.
 
-## CI result update — 2026-10-08, Auth signup test head `10e736a2fc16c34e0fdfd288c129642fb6192b94`
+## CI result update — 2026-10-08, Auth signup integration head `10e736a2fc16c34e0fdfd288c129642fb6192b94`
 
-The isolated validation branch has advanced to `10e736a2fc16c34e0fdfd288c129642fb6192b94`. It now creates test users through Supabase Auth signup under test-only overrides, inserts server-managed memberships, logs in through the password grant, asserts active/revoked tenant claims, and checks PostgREST RLS. The Compose defaults remain restrictive.
+Current exact-head matrix snapshot: **6 successes, 11 in progress, 0 failures**. Stage 03 Supabase compatibility is running: https://github.com/Leruchii/Leruchi-development/actions/runs/37773534349. Stage 32 candidate, Stage State Gate, Architecture Regression Audit, Stages 05/06/10 have passed.
 
-Exact-head workflow runs were not visible at the first check. Inspect Stage 03 and the full matrix, then update this handoff with results. The previous direct-SQL fixture failure is recorded above. Keep the production tenant-claim blocker open until the actual Auth-issued token test passes. PR #64 remains draft; PR #63 unchanged. Do not merge or publish.
+The integration now creates users through the Auth signup endpoint under test-only overrides, adds membership records, signs in, asserts tenant claims, and verifies RLS isolation. Watch Stage 03's token assertions; this is the first candidate using Auth-managed user and identity creation. Wait for the exact-head matrix before further code changes. Keep production tenant-claim issuance blocked until these assertions pass. PR #64 draft; PR #63 unchanged; no merge or publication.
 
 ## Next checkpoint
 
