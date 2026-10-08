@@ -137,9 +137,19 @@ Before continuing:
 
 ## CI result update — 2026-10-08, exact head `6a3a507c2b4494c33115fbf2672cceeb32fda250`
 
-The Node.js 24 action-pin matrix snapshot is 21 successes, 14 in progress, and 0 failures. Confirmed passes include Stage 32 candidate [run 37769880841](https://github.com/Leruchii/Leruchi-development/actions/runs/37769880841), Stage 31 readiness [run 37769880835](https://github.com/Leruchii/Leruchi-development/actions/runs/37769880835), Stage 30 trace [run 37769880686](https://github.com/Leruchii/Leruchi-development/actions/runs/37769880686), Stage 08 secure execution [run 37769881095](https://github.com/Leruchii/Leruchi-development/actions/runs/37769881095), Stage State Gate [run 37769881298](https://github.com/Leruchii/Leruchi-development/actions/runs/37769881298), and Architecture Regression Audit [run 37769880907](https://github.com/Leruchii/Leruchi-development/actions/runs/37769880907).
+The Node.js 24 action-pin matrix snapshot is **32 successes, 3 in progress, 0 failures**. The following critical workflows have passed on this exact head:
 
-Fourteen workflows remain in progress, including database-image builds. Wait for the full matrix and diagnose any failure before another development change. Do not merge or publish; production identity-provider tenant-claim issuance remains a release blocker.
+- Stage 32 candidate: https://github.com/Leruchii/Leruchi-development/actions/runs/37769880841
+- Stage 31 readiness: https://github.com/Leruchii/Leruchi-development/actions/runs/37769880835
+- Stage 20 production readiness: https://github.com/Leruchii/Leruchi-development/actions/runs/37769881124
+- Stage 03 Supabase compatibility: https://github.com/Leruchii/Leruchi-development/actions/runs/37769881251
+- Stage 02 RLS and AGE security: https://github.com/Leruchii/Leruchi-development/actions/runs/37769881011
+- Stage 01 database foundation: https://github.com/Leruchii/Leruchi-development/actions/runs/37769880635
+- Stage 08 secure execution: https://github.com/Leruchii/Leruchi-development/actions/runs/37769881095
+- Stage State Gate: https://github.com/Leruchii/Leruchi-development/actions/runs/37769881298
+- Architecture Regression Audit: https://github.com/Leruchii/Leruchi-development/actions/runs/37769880907
+
+Three workflows remain in progress. Wait for completion and refresh this checkpoint with the final exact-head result. Do not merge or publish; production identity-provider tenant-claim issuance remains a release blocker.
 
 ## Next checkpoint
 
