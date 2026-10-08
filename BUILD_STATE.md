@@ -137,19 +137,14 @@ Before continuing:
 
 ## CI result update — 2026-10-08, exact head `6a3a507c2b4494c33115fbf2672cceeb32fda250`
 
-The Node.js 24 action-pin matrix snapshot is **32 successes, 3 in progress, 0 failures**. The following critical workflows have passed on this exact head:
-
+The Node.js 24 action-pin matrix now has **34 successes, 1 in progress, 0 failures**. The Stage 32 candidate, Stage 31 readiness, Stage 20 production readiness, Stage 03 Supabase compatibility, Stage 02 RLS/AGE security, Stage 01 database foundation, Stage 08 secure execution, Stage State Gate, and Architecture Regression Audit all passed on this head. Relevant runs:
 - Stage 32 candidate: https://github.com/Leruchii/Leruchi-development/actions/runs/37769880841
 - Stage 31 readiness: https://github.com/Leruchii/Leruchi-development/actions/runs/37769880835
-- Stage 20 production readiness: https://github.com/Leruchii/Leruchi-development/actions/runs/37769881124
-- Stage 03 Supabase compatibility: https://github.com/Leruchii/Leruchi-development/actions/runs/37769881251
-- Stage 02 RLS and AGE security: https://github.com/Leruchii/Leruchi-development/actions/runs/37769881011
-- Stage 01 database foundation: https://github.com/Leruchii/Leruchi-development/actions/runs/37769880635
-- Stage 08 secure execution: https://github.com/Leruchii/Leruchi-development/actions/runs/37769881095
-- Stage State Gate: https://github.com/Leruchii/Leruchi-development/actions/runs/37769881298
-- Architecture Regression Audit: https://github.com/Leruchii/Leruchi-development/actions/runs/37769880907
+- Stage 20 readiness: https://github.com/Leruchii/Leruchi-development/actions/runs/37769881124
+- Stage 03 compatibility: https://github.com/Leruchii/Leruchi-development/actions/runs/37769881251
+- Stage 02 security: https://github.com/Leruchii/Leruchi-development/actions/runs/37769881011
 
-Three workflows remain in progress. Wait for completion and refresh this checkpoint with the final exact-head result. Do not merge or publish; production identity-provider tenant-claim issuance remains a release blocker.
+Only Stage 13 Graph Studio remains in progress: https://github.com/Leruchii/Leruchi-development/actions/runs/37769880831. Wait for its completion and record the final matrix. Do not merge or publish; production identity-provider tenant-claim issuance remains a release blocker.
 
 ## Next checkpoint
 
