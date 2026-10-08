@@ -135,18 +135,21 @@ Before continuing:
 6. Treat executable evidence as authoritative over stale documentation.
 7. Do not publish or merge Stage 32 without explicit release approval.
 
-## CI result update — 2026-10-08, MCP route capability + Node.js 24 fix validated
+## CI result update — 2026-10-08, exact head `c42da68705390cd9e8651d5640ec10b56874c0ab`
 
-**Exact-head matrix complete: 30 successes, 0 failures** on `d754c43aa666cf37cbfba8fe874411e5ff27add1`.
+The live validation branch `stage32-tenant-claim-hook-validation` is at `c42da68705390cd9e8651d5640ec10b56874c0ab`. The exact-head matrix completed with **30 successes, 0 failures**:
+- Stage 32 OSS Core Publication Candidate: https://github.com/Leruchii/Leruchi-development/actions/runs/37781915041
+- Stage 03 Supabase compatibility: https://github.com/Leruchii/Leruchi-development/actions/runs/37781925898
+- Stage 14 MCP Agent Gateway: https://github.com/Leruchii/Leruchi-development/actions/runs/37781925972
+- Stage 25 MCP Agent Tool Contract: https://github.com/Leruchii/Leruchi-development/actions/runs/37781926086
+- Architecture Regression Audit: https://github.com/Leruchii/Leruchi-development/actions/runs/37781925842
+- Stage 13 Graph Studio: https://github.com/Leruchii/Leruchi-development/actions/runs/37781926001
 
-- Stage 02 RLS/AGE security passed with Node.js 24 and the corrected capability-denial expectation: https://github.com/Leruchii/Leruchi-development/actions/runs/37775397959
-- Stage 14 MCP Agent Gateway passed, including Graph API route capability enforcement tests: https://github.com/Leruchii/Leruchi-development/actions/runs/37775398178
-- Stage 25 MCP Agent Tool Contract passed: https://github.com/Leruchii/Leruchi-development/actions/runs/37775397907
-- Stage 13 Graph Studio passed as the final workflow: https://github.com/Leruchii/Leruchi-development/actions/runs/37775397964
+This head documents the self-hosted/third-party capability authority contract: EdDSA-signed grants, tenant-bound issuance obligations, strict public-key verification, fail-closed revocation lookup, key rotation and deployment requirements. The OSS runtime remains a verifier/adapter, not a production issuer or durable control plane.
 
-Graph API now requires `graph:read` for graph queries, `graph:write` for mutations, and `graph:delete` additionally for destructive deletes. These checks happen before catalog/database access. Stage 02/06/07/08 now explicitly use `actions/setup-node@v6` with Node.js 24.
+Important: this 30/0 result validates the documented/verifier/adapter contract and existing test stub. It does not prove an operator has deployed a production issuer, membership-aware issuance service, durable revocation service, or hosted Supabase tenant-claim hook. Those are deployment responsibilities/gates, not evidence that Leruchi Cloud is required for OSS publication.
 
-Next security work: integrate signed scoped capability grants with a required control-plane revocation decision; current grant validation helpers are not yet wired to production token verification/revocation. Production Supabase hook configuration and membership provisioning also still require validation. PR #64 remains draft; PR #63 unchanged. Do not merge or publish without explicit approval.
+Before any new run, re-read this checkpoint and confirm the exact head. PR #64 remains draft; PR #63 is unchanged. No merge/public publication without the OSS export gate and explicit approval.
 
 ## Next checkpoint
 
