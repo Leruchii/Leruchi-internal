@@ -185,3 +185,10 @@ The Node.js 24 and MCP route authorization candidate `d754c43aa666cf37cbfba8fe87
 Candidate `d754c43aa666cf37cbfba8fe874411e5ff27add1` completed 30 workflow runs successfully with zero failures. Stage 02 passed with the updated 403 capability-denial expectation and Node.js 24; Stage 14 passed the Graph API route capability tests; Stage 25 passed; Stage 13 was final and passed. Handoff is updated in `BUILD_STATE.md`.
 
 Graph query requires `graph:read`; graph mutation requires `graph:write`; destructive delete additionally requires `graph:delete`, all before catalog/database access. Stage 02/06/07/08 explicitly use Node.js 24. Next security gate is integration of signed scoped capability grants with a mandatory control-plane revocation decision; that is not yet implemented. Production Supabase hook configuration and membership provisioning also need validation. Do not merge or publish without explicit approval.
+
+
+## Pre-run checkpoint — signed capability grant enforcement candidate, 2026-10-08
+
+The previously validated MCP route capability head `d754c43aa666cf37cbfba8fe874411e5ff27add1` passed 30 workflows. Candidate `e268ade8f5caf265e5277fbbccd239fecde69396` is prepared on top of that baseline and has not run CI. It wires grant validation and mandatory fail-closed jti revocation checks into strict Graph API authentication, adds optional route/graph scope enforcement, a control-plane HTTP adapter, strict production launcher configuration, and tests.
+
+Next step is exact-head validation on the isolated branch. Record all results in BUILD_STATE.md after the run. Production control-plane deployment, issuer/key lifecycle, and actual grant issuance remain release gates. Do not merge or publish.
