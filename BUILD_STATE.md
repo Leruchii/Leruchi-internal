@@ -413,3 +413,12 @@ After re-reading the handoff and confirming the validation branch was at 7442116
 ## CI progress — self-hosted capability authority guide c42da68705390cd9e8651d5640ec10b56874c0ab
 
 Latest exact-head snapshot: 13 successes, 16 in progress, 1 queued, zero failures. Stage 32 publication-candidate workflow passed, including export manifest/source audit and sanitized candidate build. Stage 13, Stage 14, Stage 20 and Architecture Regression Audit are still in progress; no overall matrix pass claim yet.
+
+
+## CI result — Node.js 24 artifact action cleanup, exact head `2337d3a2fd52345ecff15a3b4a4b50682887baf8`
+
+Stage 32 - OSS Core Publication Candidate passed on the exact new head: https://github.com/Leruchii/Leruchi-development/actions/runs/37783955872. The workflow now uses `actions/upload-artifact@v6`, whose action metadata declares `using: node24`, removing the previous Node.js 20 runtime warning from this workflow.
+
+The Stage 32 workflow passed the Node.js 24 runtime policy, OWASP ASVS 5.0.0 verification, public export manifest, sanitized candidate build/readiness audit, and artifact packaging. The broader exact-head matrix is still running; the latest observed snapshot is 16 successes and 15 in progress with zero failures. Do not claim the matrix is complete until all exact-head runs finish.
+
+Re-read this checkpoint before any further run or branch advancement. After the full matrix completes, update this handoff with the final count and any failures. PR #64 remains draft; PR #63 unchanged. No merge/public publication.
