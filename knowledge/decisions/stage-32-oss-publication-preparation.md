@@ -202,3 +202,8 @@ Candidate `e268ade8f5caf265e5277fbbccd239fecde69396` is now on the isolated vali
 ## Capability grant candidate CI progress — 2026-10-08
 
 On exact head `e268ade8f5caf265e5277fbbccd239fecde69396`, Stage 14 MCP Agent Gateway passed with the grant-validation tests, fail-closed revocation adapter tests, live MCP-to-Graph API path, and architecture audit. Matrix snapshot at this checkpoint: 28 successes, 2 in progress, 0 failures; Stage 03 and Stage 13 remain in progress. See BUILD_STATE.md. Do not mark matrix complete until both finish.
+
+
+## Capability grant candidate CI result — 2026-10-08
+
+Exact-head matrix for `e268ade8f5caf265e5277fbbccd239fecde69396` completed with 29 successes and one failure. The only failure is Stage 13 Graph Studio: https://github.com/Leruchii/Leruchi-development/actions/runs/37777685084. Stage 14 passed. Inspect the Stage 13 logs before any further run or branch change; update BUILD_STATE.md with diagnosis and next action. Do not call this matrix green.
