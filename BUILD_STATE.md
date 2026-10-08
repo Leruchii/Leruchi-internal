@@ -135,16 +135,32 @@ Before continuing:
 6. Treat executable evidence as authoritative over stale documentation.
 7. Do not publish or merge Stage 32 without explicit release approval.
 
-## CI result update — 2026-10-08, current head `6a3a507c2b4494c33115fbf2672cceeb32fda250`
+## CI result update — 2026-10-08, exact head `6a3a507c2b4494c33115fbf2672cceeb32fda250`
 
-The prior exact head `199e5100557c533cc287573baf2483e377608868` completed with 35 workflow successes and no failures, including Stage 03 Supabase compatibility after aligning compatibility role passwords.
+This commit updates 26 workflows from `actions/checkout@v4` to `@v5` and `actions/setup-node@v4` to `@v6`, preserving explicit Node.js 24 setup. Regression matrix snapshot: {"in_progress":16,"success":19}; no failures at this snapshot.
 
-A workflow-only commit `6a3a507c2b4494c33115fbf2672cceeb32fda250` now updates legacy GitHub Action pins across 26 workflow files: `actions/checkout@v4` → `@v5` and `actions/setup-node@v4` → `@v6`. Existing explicit `node-version: 24` values are preserved. This enforces the Node.js 24-only action/runtime policy; the current exact-head regression matrix has been triggered and is in progress.
+Completed workflow results:
+- Stage 26B - Agent Native Context IR: PASS — [run 37769880829](https://github.com/Leruchii/Leruchi-development/actions/runs/37769880829)
+- Stage 16 Observability: PASS — [run 37769881000](https://github.com/Leruchii/Leruchi-development/actions/runs/37769881000)
+- Stage 31 - OSS Core Readiness: PASS — [run 37769880835](https://github.com/Leruchii/Leruchi-development/actions/runs/37769880835)
+- Stage 26C - Context Resolution: PASS — [run 37769881167](https://github.com/Leruchii/Leruchi-development/actions/runs/37769881167)
+- Architecture Regression Audit: PASS — [run 37769880907](https://github.com/Leruchii/Leruchi-development/actions/runs/37769880907)
+- Stage 28 - Cross-Modal Planning: PASS — [run 37769880929](https://github.com/Leruchii/Leruchi-development/actions/runs/37769880929)
+- Stage State Gate: PASS — [run 37769881298](https://github.com/Leruchii/Leruchi-development/actions/runs/37769881298)
+- Stage 23 Unified Retrieval Surface: PASS — [run 37769881224](https://github.com/Leruchii/Leruchi-development/actions/runs/37769881224)
+- Stage 27 - Agent Intent Boundary: PASS — [run 37769881303](https://github.com/Leruchii/Leruchi-development/actions/runs/37769881303)
+- Stage 25 MCP Agent Tool Contract and Input Safety: PASS — [run 37769881180](https://github.com/Leruchii/Leruchi-development/actions/runs/37769881180)
+- Stage 06 Query Validation: PASS — [run 37769881033](https://github.com/Leruchii/Leruchi-development/actions/runs/37769881033)
+- Stage 05 Query IR: PASS — [run 37769881297](https://github.com/Leruchii/Leruchi-development/actions/runs/37769881297)
+- Stage 26A - Repository Separation: PASS — [run 37769880985](https://github.com/Leruchii/Leruchi-development/actions/runs/37769880985)
+- Stage 24 Retrieval Explainability and Agent Safety: PASS — [run 37769880879](https://github.com/Leruchii/Leruchi-development/actions/runs/37769880879)
+- Stage 22 Retrieval Planner: PASS — [run 37769881194](https://github.com/Leruchii/Leruchi-development/actions/runs/37769881194)
+- Stage 29 - Agent Evaluation & Observability: PASS — [run 37769880803](https://github.com/Leruchii/Leruchi-development/actions/runs/37769880803)
+- Stage 10 JavaScript SDK: PASS — [run 37769880925](https://github.com/Leruchii/Leruchi-development/actions/runs/37769880925)
+- Stage 30 Agent Trace Checks: PASS — [run 37769880686](https://github.com/Leruchii/Leruchi-development/actions/runs/37769880686)
+- Stage 32 - OSS Core Publication Candidate: PASS — [run 37769873602](https://github.com/Leruchii/Leruchi-development/actions/runs/37769873602)
 
-Current run snapshot: {"queued":1}.
-- Stage 32 - OSS Core Publication Candidate: queued — [run 37769873602](https://github.com/Leruchii/Leruchi-development/actions/runs/37769873602)
-
-Do not make another development change until this exact-head matrix completes. Update this handoff as run results arrive. Do not merge or publish; production identity-provider tenant-claim issuance remains a release blocker.
+19 workflows remain in progress. Continue polling this exact head and refresh the handoff as results arrive. Do not make another development change until the matrix completes. Do not merge or publish; production identity-provider tenant-claim issuance remains a release blocker.
 
 ## Next checkpoint
 
