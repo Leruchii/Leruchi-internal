@@ -161,3 +161,8 @@ This validates the self-hosted test deployment's actual Auth issuance path; prod
 Head `d3b251ddee29e9d16a12a42fa0bbfc87d551962f` completed 17 workflow runs successfully with zero failures. Stage 03 passed real Auth signup/password-grant token issuance and PostgREST isolation: https://github.com/Leruchii/Leruchi-development/actions/runs/37773858431. Stage 13 Graph Studio was the final workflow and passed: https://github.com/Leruchii/Leruchi-development/actions/runs/37773858093.
 
 Active membership issues the expected `tenant_id`; revoked tenant selection omits it; PostgREST returns no cross-tenant rows. This validates the self-hosted test configuration, not production deployment. Before release, verify production Auth hook configuration and server-managed membership provisioning. Next development area: scoped MCP/agent capability authorization, tool-level authorization, revocation and audit. PR #64 remains draft; PR #63 unchanged; do not merge or publish without explicit approval.
+
+
+## MCP Graph API capability gap found — 2026-10-08
+
+The green tenant-claim integration matrix was followed by a source audit. Graph query and mutation route handlers did not explicitly enforce `graph:read` / `graph:write` at the API boundary, and delete operations did not explicitly require `graph:delete`. Candidate `6ed63d32f395ed30f1105bfa13d98cc7383ab575` adds those checks before catalog/database access, focused denial tests, and Stage 14 workflow coverage. It is not yet on the validation branch and has not run CI. Scoped grant issuance and revocation integration remain a separate gap.
