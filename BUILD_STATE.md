@@ -135,21 +135,13 @@ Before continuing:
 6. Treat executable evidence as authoritative over stale documentation.
 7. Do not publish or merge Stage 32 without explicit release approval.
 
-## CI result update — 2026-10-08, exact head `c42da68705390cd9e8651d5640ec10b56874c0ab`
+## Pre-run checkpoint — Node.js 24 artifact action cleanup, 2026-10-09
 
-The live validation branch `stage32-tenant-claim-hook-validation` is at `c42da68705390cd9e8651d5640ec10b56874c0ab`. The exact-head matrix completed with **30 successes, 0 failures**:
-- Stage 32 OSS Core Publication Candidate: https://github.com/Leruchii/Leruchi-development/actions/runs/37781915041
-- Stage 03 Supabase compatibility: https://github.com/Leruchii/Leruchi-development/actions/runs/37781925898
-- Stage 14 MCP Agent Gateway: https://github.com/Leruchii/Leruchi-development/actions/runs/37781925972
-- Stage 25 MCP Agent Tool Contract: https://github.com/Leruchii/Leruchi-development/actions/runs/37781926086
-- Architecture Regression Audit: https://github.com/Leruchii/Leruchi-development/actions/runs/37781925842
-- Stage 13 Graph Studio: https://github.com/Leruchii/Leruchi-development/actions/runs/37781926001
+Confirmed from the previous exact-head Stage 32 run (`c42da68705390cd9e8651d5640ec10b56874c0ab`): the OSS export gate passed with 186 files audited and ASVS 5.0.0 passed, but GitHub warned that `actions/upload-artifact@v5` targets Node.js 20 and was being forced to Node.js 24.
 
-This head documents the self-hosted/third-party capability authority contract: EdDSA-signed grants, tenant-bound issuance obligations, strict public-key verification, fail-closed revocation lookup, key rotation and deployment requirements. The OSS runtime remains a verifier/adapter, not a production issuer or durable control plane.
+Candidate `2337d3a2fd52345ecff15a3b4a4b50682887baf8` changes only the Stage 32 OSS candidate workflow from `actions/upload-artifact@v5` to `@v6`. The v6 action declares `using: node24`. This candidate has not run CI.
 
-Important: this 30/0 result validates the documented/verifier/adapter contract and existing test stub. It does not prove an operator has deployed a production issuer, membership-aware issuance service, durable revocation service, or hosted Supabase tenant-claim hook. Those are deployment responsibilities/gates, not evidence that Leruchi Cloud is required for OSS publication.
-
-Before any new run, re-read this checkpoint and confirm the exact head. PR #64 remains draft; PR #63 is unchanged. No merge/public publication without the OSS export gate and explicit approval.
+Before the next run, this checkpoint must be treated as the source of truth. After the run, update the handoff with the exact head and every result. Node.js 20 is prohibited by project policy. PR #64 remains draft; PR #63 unchanged. No merge/public publication.
 
 ## Next checkpoint
 
