@@ -232,3 +232,8 @@ Exact head 0116e012955d05681ee943d8e89f9d31e99b8c2f completed with 30 successes 
 ## Live revocation enforcement result — 2026-10-08
 
 Exact head 7442116a9d1857cb1e8409c97fe80b563333bbd6 completed with 30 successes and zero failures. Stage 14 now verifies both active and revoked grants through the real HTTP adapter path; Stage 13 also passed. CI uses a test-only control-plane stub. Production control-plane deployment, private-key custody/rotation, membership-aware issuance and operational revocation remain release gates. No merge or publication without explicit approval.
+
+
+## OSS publication vs hosted control-plane gate clarification — 2026-10-08
+
+Per BUILD_PLAN.md and OSS_BOUNDARY.md, Stages 18/19 (managed Cloud Control Plane and Billing/Metering) are deferred and are not prerequisites for publishing OSS Core. The strict-grant runtime does require an authorization authority for agent capabilities, but OSS must support a self-hosted or third-party implementation and must not require Leruchi Cloud. The repository currently supplies the EdDSA verifier and revocation adapter, not a production issuer. The OSS publication gate is to document this integration, ensure fail-closed behavior, and make the external authority contract explicit. Production deployment of an authority and Supabase tenant-claim hook is an operator deployment responsibility; hosted service readiness remains deferred.
