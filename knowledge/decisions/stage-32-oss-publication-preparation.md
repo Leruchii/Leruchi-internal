@@ -178,3 +178,10 @@ Candidate `d754c43aa666cf37cbfba8fe874411e5ff27add1` contains the graph-query/mu
 
 
 The Node.js 24 and MCP route authorization candidate `d754c43aa666cf37cbfba8fe874411e5ff27add1` is now on the validation branch. Exact-head Actions runs were not visible at the first check; inspect Stage 02/14/25 and record results. Do not merge or publish.
+
+
+## MCP route capability matrix complete — 2026-10-08
+
+Candidate `d754c43aa666cf37cbfba8fe874411e5ff27add1` completed 30 workflow runs successfully with zero failures. Stage 02 passed with the updated 403 capability-denial expectation and Node.js 24; Stage 14 passed the Graph API route capability tests; Stage 25 passed; Stage 13 was final and passed. Handoff is updated in `BUILD_STATE.md`.
+
+Graph query requires `graph:read`; graph mutation requires `graph:write`; destructive delete additionally requires `graph:delete`, all before catalog/database access. Stage 02/06/07/08 explicitly use Node.js 24. Next security gate is integration of signed scoped capability grants with a mandatory control-plane revocation decision; that is not yet implemented. Production Supabase hook configuration and membership provisioning also need validation. Do not merge or publish without explicit approval.
