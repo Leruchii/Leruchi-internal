@@ -195,3 +195,8 @@ Do not rerun or change the branch until the Stage 13 failure log is inspected an
 Root cause confirmed from Stage 13 job log: `scripts/start-stage13-graph-api.mjs` now correctly requires strict grant-mode configuration, but the Stage 13 workflow still starts it without `LERUCHI_CAPABILITY_ISSUER` (and without a control-plane endpoint/token). The launcher exits before the Graph API starts, so the wait-for-health step times out. This is workflow fixture/configuration drift introduced by making strict mode mandatory in the production launcher; it is not a graph renderer or Graph API route test failure.
 
 Fix plan before the next run: update Stage 13 workflow to start the same test-only control-plane stub, wait for readiness, pass the issuer/control-plane configuration to the launcher, and update any signed tokens in the Stage 13 workflow to include `iss`, `jti`, `aud=leruchi`, `tenant_id`, canonical capabilities and `exp`. Keep production control-plane deployment as a release blocker. No new run should start until the handoff is re-read after this diagnosis.
+
+
+## Pre-run checkpoint — Stage 13 workflow fix, 2026-10-08
+
+The prior head e268ade8f5caf265e5277fbbccd239fecde69396 had 29 successes and one Stage 13 failure. The log showed the launcher exited because the Stage 13 workflow omitted required strict capability-grant configuration. Candidate b806511f854b33b125e04d6c787351813acf1fd5 adds the test-only control-plane service and passes its configuration to the launcher. It has not run CI. Before advancing the branch, re-read this handoff and confirm the branch is still on e268ade8f5caf265e5277fbbccd239fecde69396. Production control-plane deployment remains a release blocker; do not merge or publish.
