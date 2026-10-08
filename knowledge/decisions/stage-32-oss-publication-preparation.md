@@ -102,3 +102,10 @@ The current development head `6a3a507c2b4494c33115fbf2672cceeb32fda250` complete
 A follow-on read-only audit found optional Supabase service-profile password drift: Storage and Realtime/Supavisor roles in `infra/supabase/roles.sql` still use legacy passwords while Compose expects the Leruchi-prefixed values. The Stage 03 test covers Auth and PostgREST only, so this optional-profile issue is not covered by its passing result.
 
 Next action is to align the two optional-role passwords and add a config consistency test before the next exact-head matrix. Production tenant-claim issuance remains a separate release blocker. Do not merge or publish.
+
+
+## Tenant-claim hook validation branch — 2026-10-08
+
+The first unreferenced candidate commit was reviewed and found to have an incomplete workflow: it called the hook without installing it. The corrected workflow is now in commit `e93dde43445fd2f665e04679a049640abb72c4dc` on isolated branch `stage32-tenant-claim-hook-validation`. It runs the hook contract test, installs the SQL hook after Auth/PostgREST initialization, verifies least-privilege grants, and checks fail-closed behavior.
+
+The validation branch has not run CI yet. The next step is a validation PR targeting `stage32-oss-publication-prep`, then inspect the exact-head Stage 03 run and update the handoff. The current PR #63 branch remains unchanged. Actual Auth-issued token claim issuance has not been proven; keep the production tenant-claim release blocker open. Do not merge or publish.
