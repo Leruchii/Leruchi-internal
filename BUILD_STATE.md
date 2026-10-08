@@ -322,3 +322,8 @@ After re-reading the handoff and confirming the isolated branch was at d1a5a2e30
 ## CI progress — ephemeral EdDSA key candidate 0116e012955d05681ee943d8e89f9d31e99b8c2f
 
 Latest exact-head snapshot: 12 successes, 16 in progress, 2 queued, zero failures. Stage 32 publication-candidate workflow passed, and Architecture Regression Audit, Stage State Gate, Stages 04/05/06/16/23/26A/26C/27/28 are among the completed successes. Stage 13 and Stage 14 remain in progress/queued. Continue monitoring the exact SHA; no full-matrix pass claim yet.
+
+
+## CI progress refresh — exact head 0116e012955d05681ee943d8e89f9d31e99b8c2f
+
+Latest snapshot: 15 successes, 14 in progress, 1 queued, zero failures. Stage 14 has moved to in progress; Stage 13 is building its database image after the Graph API boundary tests passed. Keep waiting for the complete exact-head matrix.
