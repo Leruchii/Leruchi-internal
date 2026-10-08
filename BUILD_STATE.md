@@ -135,11 +135,11 @@ Before continuing:
 6. Treat executable evidence as authoritative over stale documentation.
 7. Do not publish or merge Stage 32 without explicit release approval.
 
-## CI result update — 2026-10-08, MCP route capability enforcement head `6ed63d32f395ed30f1105bfa13d98cc7383ab575`
+## CI result update — 2026-10-08, MCP route capability candidate head `6ed63d32f395ed30f1105bfa13d98cc7383ab575`
 
-The isolated validation branch has advanced to `6ed63d32f395ed30f1105bfa13d98cc7383ab575`. This candidate adds Graph API route checks: graph query requires `graph:read`; mutation requires `graph:write`; destructive delete also requires `graph:delete`. Denials should happen before catalog/database access. It adds three tests and wires the Graph API API-level test file into Stage 14 CI. Exact-head runs were not visible at the first check.
+The exact-head matrix snapshot is **14 successes, 1 failure, 12 in progress**. Stage 02 RLS and AGE security failed: https://github.com/Leruchii/Leruchi-development/actions/runs/37774717752. Stage 14 MCP Agent Gateway remains in progress: https://github.com/Leruchii/Leruchi-development/actions/runs/37774717740. Stage 03 tenant-claim integration is also running: https://github.com/Leruchii/Leruchi-development/actions/runs/37774717640.
 
-Inspect Stage 14, Stage 02, Stage 25 and the complete exact-head matrix, then update this handoff with results. Capability grant issuance/revocation control-plane integration remains a follow-up gap. PR #64 remains draft; PR #63 unchanged; no merge or publication.
+This candidate adds explicit Graph API checks: query requires `graph:read`; mutation requires `graph:write`; destructive delete also requires `graph:delete`. The Stage 02 failure may reveal an existing test token that lacks the newly enforced graph-read capability; inspect logs before making any changes. Do not assume the failure is harmless. Wait for remaining runs, diagnose, and update this handoff before the next candidate. Capability grant revocation integration remains open. PR #64 draft; PR #63 unchanged; no merge or publication.
 
 ## Next checkpoint
 
