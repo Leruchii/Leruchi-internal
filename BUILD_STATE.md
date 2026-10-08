@@ -137,14 +137,22 @@ Before continuing:
 
 ## CI result update — 2026-10-08, exact head `6a3a507c2b4494c33115fbf2672cceeb32fda250`
 
-The Node.js 24 action-pin matrix now has **34 successes, 1 in progress, 0 failures**. The Stage 32 candidate, Stage 31 readiness, Stage 20 production readiness, Stage 03 Supabase compatibility, Stage 02 RLS/AGE security, Stage 01 database foundation, Stage 08 secure execution, Stage State Gate, and Architecture Regression Audit all passed on this head. Relevant runs:
-- Stage 32 candidate: https://github.com/Leruchii/Leruchi-development/actions/runs/37769880841
-- Stage 31 readiness: https://github.com/Leruchii/Leruchi-development/actions/runs/37769880835
-- Stage 20 readiness: https://github.com/Leruchii/Leruchi-development/actions/runs/37769881124
-- Stage 03 compatibility: https://github.com/Leruchii/Leruchi-development/actions/runs/37769881251
-- Stage 02 security: https://github.com/Leruchii/Leruchi-development/actions/runs/37769881011
+**Exact-head matrix complete: 35 successes, 0 failures, 0 in progress.**
 
-Only Stage 13 Graph Studio remains in progress: https://github.com/Leruchii/Leruchi-development/actions/runs/37769880831. Wait for its completion and record the final matrix. Do not merge or publish; production identity-provider tenant-claim issuance remains a release blocker.
+The compatibility role-password fix was validated on parent head `199e5100557c533cc287573baf2483e377608868`; Stage 03 passed at run https://github.com/Leruchii/Leruchi-development/actions/runs/37769250756.
+
+The current head upgrades all 26 remaining legacy workflow action pins to `actions/checkout@v5` and `actions/setup-node@v6`, preserving Node.js 24 setup. The exact-head matrix is green:
+- Stage 32 OSS Core Publication Candidate: https://github.com/Leruchii/Leruchi-development/actions/runs/37769880841
+- Stage 31 OSS Core Readiness: https://github.com/Leruchii/Leruchi-development/actions/runs/37769880835
+- Stage 20 Production Readiness: https://github.com/Leruchii/Leruchi-development/actions/runs/37769881124
+- Stage 13 Graph Studio: https://github.com/Leruchii/Leruchi-development/actions/runs/37769880831
+- Stage 03 Supabase compatibility: https://github.com/Leruchii/Leruchi-development/actions/runs/37769881251
+- Stage 02 RLS and AGE security: https://github.com/Leruchii/Leruchi-development/actions/runs/37769881011
+- Stage 01 database foundation: https://github.com/Leruchii/Leruchi-development/actions/runs/37769880635
+- Stage State Gate: https://github.com/Leruchii/Leruchi-development/actions/runs/37769881298
+- Architecture Regression Audit: https://github.com/Leruchii/Leruchi-development/actions/runs/37769880907
+
+Next implementation checkpoint remains authoritative production tenant-claim issuance/binding, then scoped MCP/agent capability authorization and revocation/audit controls. The production identity-provider claim issuance blocker remains open. Do not merge or publish without explicit approval.
 
 ## Next checkpoint
 
