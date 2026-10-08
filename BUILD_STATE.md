@@ -413,3 +413,8 @@ Candidate commit c42da68705390cd9e8651d5640ec10b56874c0ab adds docs/security/cap
 ## CI restart — self-hosted capability authority guide c42da68705390cd9e8651d5640ec10b56874c0ab
 
 After re-reading the handoff and confirming the validation branch was at 7442116a9d1857cb1e8409c97fe80b563333bbd6, the branch advanced to c42da68705390cd9e8651d5640ec10b56874c0ab. The first observed run is Stage 32 publication candidate, queued: https://github.com/Leruchii/Leruchi-development/actions/runs/37781915041. Other exact-head workflows were not yet visible. No pass claim until the export audit and full matrix finish.
+
+
+## CI progress — self-hosted capability authority guide c42da68705390cd9e8651d5640ec10b56874c0ab
+
+Latest exact-head snapshot: 13 successes, 16 in progress, 1 queued, zero failures. Stage 32 publication-candidate workflow passed, including export manifest/source audit and sanitized candidate build. Stage 13, Stage 14, Stage 20 and Architecture Regression Audit are still in progress; no overall matrix pass claim yet.
