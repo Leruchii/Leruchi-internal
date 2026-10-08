@@ -123,3 +123,6 @@ This does not yet validate actual Auth-issued token claims for valid and revoked
 The prior validation head `e93dde43445fd2f665e04679a049640abb72c4dc` passed 17 workflows. Candidate commit `b1b2ce78a0cc2e2ef47b1c9700638fae56e8a23a` adds a deterministic auth.users/membership fixture and a Stage 03 integration step that signs in through Supabase Auth, verifies active-membership tenant claim issuance, verifies revoked selection omits the claim, and checks PostgREST RLS isolation. The test workflow enables email/password only through a one-run environment override; the Compose default remains disabled. Candidate is not yet on the validation branch and has not run CI.
 
 Next: advance the validation branch only after confirming this handoff, then record exact-head CI results. Keep the release blocker open until the actual Auth-issued token test passes. Do not merge or publish.
+
+
+The real Auth token integration candidate `b1b2ce78a0cc2e2ef47b1c9700638fae56e8a23a` has been advanced to the isolated validation branch. Exact-head Actions runs were not visible at the first check. The handoff records the current SHA and the test scope; inspect CI and update the handoff after results. Production claim issuance remains blocked until this integration test passes.
