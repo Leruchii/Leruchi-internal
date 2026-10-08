@@ -220,3 +220,8 @@ Latest snapshot: 25 successes, 5 in progress, zero failures. Stage 13 and Stage 
 ## CI progress refresh — exact head b806511f854b33b125e04d6c787351813acf1fd5
 
 Latest snapshot: 29 successes, 1 in progress, zero failures. Stage 13 has now passed database build/startup, live tenant fixture seeding, test control-plane startup, strict Graph API startup/health, renderer benchmark and tenant-render contract. Chromium/browser tests and final build/audits remain to complete.
+
+
+## CI result — Stage 13 workflow fix candidate b806511f854b33b125e04d6c787351813acf1fd5
+
+The exact-head matrix completed with 29 successes and one failure. Stage 13 now starts the strict Graph API successfully; database startup, control-plane stub readiness, Graph API health, renderer benchmark and tenant-render contract all passed. The remaining Stage 13 failure is Browser tenant/responsive evidence: https://github.com/Leruchii/Leruchi-development/actions/runs/37778312543. This is a different failure from the fixed launcher configuration issue. Do not rerun until the browser failure log is inspected, diagnosed, and this handoff is re-read. No other failures are reported on this exact head.
