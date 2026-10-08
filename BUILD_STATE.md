@@ -381,3 +381,14 @@ Latest snapshot: 28 successes, 2 in progress, zero failures. Stage 14 MCP Agent 
 ## CI progress refresh — exact head 7442116a9d1857cb1e8409c97fe80b563333bbd6
 
 Latest snapshot: 29 successes, 1 in progress, zero failures. Stage 14 live revoked-grant integration passed. Stage 13 Graph Studio is the only remaining workflow: https://github.com/Leruchii/Leruchi-development/actions/runs/37781044435.
+
+
+## CI result — live revoked-grant integration, exact head 7442116a9d1857cb1e8409c97fe80b563333bbd6
+
+**Exact-head matrix complete: 30 successes, 0 failures.**
+
+- Stage 14 MCP Agent Gateway passed the live revoked-grant test through the HTTP control-plane adapter: https://github.com/Leruchii/Leruchi-development/actions/runs/37781044047
+- Stage 13 Graph Studio passed browser tenant/responsive evidence, typecheck, build and Base UI audit: https://github.com/Leruchii/Leruchi-development/actions/runs/37781044435
+- Stage 32 candidate and Architecture Regression Audit passed: https://github.com/Leruchii/Leruchi-development/actions/runs/37781034783 and https://github.com/Leruchii/Leruchi-development/actions/runs/37781044239
+
+The live test now proves that the data plane rejects a grant marked revoked by the control-plane interface, while active grants continue through MCP → Graph API → PostgreSQL/AGE/RLS. The control plane used in CI is still a test stub. Production issuer deployment, private-key custody/rotation, membership-aware grant issuance, operational revocation reliability, and production Supabase tenant-claim deployment remain release gates. Cloud Control Plane/Billing stages remain deferred; do not merge or publish without explicit release approval.
