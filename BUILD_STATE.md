@@ -137,11 +137,11 @@ Before continuing:
 
 ## CI result update — 2026-10-08, exact head `07c76120856165c5a4dc98cb9aa223f20cbc8b06`
 
-The optional Supabase credential fix is under exact-head validation. Snapshot: 20 successes, 14 in progress, 1 queued, 0 failures.
+Current exact-head matrix snapshot: {"success":32,"in_progress":3}; no failures recorded.
 
-The new Stage 03 credential consistency test passed; the full Stage 03 workflow is still running while the database image builds: https://github.com/Leruchii/Leruchi-development/actions/runs/37770360944
+Stage 03 Supabase compatibility **PASS** — https://github.com/Leruchii/Leruchi-development/actions/runs/37770360944. This run includes the new four-role SQL/Compose credential consistency tests and the Auth/PostgREST RLS integration path. Stage 32 candidate, Stage 31 readiness, Stage State Gate, and the focused architecture/security checks have also passed at this snapshot.
 
-Stage 32 candidate, Stage 31 readiness, Stage 30 trace, Stage 25 MCP contract, Stage State Gate and Architecture Regression Audit have passed on this head. Wait for the exact-head matrix to finish before another development change. Do not merge or publish; production tenant-claim issuance remains a release blocker.
+Wait for remaining exact-head workflows to finish before another development change. Do not merge or publish; production tenant-claim issuance remains a release blocker.
 
 ## Next checkpoint
 
