@@ -135,13 +135,13 @@ Before continuing:
 6. Treat executable evidence as authoritative over stale documentation.
 7. Do not publish or merge Stage 32 without explicit release approval.
 
-## CI result update — 2026-10-08, exact validated head `e93dde43445fd2f665e04679a049640abb72c4dc`
+## CI result update — 2026-10-08, real Auth token test candidate head `b1b2ce78a0cc2e2ef47b1c9700638fae56e8a23a`
 
-The exact-head matrix completed with **17 successes, 0 failures**. Stage 03 passed hook installation, permission checks and fail-closed SQL behavior; Stage 13 passed. See https://github.com/Leruchii/Leruchi-development/actions/runs/37772310562 and https://github.com/Leruchii/Leruchi-development/actions/runs/37772310466.
+The previous exact-head matrix on `e93dde43445fd2f665e04679a049640abb72c4dc` passed 17 workflows with zero failures. The validation branch has now advanced to `b1b2ce78a0cc2e2ef47b1c9700638fae56e8a23a` to add a real Auth-issued token integration test.
 
-The next candidate commit is `b1b2ce78a0cc2e2ef47b1c9700638fae56e8a23a`, a child of the validated commit. It adds a deterministic Auth user/membership fixture, enables email/password authentication only via a workflow environment override (default remains false), and adds a test that signs in through Supabase Auth, checks the issued `tenant_id` for an active membership, verifies a revoked tenant selection omits the claim, and checks PostgREST RLS isolation. This candidate has not been pushed to the validation branch and has not run CI.
+The new Stage 03 path seeds two users with memberships, enables email/password only for this test invocation (Compose default remains false), signs in through Supabase Auth, asserts that an active membership yields `tenant_id=tenant_a`, asserts that a revoked tenant selector yields no `tenant_id`, and checks PostgREST tenant RLS. The candidate is pushed to the isolated validation branch; exact-head Actions runs were not yet visible at the last check.
 
-Before advancing the validation branch, preserve this checkpoint. Once CI runs, update the handoff with the exact new head and every failure/success. Keep the production tenant-claim gate open until real Auth-issued token evidence passes. PR #64 remains draft; PR #63 unchanged. Do not merge or publish.
+Next: inspect the exact-head matrix and Stage 03 result; update this handoff when results arrive. Keep the production tenant-claim gate open until the real token test passes. PR #64 remains draft, PR #63 unchanged; do not merge or publish.
 
 ## Next checkpoint
 
