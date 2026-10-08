@@ -151,3 +151,12 @@ Next security work: integrate signed scoped capability grants with a required co
 ## Next checkpoint
 
 Complete the tenant authorization/security hardening and ASVS Level-2 evidence work in development, synchronize the resulting durable decisions here, then perform the final controlled OSS export review before publication.
+
+
+## Pre-run checkpoint — signed capability grant enforcement, 2026-10-08
+
+Handoff was re-read before advancing the validation branch. Baseline exact-head matrix: `d754c43aa666cf37cbfba8fe874411e5ff27add1`, 30 successes and zero failures. Primary Stage 32 PR #63 remains separate; PR #64 is draft and targets the Stage 32 branch.
+
+Candidate commit prepared on top of the validated baseline: `e268ade8f5caf265e5277fbbccd239fecde69396`. It wires signed capability-grant validation into Graph API authentication, requires a control-plane revocation decision in strict mode, fails closed on missing/revoked/unavailable decisions, enforces optional route/graph scope, adds an authenticated HTTPS-enforcing control-plane adapter, enables strict mode in the production launcher, and adds unit/API/MCP integration coverage using a test-only control-plane stub.
+
+**No CI has run on this candidate yet.** Next: advance only the isolated validation branch, inspect all exact-head workflow results (especially Stage 14 and Stage 02), then update this handoff and the Stage 32 decision record with actual results. The test stub does not prove production control-plane deployment. Do not merge or publish.
