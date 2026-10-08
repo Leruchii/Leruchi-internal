@@ -135,11 +135,18 @@ Before continuing:
 6. Treat executable evidence as authoritative over stale documentation.
 7. Do not publish or merge Stage 32 without explicit release approval.
 
-## CI result update — 2026-10-08, MCP route capability + Node.js 24 fix head `d754c43aa666cf37cbfba8fe874411e5ff27add1`
+## CI result update — 2026-10-08, MCP route capability + Node.js 24 fix validated
 
-Current exact-head matrix snapshot: **29 successes, 1 in progress, 0 failures**. Stage 02 RLS/AGE security passed, including the updated 403/CAPABILITY_DENIED assertion, Node.js 24 runtime, database-backed Graph API tenant isolation, and tenant A/B SQL checks: https://github.com/Leruchii/Leruchi-development/actions/runs/37775397959. Stage 14 MCP route capability unit tests and Stage 25 contract tests also passed.
+**Exact-head matrix complete: 30 successes, 0 failures** on `d754c43aa666cf37cbfba8fe874411e5ff27add1`.
 
-Only Stage 13 Graph Studio remains in progress: https://github.com/Leruchii/Leruchi-development/actions/runs/37775397964. Wait for it to finish before making further changes, then record the final matrix. Capability grant issuance/revocation control-plane integration remains open. PR #64 draft; PR #63 unchanged; no merge or publication.
+- Stage 02 RLS/AGE security passed with Node.js 24 and the corrected capability-denial expectation: https://github.com/Leruchii/Leruchi-development/actions/runs/37775397959
+- Stage 14 MCP Agent Gateway passed, including Graph API route capability enforcement tests: https://github.com/Leruchii/Leruchi-development/actions/runs/37775398178
+- Stage 25 MCP Agent Tool Contract passed: https://github.com/Leruchii/Leruchi-development/actions/runs/37775397907
+- Stage 13 Graph Studio passed as the final workflow: https://github.com/Leruchii/Leruchi-development/actions/runs/37775397964
+
+Graph API now requires `graph:read` for graph queries, `graph:write` for mutations, and `graph:delete` additionally for destructive deletes. These checks happen before catalog/database access. Stage 02/06/07/08 now explicitly use `actions/setup-node@v6` with Node.js 24.
+
+Next security work: integrate signed scoped capability grants with a required control-plane revocation decision; current grant validation helpers are not yet wired to production token verification/revocation. Production Supabase hook configuration and membership provisioning also still require validation. PR #64 remains draft; PR #63 unchanged. Do not merge or publish without explicit approval.
 
 ## Next checkpoint
 
