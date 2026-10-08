@@ -126,3 +126,6 @@ Next: advance the validation branch only after confirming this handoff, then rec
 
 
 The real Auth token integration candidate `b1b2ce78a0cc2e2ef47b1c9700638fae56e8a23a` has been advanced to the isolated validation branch. Exact-head Actions runs were not visible at the first check. The handoff records the current SHA and the test scope; inspect CI and update the handoff after results. Production claim issuance remains blocked until this integration test passes.
+
+
+The first real Auth-issued token integration attempt failed with `400 invalid_credentials` because the deterministic fixture created `auth.users` rows without their associated `auth.identities` email-provider rows. Supabase Auth migration review confirmed the required identity table fields. Candidate fix `b651a880f72474a7dbe09557f6efaa291ebea8c7` adds those rows. It is not yet on the validation branch and has not run CI. Production tenant-claim issuance remains blocked.
