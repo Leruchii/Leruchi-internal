@@ -188,3 +188,10 @@ Only Stage 03 Supabase compatibility and Stage 13 Graph Studio remain in progres
 The matrix finished with **29 successes, 1 failure**. Stage 14 passed as recorded above. Stage 13 Graph Studio failed: https://github.com/Leruchii/Leruchi-development/actions/runs/37777685084. No other failures are reported on this exact head.
 
 Do not rerun or change the branch until the Stage 13 failure log is inspected and this handoff is re-read. Next step is determine whether the failure is caused by this candidate's strict grant integration or an independent regression; then record the diagnosis and fix plan here before a new commit/run. The production control-plane release gate remains open.
+
+
+## Stage 13 failure diagnosis — exact head e268ade8f5caf265e5277fbbccd239fecde69396
+
+Root cause confirmed from Stage 13 job log: `scripts/start-stage13-graph-api.mjs` now correctly requires strict grant-mode configuration, but the Stage 13 workflow still starts it without `LERUCHI_CAPABILITY_ISSUER` (and without a control-plane endpoint/token). The launcher exits before the Graph API starts, so the wait-for-health step times out. This is workflow fixture/configuration drift introduced by making strict mode mandatory in the production launcher; it is not a graph renderer or Graph API route test failure.
+
+Fix plan before the next run: update Stage 13 workflow to start the same test-only control-plane stub, wait for readiness, pass the issuer/control-plane configuration to the launcher, and update any signed tokens in the Stage 13 workflow to include `iss`, `jti`, `aud=leruchi`, `tenant_id`, canonical capabilities and `exp`. Keep production control-plane deployment as a release blocker. No new run should start until the handoff is re-read after this diagnosis.
