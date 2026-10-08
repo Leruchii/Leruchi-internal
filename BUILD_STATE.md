@@ -137,11 +137,15 @@ Before continuing:
 
 ## CI result update — 2026-10-08, validation PR #64, exact head `e93dde43445fd2f665e04679a049640abb72c4dc`
 
-Current matrix snapshot: **16 successes, 1 in progress, 0 failures**. Only Stage 13 Graph Studio remains in progress.
+**Exact-head matrix complete: 17 successes, 0 failures.** Stage 03 Supabase compatibility and Stage 13 Graph Studio both passed:
+- Stage 03: https://github.com/Leruchii/Leruchi-development/actions/runs/37772310562
+- Stage 13: https://github.com/Leruchii/Leruchi-development/actions/runs/37772310466
+- Stage 32 candidate: https://github.com/Leruchii/Leruchi-development/actions/runs/37772233615
+- Validation PR #64: https://github.com/Leruchii/Leruchi-development/pull/64
 
-**Stage 03 Supabase compatibility passed** on this exact head: https://github.com/Leruchii/Leruchi-development/actions/runs/37772310562. Its completed steps confirm Node.js 24 credential and hook contract tests passed; database/Auth/PostgREST started; hook SQL installed; function/table permissions passed; unbound caller-supplied tenant claim was removed; existing signed-JWT RLS check passed; cleanup succeeded.
+Stage 03 proves Node.js 24 checks, SQL hook installation, least-privilege function/table grants, fail-closed removal of an unbound caller-supplied tenant claim, and the existing signed-JWT RLS test all pass. It still does **not** exercise an actual Auth-issued access token with valid/revoked membership. Production tenant-claim issuance remains a release blocker.
 
-This validates hook installation and fail-closed behavior in the compatibility environment, but it does **not** yet prove that a real Auth-issued token receives the correct claim for a valid membership. Keep production tenant-claim issuance as a release blocker until an Auth-issued token integration test passes. Validation PR #64 remains draft/open; PR #63 remains unchanged. Do not merge or publish.
+PR #64 remains a draft validation PR into the active Stage 32 branch; PR #63 remains unchanged. Next step is to add real Auth-issued token integration coverage, then scoped MCP/agent capability authorization with tenant-bound tool access, revocation, and audit. Do not merge or publish until the real issuance gate and all release criteria pass and explicit approval is given.
 
 ## Next checkpoint
 
