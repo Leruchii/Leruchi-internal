@@ -137,11 +137,10 @@ Before continuing:
 
 ## CI result update — 2026-10-08, validation PR #64, exact head `e93dde43445fd2f665e04679a049640abb72c4dc`
 
-Validation PR #64 is open as a draft targeting the active Stage 32 branch: https://github.com/Leruchii/Leruchi-development/pull/64. This PR is an isolated validation branch; PR #63 remains unchanged.
+The automatic matrix has advanced to **6 successes, 11 in progress, 0 failures**. The Stage 32 candidate, Stage State Gate, Architecture Regression Audit, Stages 05/06 and Stage 10 have passed. Stage 03 is still building the database image; both Node.js 24 checks (role credentials and tenant-hook contract) passed before image build:
+https://github.com/Leruchii/Leruchi-development/actions/runs/37772310562
 
-The first automatic exact-head matrix snapshot has 1 success, 3 in progress, and 13 queued. Stage 32 candidate passed: https://github.com/Leruchii/Leruchi-development/actions/runs/37772233615. Stage 03 Supabase compatibility is queued: https://github.com/Leruchii/Leruchi-development/actions/runs/37772310562.
-
-The candidate now installs the hook SQL after Auth/PostgREST startup, runs the hook contract test, verifies function/table grants and exercises fail-closed behavior. This does not yet prove a real Auth-issued JWT includes the authoritative tenant claim. Wait for the matrix and inspect failures before changing code. Keep production tenant-claim issuance as a release blocker; do not merge or publish.
+Validation PR #64 remains a draft targeting the active Stage 32 branch: https://github.com/Leruchii/Leruchi-development/pull/64. The candidate installs the hook after Auth/PostgREST startup and checks privileges/fail-closed behavior. Real Auth-issued tenant-claim issuance is still unproven and remains a release blocker. No merge or publication.
 
 ## Next checkpoint
 
