@@ -169,3 +169,6 @@ The green tenant-claim integration matrix was followed by a source audit. Graph 
 
 
 MCP route capability candidate `6ed63d32f395ed30f1105bfa13d98cc7383ab575` is now on the isolated validation branch. Exact-head Actions runs were not visible at the first check. Inspect Stage 14/02/25 and update `BUILD_STATE.md` with the exact results. Capability grant issuance/revocation control-plane integration remains open.
+
+
+Stage 02 failed on candidate `6ed63d32f395ed30f1105bfa13d98cc7383ab575` because a tenant isolation test expected HTTP 400 validation failure, while the new explicit graph-read guard correctly returns HTTP 403 `CAPABILITY_DENIED` before validation. The workflow also lacked setup-node and ran Node.js 22, so it must be pinned to Node.js 24. Fix the test expectation, pin Node.js 24, and audit remaining workflows before the next matrix.
