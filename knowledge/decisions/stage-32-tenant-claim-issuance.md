@@ -28,10 +28,10 @@ Proposal: accept and document this window for the OSS release; treat shorter def
 
 Development repo, Stage 03 Supabase workflow:
 - real Auth-issued claim for an active membership; no claim for a revoked selector; RLS isolation through PostgREST (pre-existing);
-- tamper and revocation step added on branch `stage32-tenant-revocation-evidence` (NOT yet run in CI at time of writing).
+- tamper and revocation step added on branch `stage32-tenant-revocation-evidence` (draft PR #65); passed in Stage 03 run 37801292894 on head `5d3d7ef`, with all 21 workflows green.
 
 ## Still required before this blocker can close
 
-1. The new CI step passes on the exact release-candidate head.
+1. The new CI step passes on the exact release-candidate head (passed on PR #65 head `5d3d7ef`; must be re-confirmed after merge).
 2. Graph API leg: a GoTrue-issued token accepted by `createGraphApiServer` with the configured issuer/audience, and wrong issuer/audience rejected.
 3. Fikun confirms Decisions 1 and 2, then this file's status changes to DECIDED.

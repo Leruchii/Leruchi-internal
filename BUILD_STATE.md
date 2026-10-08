@@ -145,13 +145,13 @@ Before the next run, this checkpoint must be treated as the source of truth. Aft
 
 ## Checkpoint — tenant-claim issuance proposal, 2026-10-09 (Claude chat session)
 
-Not pushed by the author (no GitHub credentials in that session); delivered as a patch series.
+Pushed by the author after Fikun supplied credentials.
 
 - Added `knowledge/decisions/stage-32-tenant-claim-issuance.md`, status **PROPOSED**: Supabase GoTrue hook as tested reference path, plus an explicit revocation-window policy. Awaiting Fikun's confirmation.
-- Development repo branch `stage32-tenant-revocation-evidence` (one commit on top of `da390bb`) adds a live tamper/revocation CI step. It has **not run in CI**; do not treat the blocker as reduced until it is green on the exact head.
+- Development repo branch `stage32-tenant-revocation-evidence` (one commit on top of `da390bb`) adds a live tamper/revocation CI step. Draft PR `Leruchi-development#65` runs it: Stage 03 run 37801292894 passed with the new step green, and all 21 workflows on head `5d3d7ef` were green. Not merged. Re-verify on the final merged head.
 - The release-blocking tenant-claim decision remains OPEN. Remaining evidence: green new step, Graph API real-token leg, Fikun's decision.
 - Observation for Fikun: `Leruchi-internal` is currently publicly readable (left public deliberately per Fikun, 2026-10-09), but its README and `AGENTS.md` still say it is private. Reconcile the wording or the visibility; no change made.
-- PR #64 state differs between repos (dev: merged into #63; internal: draft). Verify with `gh pr view 64` and correct whichever is stale.
+- PR #64 is MERGED into `stage32-oss-publication-prep` (verified 2026-10-09); earlier checkpoints here saying draft are stale. PR #63 head `da390bb` had 36/36 workflows green.
 - Merge/publication rules unchanged: no merge of PR #63, no publication to `Leruchii/Leruchi`, no tag/release without explicit approval.
 
 ## Next checkpoint
