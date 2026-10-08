@@ -137,10 +137,11 @@ Before continuing:
 
 ## CI result update — 2026-10-08, validation PR #64, exact head `e93dde43445fd2f665e04679a049640abb72c4dc`
 
-The automatic matrix has advanced to **6 successes, 11 in progress, 0 failures**. The Stage 32 candidate, Stage State Gate, Architecture Regression Audit, Stages 05/06 and Stage 10 have passed. Stage 03 is still building the database image; both Node.js 24 checks (role credentials and tenant-hook contract) passed before image build:
-https://github.com/Leruchii/Leruchi-development/actions/runs/37772310562
+Current matrix snapshot: **16 successes, 1 in progress, 0 failures**. Only Stage 13 Graph Studio remains in progress.
 
-Validation PR #64 remains a draft targeting the active Stage 32 branch: https://github.com/Leruchii/Leruchi-development/pull/64. The candidate installs the hook after Auth/PostgREST startup and checks privileges/fail-closed behavior. Real Auth-issued tenant-claim issuance is still unproven and remains a release blocker. No merge or publication.
+**Stage 03 Supabase compatibility passed** on this exact head: https://github.com/Leruchii/Leruchi-development/actions/runs/37772310562. Its completed steps confirm Node.js 24 credential and hook contract tests passed; database/Auth/PostgREST started; hook SQL installed; function/table permissions passed; unbound caller-supplied tenant claim was removed; existing signed-JWT RLS check passed; cleanup succeeded.
+
+This validates hook installation and fail-closed behavior in the compatibility environment, but it does **not** yet prove that a real Auth-issued token receives the correct claim for a valid membership. Keep production tenant-claim issuance as a release blocker until an Auth-issued token integration test passes. Validation PR #64 remains draft/open; PR #63 remains unchanged. Do not merge or publish.
 
 ## Next checkpoint
 
