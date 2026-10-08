@@ -293,3 +293,8 @@ This candidate has not run CI. Before advancing the isolated validation branch, 
 ## CI restart — EdDSA grant verifier candidate d1a5a2e308e46875045ec39a15f0b1ecfd8bbdf3
 
 After re-reading the handoff and confirming the validation branch was still at 57dd4815d7137945945c234f5d7ca9970e637bef, the isolated branch advanced to d1a5a2e308e46875045ec39a15f0b1ecfd8bbdf3. The first observed workflow is Stage 32 candidate, queued: https://github.com/Leruchii/Leruchi-development/actions/runs/37779927286. The rest of the exact-head matrix was not yet visible. No pass claim until all workflows complete.
+
+
+## CI result in progress — EdDSA grant verifier candidate d1a5a2e308e46875045ec39a15f0b1ecfd8bbdf3
+
+Latest exact-head snapshot: 12 successes, 17 in progress, and one failure. The Stage 32 OSS Core Publication Candidate workflow failed: https://github.com/Leruchii/Leruchi-development/actions/runs/37779927286. Other workflows are still running, so this is not the final matrix result. Do not change the branch or rerun until the Stage 32 failure log is inspected and this handoff is re-read. The EdDSA candidate is not validated yet.
