@@ -135,11 +135,13 @@ Before continuing:
 6. Treat executable evidence as authoritative over stale documentation.
 7. Do not publish or merge Stage 32 without explicit release approval.
 
-## CI result update — 2026-10-08, identity fixture retry head `b651a880f72474a7dbe09557f6efaa291ebea8c7`
+## CI result update — 2026-10-08, Auth fixture follow-up
 
-The exact-head matrix has started: **6 successes, 11 in progress, 0 failures**. Stage 03 Supabase compatibility is in progress: https://github.com/Leruchii/Leruchi-development/actions/runs/37773172780.
+The exact-head matrix for `b651a880f72474a7dbe09557f6efaa291ebea8c7` has **14 successes, 1 failure, 2 in progress**. Stage 03 still fails the password-grant login with `400 invalid_credentials` even after adding `auth.identities` rows: https://github.com/Leruchii/Leruchi-development/actions/runs/37773172780. Hook installation, grants and fail-closed SQL checks passed before login.
 
-This head adds the missing email-provider identity rows to the fixture after the previous Auth password-grant attempt returned `400 invalid_credentials`. Inspect the Stage 03 integration step carefully; it must demonstrate that Auth issues `tenant_id=tenant_a` for active membership and omits `tenant_id` for the revoked selection, then verify PostgREST isolation. Wait for the full matrix before further code changes. Production tenant-claim issuance remains blocked until that test passes. PR #64 draft; PR #63 unchanged; no merge or publication.
+The direct-SQL user fixture remains unreliable for GoTrue authentication. Next correction: create both test users through the supported Auth signup endpoint in a test-only Compose override (signup enabled, email provider enabled, auto-confirm enabled), then add their server-managed membership rows, sign in again, and assert issued claims plus PostgREST isolation. The default Compose settings must remain unchanged outside the test override. This proposed change has not been made or run yet.
+
+Keep production tenant-claim issuance blocked until the real Auth-issued token test passes. PR #64 remains draft; PR #63 unchanged. Do not merge or publish.
 
 ## Next checkpoint
 
