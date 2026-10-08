@@ -4,18 +4,31 @@ This file is the canonical handoff checkpoint for coding agents.
 
 Agents must verify this state against Git history, implementation, tests, CI, and `BUILD_PLAN.md` before continuing. If evidence conflicts with this file, executable repository evidence wins and this file must be corrected.
 
-## Current checkpoint
+## Current checkpoint — synchronized 2026-10-09
 
-- Current stage: **Stage 32 — OSS Core Publication Preparation**
-- Current status: **IN_PROGRESS — controlled publication candidate / security hardening**
-- Last validated development stage: **Stage 31 — OSS Core Readiness Gate**
-- Development repository: `Leruchii/Leruchi-development`
-- Internal control repository: `Leruchii/Leruchi-internal`
-- Public OSS Core destination: `Leruchii/Leruchi`
-- Active development branch: `stage32-oss-publication-prep`
-- Stage 32 PR: `Leruchii/Leruchi-development#63` — draft, not merged
-- Public publication: **NOT PERFORMED**
-- Merge authority: explicit user approval required
+- Development repository: [`Leruchii/Leruchi-development`](https://github.com/Leruchii/Leruchi-development)
+- Internal control repository: [`Leruchii/Leruchi-internal`](https://github.com/Leruchii/Leruchi-internal)
+- Public OSS destination: [`Leruchii/Leruchi`](https://github.com/Leruchii/Leruchi)
+- Development `main` HEAD observed: `2e3997a75c709b58da14c454b356ae9778d1e1be`
+- Stage 32 candidate branch: `stage32-oss-publication-prep`
+- Stage 32 PR: [#63](https://github.com/Leruchii/Leruchi-development/pull/63), OPEN/DRAFT; current head observed: `4b95b5a278ef092d3fd791b4f8216b936fd3a432`
+- Current candidate CI snapshot: checkpoint-only commit triggered a new matrix; **24 runs were queued** on the exact observed head at the last query. Do not claim the matrix is green until all required checks finish on the live head.
+- Stage 32 remains pre-integration. Public publication: **NOT PERFORMED**. No public release/tag has been created.
+- Node.js 24 only; Node.js 20 is prohibited.
+- Product-name clearance remains open. Production deployments must provide a trusted capability-grant issuer/revocation authority; test-only control-plane fixtures do not establish production deployment readiness.
+
+## Blocking security issue — repository visibility
+
+GitHub currently reports both `Leruchii/Leruchi-development` and `Leruchii/Leruchi-internal` as PUBLIC (`private: false`), despite the intended private topology. This is a security-boundary blocker. An authorized organization/repository administrator must change both repositories to private and verify the setting before Stage 32 integration or public publication. The current GitHub connector cannot change repository visibility. Do not export or copy internal-control material while this remains unresolved.
+
+## Next actions
+
+1. Change development and internal-control repositories to private through authorized GitHub administration, then verify `private: true` for both.
+2. Reconcile legacy development PRs #14, #22, #26 and #29 individually; port relevant migration-runner safeguards/tests from #14 and run focused Stage 11 plus full regression checks.
+3. Re-query PR #63 and all required workflows on its live exact head; inspect and fix failures, then rerun checks.
+4. Review exact-head sanitized artifact, allowlist, license, provenance and public diff.
+5. Integrate Stage 32 into development main only after blockers and checks pass. Public publication requires a separate explicit approval.
+
 
 ## Stage 31 validation
 
