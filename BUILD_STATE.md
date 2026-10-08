@@ -371,3 +371,8 @@ Latest exact-head snapshot: 16 successes, 14 in progress, zero failures. Stage 3
 ## CI progress refresh — exact head 7442116a9d1857cb1e8409c97fe80b563333bbd6
 
 Latest snapshot: 17 successes, 13 in progress, zero failures. Stage 14 has passed the focused capability and revocation contract tests and is building its live database integration; Stage 13 remains in progress. Continue monitoring for exact-head completion.
+
+
+## CI progress refresh — exact head 7442116a9d1857cb1e8409c97fe80b563333bbd6
+
+Latest snapshot: 28 successes, 2 in progress, zero failures. Stage 14 MCP Agent Gateway passed the new live test proving a grant revoked by the HTTP control-plane stub is rejected through the full MCP → Graph API path: https://github.com/Leruchii/Leruchi-development/actions/runs/37781044047. Stage 13 Graph Studio and Stage 20 Production Readiness are the remaining workflows.
