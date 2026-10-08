@@ -361,3 +361,8 @@ Candidate has not run CI. Re-read this handoff and verify the isolated validatio
 ## CI restart — live revocation integration test candidate 7442116a9d1857cb1e8409c97fe80b563333bbd6
 
 After re-reading the handoff and confirming the branch was at 0116e012955d05681ee943d8e89f9d31e99b8c2f, the isolated branch advanced to 7442116a9d1857cb1e8409c97fe80b563333bbd6. The first observed run is Stage 32 candidate, queued: https://github.com/Leruchii/Leruchi-development/actions/runs/37781034783. Other exact-head workflows were not yet visible. No pass claim until the full matrix completes.
+
+
+## CI progress — live revocation integration candidate 7442116a9d1857cb1e8409c97fe80b563333bbd6
+
+Latest exact-head snapshot: 16 successes, 14 in progress, zero failures. Stage 32 candidate and Architecture Regression Audit passed. Stage 14 MCP Agent Gateway is running the new live revoked-grant check: https://github.com/Leruchii/Leruchi-development/actions/runs/37781044047. Stage 13 is also running. Await the full matrix before claiming success.
