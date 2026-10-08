@@ -135,13 +135,11 @@ Before continuing:
 6. Treat executable evidence as authoritative over stale documentation.
 7. Do not publish or merge Stage 32 without explicit release approval.
 
-## CI result update — 2026-10-08, Auth token integration fixture correction
+## CI result update — 2026-10-08, Auth token fixture fix under validation
 
-The last run on `b1b2ce78a0cc2e2ef47b1c9700638fae56e8a23a` had **15 successes, 1 failure, 1 in progress**. Stage 03 failed only at the new Auth password-grant integration check with `400 invalid_credentials`; earlier hook installation, permissions and fail-closed checks passed. Run: https://github.com/Leruchii/Leruchi-development/actions/runs/37772846771.
+The validation branch has advanced to `b651a880f72474a7dbe09557f6efaa291ebea8c7`, adding the missing `auth.identities` email-provider rows. The prior head `b1b2ce78a0cc2e2ef47b1c9700638fae56e8a23a` failed Stage 03's actual Auth login with `400 invalid_credentials`; all hook installation and fail-closed checks before that step passed: https://github.com/Leruchii/Leruchi-development/actions/runs/37772846771.
 
-Schema review of Supabase Auth migrations confirmed that password-auth users also need an `auth.identities` email-provider row. Candidate fix commit `b651a880f72474a7dbe09557f6efaa291ebea8c7` adds identity rows for both deterministic test users to `tests/security/tenant-claim-hook-fixture.sql`. It is a child of the failed head and has not yet been advanced to the validation branch or run in CI.
-
-Next: advance the validation branch after confirming this checkpoint, inspect the new Stage 03 result and update this handoff after the run. Do not mark production claim issuance as complete until real Auth-issued token assertions pass. PR #64 remains draft; PR #63 unchanged. Do not merge or publish.
+The branch update has completed; exact-head workflow runs were not visible at the first check. Inspect the new Stage 03 run and full matrix, then update this handoff with the result. Production tenant-claim issuance remains blocked until the Auth-issued token test passes. PR #64 remains draft; PR #63 unchanged. Do not merge or publish.
 
 ## Next checkpoint
 
