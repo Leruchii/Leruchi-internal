@@ -10,25 +10,25 @@ This file is the canonical handoff checkpoint for coding agents. Verify it again
 - Public OSS destination: [`Leruchii/Leruchi`](https://github.com/Leruchii/Leruchi).
 - Development `main` HEAD: `2e3997a75c709b58da14c454b356ae9778d1e1be`.
 - Stage 32 candidate branch: `stage32-oss-publication-prep`.
-- Current candidate HEAD: `82b206481d91d6ace403e20aa9b1228450b2b6b3`.
+- Current candidate HEAD: `d39c49aeb2c9a1aae62cf44279494a235361da56`.
 - [PR #63](https://github.com/Leruchii/Leruchi-development/pull/63) is OPEN and DRAFT. Stage 32 is not merged into `main`; public publication has NOT occurred.
 - GitHub compare reports candidate is 0 commits behind but 355 commits ahead of `main`; PR diff is 148 files (5,784 additions / 557 deletions). This is a broad integration diff, not a small Stage 32-only metadata change. Review the full diff and agree on integration strategy before merge.
 
 ### Exact-head CI
-- Candidate SHA `82b206481d91d6ace403e20aa9b1228450b2b6b3`: **36/36 workflow runs completed successfully; 0 failures**.
-- Stage 32 sanitized candidate: [run 37831173631](https://github.com/Leruchii/Leruchi-development/actions/runs/37831173631) — success.
-- Stage 31 OSS Core Readiness: [run 37831184537](https://github.com/Leruchii/Leruchi-development/actions/runs/37831184537) — success.
-- Stage 11 CLI: [run 37831184562](https://github.com/Leruchii/Leruchi-development/actions/runs/37831184562) — success.
-- Stage 13 Graph Studio: [run 37831184654](https://github.com/Leruchii/Leruchi-development/actions/runs/37831184654) — success.
-- Architecture Regression Audit: [run 37831185041](https://github.com/Leruchii/Leruchi-development/actions/runs/37831185041) — success.
-- PR #63 check: [run 37831175615](https://github.com/Leruchii/Leruchi-development/actions/runs/37831175615) — success.
+- Candidate SHA `d39c49aeb2c9a1aae62cf44279494a235361da56`: **36/36 workflow runs completed successfully; 0 failures**.
+- Stage 32 sanitized candidate: [run 37831617690](https://github.com/Leruchii/Leruchi-development/actions/runs/37831617690) — success.
+- Stage 31 OSS Core Readiness: [run 37831626312](https://github.com/Leruchii/Leruchi-development/actions/runs/37831626312) — success.
+- Stage 11 CLI: [run 37831626103](https://github.com/Leruchii/Leruchi-development/actions/runs/37831626103) — success.
+- Stage 13 Graph Studio: [run 37831626076](https://github.com/Leruchii/Leruchi-development/actions/runs/37831626076) — success.
+- Architecture Regression Audit: [run 37831626179](https://github.com/Leruchii/Leruchi-development/actions/runs/37831626179) — success.
+- PR #63 check: [run 37831621640](https://github.com/Leruchii/Leruchi-development/actions/runs/37831621640) — success.
 - Node.js 24 only (`.nvmrc = 24`, package engine `>=24 <25`); Node.js 20 is prohibited.
 - OWASP ASVS 5.0.0 is a verification profile, not a claim of full ASVS compliance.
 
 ### Sanitized OSS artifact — exact candidate SHA
-- Artifact `leruchi-oss-core-candidate`, ID `11574191297`, produced by Stage 32 run `37831173631` for exact SHA `82b206481d91d6ace403e20aa9b1228450b2b6b3`.
+- Artifact `leruchi-oss-core-candidate`, ID `11573287694`, produced by Stage 32 run `37831617690` for exact SHA `d39c49aeb2c9a1aae62cf44279494a235361da56`.
 - Packaged tar.gz SHA-256: `436efd61f12dbc084fd881ef97ce8596629c1f7c4c1f372ee18d37f78f806ca6`.
-- Downloaded artifact ZIP SHA-256: `4ac007427b25c7cbc5f5128e40fbb457604180715033dba7fea31a8ac3f42114`.
+- Downloaded artifact ZIP SHA-256: `c125e8810ec788cbd6eec72dc51b33c5ff531c8047860f3962f6d89debec099a`.
 - Independent archive inspection: 184 files, `.nvmrc = 24`, package engine `>=24 <25`; no retired VibeDB-name or GitHub PAT-pattern matches in exported files.
 - Manifest validation, source export audit, sanitized candidate readiness audit, and reproducible rebuild/package comparison passed.
 - Docker image metadata and OSS readiness/backup test fixtures now use the current Leruchi identity.
