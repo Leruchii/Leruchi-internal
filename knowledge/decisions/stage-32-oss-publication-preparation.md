@@ -66,3 +66,12 @@ Do not publish `Leruchii/Leruchi` until:
 ## Authentication trust-boundary update
 
 The development Graph API now supports explicit JWT issuer and audience validation in addition to signature, expiry and tenant-claim validation. This establishes the verifier-side trust boundary, but it does not by itself prove production identity-provider claim issuance. Production deployment must configure a trusted issuer and audience and provide executable evidence that the tenant claim is bound by that identity system.
+
+
+## Live CI diagnosis — 2026-10-08
+
+The exact current development PR head inspected for continuation is `db3c71af8b3a5275401ba5c77a64cd2b77a5bd3a` (PR #63 remains draft/open and is not merged). The Stage 32 candidate workflow and Stage 31 readiness workflow passed on that head. Stage 03 Supabase compatibility failed because Auth and PostgREST could not authenticate to PostgreSQL.
+
+The failure is caused by a mismatch between passwords defined in `infra/supabase/roles.sql` and the connection URLs in `infra/supabase/docker-compose.yml`: the SQL role setup uses former `vibe_compat_*` password values while the compose URLs use `leruchi_compat_*` values. The currently checked compose file contains only one `GOTRUE_JWT_AUD` mapping; the duplicate-key diagnosis belongs to an older commit snapshot and is not the current failure.
+
+Next action is to align role setup passwords with the compose credentials, then verify Stage 03 and the full required workflow matrix on the exact resulting head. This does not clear the separate production identity-provider tenant-claim issuance release blocker. Do not merge or publish.
