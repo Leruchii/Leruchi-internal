@@ -138,3 +138,6 @@ The direct-SQL Auth user fixture still failed with `400 invalid_credentials` on 
 
 
 The Auth-signup test candidate `10e736a2fc16c34e0fdfd288c129642fb6192b94` has been advanced to the isolated validation branch. Exact-head Actions runs were not visible at the first check. Inspect Stage 03 and update the handoff after results. Do not merge or publish.
+
+
+The Auth-signup test candidate `10e736a2fc16c34e0fdfd288c129642fb6192b94` successfully signed up both test users and logs confirm the custom access-token hook ran for each signup, but the Stage 03 integration step failed before claim assertions because shell variables were accidentally stored with literal backslashes (for example `\${SIGNUP_A}`). Correct the shell expansion and rerun; actual token claim assertions remain unvalidated.
