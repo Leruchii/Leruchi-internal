@@ -392,3 +392,12 @@ Latest snapshot: 29 successes, 1 in progress, zero failures. Stage 14 live revok
 - Stage 32 candidate and Architecture Regression Audit passed: https://github.com/Leruchii/Leruchi-development/actions/runs/37781034783 and https://github.com/Leruchii/Leruchi-development/actions/runs/37781044239
 
 The live test now proves that the data plane rejects a grant marked revoked by the control-plane interface, while active grants continue through MCP → Graph API → PostgreSQL/AGE/RLS. The control plane used in CI is still a test stub. Production issuer deployment, private-key custody/rotation, membership-aware grant issuance, operational revocation reliability, and production Supabase tenant-claim deployment remain release gates. Cloud Control Plane/Billing stages remain deferred; do not merge or publish without explicit release approval.
+
+
+## OSS vs hosted control-plane scope clarification — 2026-10-08
+
+This supersedes wording above that could be read as making the managed Cloud Control Plane a prerequisite for OSS publication. Canonical BUILD_PLAN.md and OSS_BOUNDARY.md mark Stages 18/19 (hosted Cloud Control Plane and Billing/Metering) DEFERRED and state that OSS Core must not require a private Cloud/Enterprise service. Therefore, managed Leruchi Cloud deployment is **not** an OSS publication gate.
+
+The OSS strict-grant runtime does require a configured authorization authority for agent capabilities and fails closed without it. This can be a self-hosted or third-party authority implementing the documented EdDSA issuance/revocation contract; it must not require Leruchi Cloud. Before publication, document the authority endpoint contract, required environment, key rotation, membership-aware issuance obligations, and the fact that the repo contains only a verifier/adapter—not a production issuer. Operator production deployment of the authority and Supabase tenant-claim hook remains an operational deployment responsibility, not evidence that hosted Cloud is complete.
+
+Next: add a public self-hosting security guide for the capability authority contract and confirm the guide is included by OSS_EXPORT_MANIFEST.json. Preserve the current 30/0 exact-head result on 7442116a9d1857cb1e8409c97fe80b563333bbd6 as the validated code baseline. Re-read this handoff before the next workflow run.
