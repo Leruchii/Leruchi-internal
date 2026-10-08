@@ -137,12 +137,9 @@ Before continuing:
 
 ## CI result update — 2026-10-08, MCP route capability + Node.js 24 fix head `d754c43aa666cf37cbfba8fe874411e5ff27add1`
 
-Current exact-head matrix snapshot: **18 successes, 12 in progress, 0 failures**. Stage 25 passed; Stage 14 capability and MCP unit tests have all passed, including the new Graph API route capability denial tests. Stage 02's automated tenant isolation matrix also passed; its Docker database integration portion is still running. Runs:
-- Stage 14: https://github.com/Leruchii/Leruchi-development/actions/runs/37775398178
-- Stage 02: https://github.com/Leruchii/Leruchi-development/actions/runs/37775397959
-- Stage 25: https://github.com/Leruchii/Leruchi-development/actions/runs/37775397907
+Current exact-head matrix snapshot: **29 successes, 1 in progress, 0 failures**. Stage 02 RLS/AGE security passed, including the updated 403/CAPABILITY_DENIED assertion, Node.js 24 runtime, database-backed Graph API tenant isolation, and tenant A/B SQL checks: https://github.com/Leruchii/Leruchi-development/actions/runs/37775397959. Stage 14 MCP route capability unit tests and Stage 25 contract tests also passed.
 
-Wait for the exact-head matrix to complete and record any remaining failures before making another change. Production capability grant issuance/revocation remains open. PR #64 draft; PR #63 unchanged; no merge or publication.
+Only Stage 13 Graph Studio remains in progress: https://github.com/Leruchii/Leruchi-development/actions/runs/37775397964. Wait for it to finish before making further changes, then record the final matrix. Capability grant issuance/revocation control-plane integration remains open. PR #64 draft; PR #63 unchanged; no merge or publication.
 
 ## Next checkpoint
 
