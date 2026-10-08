@@ -222,3 +222,8 @@ Exact head 57dd4815d7137945945c234f5d7ca9970e637bef completed with 30 successes 
 ## Pre-run checkpoint — EdDSA grant verifier candidate, 2026-10-08
 
 Candidate d1a5a2e308e46875045ec39a15f0b1ecfd8bbdf3 has been prepared on top of the 30/0 validated head. Strict Graph API grant verification now uses EdDSA and a key-id-selected public-key ring so the OSS data plane need not hold the control-plane signing secret. Candidate has not run CI. See BUILD_STATE.md; re-read before advancing the validation branch. Production issuer/key custody/rotation and revocation remain release gates.
+
+
+## Asymmetric capability grant matrix result — 2026-10-08
+
+Exact head 0116e012955d05681ee943d8e89f9d31e99b8c2f completed with 30 successes and zero failures. The Graph API strict-grant path now verifies EdDSA-signed grants using a kid-selected public-key ring; CI generates ephemeral test keys and commits no private key. Stage 13 and Stage 14 passed. This validates the OSS verifier and adapter contract, not a production control plane. Production issuer deployment, private-key custody/rotation, membership-aware grant issuance, operational revocation and production tenant-claim deployment remain release gates. Cloud control plane and billing/metering stages remain deferred. No merge or public publication without explicit approval.
