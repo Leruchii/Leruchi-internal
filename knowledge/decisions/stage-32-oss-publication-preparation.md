@@ -93,3 +93,12 @@ Development head `6a3a507c2b4494c33115fbf2672cceeb32fda250` completed its exact-
 Legacy workflow action pins were updated across the remaining 26 workflow files to checkout v5 and setup-node v6, with explicit Node.js 24 setup retained. The current exact-head Stage 32 candidate passed at https://github.com/Leruchii/Leruchi-development/actions/runs/37769880841.
 
 The public repository remains unpublished, PR #63 remains a draft/open PR, and production identity-provider tenant-claim issuance remains a release blocker. The next implementation area is to establish the supported production identity-provider tenant-claim issuance/binding contract, then continue scoped MCP/agent authorization and revocation/audit work. Do not merge or publish without explicit user approval.
+
+
+## Latest handoff — 2026-10-08
+
+The current development head `6a3a507c2b4494c33115fbf2672cceeb32fda250` completed 35 workflow runs successfully with no failures. Stage 13 Graph Studio finished successfully at https://github.com/Leruchii/Leruchi-development/actions/runs/37769880831.
+
+A follow-on read-only audit found optional Supabase service-profile password drift: Storage and Realtime/Supavisor roles in `infra/supabase/roles.sql` still use legacy passwords while Compose expects the Leruchi-prefixed values. The Stage 03 test covers Auth and PostgREST only, so this optional-profile issue is not covered by its passing result.
+
+Next action is to align the two optional-role passwords and add a config consistency test before the next exact-head matrix. Production tenant-claim issuance remains a separate release blocker. Do not merge or publish.
