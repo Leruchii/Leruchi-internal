@@ -75,3 +75,12 @@ The exact current development PR head inspected for continuation is `db3c71af8b3
 The failure is caused by a mismatch between passwords defined in `infra/supabase/roles.sql` and the connection URLs in `infra/supabase/docker-compose.yml`: the SQL role setup uses former `vibe_compat_*` password values while the compose URLs use `leruchi_compat_*` values. The currently checked compose file contains only one `GOTRUE_JWT_AUD` mapping; the duplicate-key diagnosis belongs to an older commit snapshot and is not the current failure.
 
 Next action is to align role setup passwords with the compose credentials, then verify Stage 03 and the full required workflow matrix on the exact resulting head. This does not clear the separate production identity-provider tenant-claim issuance release blocker. Do not merge or publish.
+
+
+## Superseding checkpoint — 2026-10-08
+
+The earlier CI diagnosis above is historical and referred to head `db3c71af8b3a5275401ba5c77a64cd2b77a5bd3a`. The credential mismatch was corrected in `Leruchii/Leruchi-development` commit `199e5100557c533cc287573baf2483e377608868`; Stage 03 Supabase compatibility passed on that exact head at run https://github.com/Leruchii/Leruchi-development/actions/runs/37769250756.
+
+The current development head is `6a3a507c2b4494c33115fbf2672cceeb32fda250`. It upgrades legacy workflow action pins across 26 workflow files to `actions/checkout@v5` and `actions/setup-node@v6`, keeping Node.js 24 configured. The exact-head matrix snapshot is 34 successes and 0 failures, with Stage 13 Graph Studio still in progress at https://github.com/Leruchii/Leruchi-development/actions/runs/37769880831. See `BUILD_STATE.md` for the latest run-by-run handoff. Do not make another development change until this final workflow completes.
+
+The separate production tenant-claim issuance blocker remains unresolved. Verifier-side JWT issuer/audience/signature/expiry and tenant-context validation are not proof that the production identity provider issues and binds the authoritative tenant claim.
