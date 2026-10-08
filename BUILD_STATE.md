@@ -181,3 +181,10 @@ Latest exact-head snapshot: **16 successes, 14 in progress, 0 failures**. Stage 
 Latest snapshot: **28 successes, 2 in progress, 0 failures**. Stage 14 MCP Agent Gateway passed, including strict grant tests, control-plane adapter contract tests, Graph API route checks, live MCP → Graph API → PostgreSQL integration, and architecture regression audit: https://github.com/Leruchii/Leruchi-development/actions/runs/37777685258.
 
 Only Stage 03 Supabase compatibility and Stage 13 Graph Studio remain in progress. Wait for both before declaring the exact-head matrix complete. The live workflow used a test-only control-plane stub; it does not prove production issuer/revocation deployment.
+
+
+## CI result — exact head e268ade8f5caf265e5277fbbccd239fecde69396
+
+The matrix finished with **29 successes, 1 failure**. Stage 14 passed as recorded above. Stage 13 Graph Studio failed: https://github.com/Leruchii/Leruchi-development/actions/runs/37777685084. No other failures are reported on this exact head.
+
+Do not rerun or change the branch until the Stage 13 failure log is inspected and this handoff is re-read. Next step is determine whether the failure is caused by this candidate's strict grant integration or an independent regression; then record the diagnosis and fix plan here before a new commit/run. The production control-plane release gate remains open.
