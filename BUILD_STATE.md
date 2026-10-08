@@ -376,3 +376,8 @@ Latest snapshot: 17 successes, 13 in progress, zero failures. Stage 14 has passe
 ## CI progress refresh — exact head 7442116a9d1857cb1e8409c97fe80b563333bbd6
 
 Latest snapshot: 28 successes, 2 in progress, zero failures. Stage 14 MCP Agent Gateway passed the new live test proving a grant revoked by the HTTP control-plane stub is rejected through the full MCP → Graph API path: https://github.com/Leruchii/Leruchi-development/actions/runs/37781044047. Stage 13 Graph Studio and Stage 20 Production Readiness are the remaining workflows.
+
+
+## CI progress refresh — exact head 7442116a9d1857cb1e8409c97fe80b563333bbd6
+
+Latest snapshot: 29 successes, 1 in progress, zero failures. Stage 14 live revoked-grant integration passed. Stage 13 Graph Studio is the only remaining workflow: https://github.com/Leruchii/Leruchi-development/actions/runs/37781044435.
