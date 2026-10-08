@@ -135,11 +135,14 @@ Before continuing:
 6. Treat executable evidence as authoritative over stale documentation.
 7. Do not publish or merge Stage 32 without explicit release approval.
 
-## CI result update — 2026-10-08, MCP route authorization + Node.js 24 fix head `d754c43aa666cf37cbfba8fe874411e5ff27add1`
+## CI result update — 2026-10-08, MCP route capability + Node.js 24 fix head `d754c43aa666cf37cbfba8fe874411e5ff27add1`
 
-Current exact-head matrix snapshot: **15 successes, 14 in progress, 1 queued, 0 failures**. Stage 25 MCP Agent Tool Contract passed: https://github.com/Leruchii/Leruchi-development/actions/runs/37775397907. Stage 02 RLS/AGE security is running: https://github.com/Leruchii/Leruchi-development/actions/runs/37775397959. Stage 14 MCP Agent Gateway is running: https://github.com/Leruchii/Leruchi-development/actions/runs/37775398178.
+Current exact-head matrix snapshot: **18 successes, 12 in progress, 0 failures**. Stage 25 passed; Stage 14 capability and MCP unit tests have all passed, including the new Graph API route capability denial tests. Stage 02's automated tenant isolation matrix also passed; its Docker database integration portion is still running. Runs:
+- Stage 14: https://github.com/Leruchii/Leruchi-development/actions/runs/37775398178
+- Stage 02: https://github.com/Leruchii/Leruchi-development/actions/runs/37775397959
+- Stage 25: https://github.com/Leruchii/Leruchi-development/actions/runs/37775397907
 
-This head fixes the previous Stage 02 expectation to 403/CAPABILITY_DENIED and pins Node.js 24 in Stage 02/06/07/08. Watch the Stage 02 assertion and Stage 14 API capability tests. Wait for the exact-head matrix and update the handoff after results. Production capability grant issuance/revocation remains a separate open gate. PR #64 draft; PR #63 unchanged; no merge or publication.
+Wait for the exact-head matrix to complete and record any remaining failures before making another change. Production capability grant issuance/revocation remains open. PR #64 draft; PR #63 unchanged; no merge or publication.
 
 ## Next checkpoint
 
