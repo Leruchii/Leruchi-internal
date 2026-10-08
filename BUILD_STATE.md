@@ -169,3 +169,8 @@ The isolated validation branch now points to `e268ade8f5caf265e5277fbbccd239fecd
 Stage 32 candidate workflow is also in progress: https://github.com/Leruchii/Leruchi-development/actions/runs/37777679790. Stage 14 run: https://github.com/Leruchii/Leruchi-development/actions/runs/37777685258.
 
 Do not claim this candidate passed until every exact-head workflow finishes. After completion, inspect any failure logs, fix only after updating this handoff, and rerun the exact new head. Production control-plane deployment remains a release gate.
+
+
+## CI progress refresh — exact head e268ade8f5caf265e5277fbbccd239fecde69396
+
+Latest exact-head snapshot: **16 successes, 14 in progress, 0 failures**. Stage 14 has now also passed the capability-grant contract tests and mutation-approval/audit tests; database image build is running. No failure has been observed yet. The full matrix is still running, so this is not a green-matrix claim.
