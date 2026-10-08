@@ -135,13 +135,11 @@ Before continuing:
 6. Treat executable evidence as authoritative over stale documentation.
 7. Do not publish or merge Stage 32 without explicit release approval.
 
-## CI result update — 2026-10-08, Auth signup integration candidate prepared
+## CI result update — 2026-10-08, Auth signup test head `10e736a2fc16c34e0fdfd288c129642fb6192b94`
 
-The last head `b651a880f72474a7dbe09557f6efaa291ebea8c7` produced **14 successes, 1 Stage 03 failure, 2 in progress**. Directly inserted Auth users still returned `400 invalid_credentials` despite email identity rows: https://github.com/Leruchii/Leruchi-development/actions/runs/37773172780.
+The isolated validation branch has advanced to `10e736a2fc16c34e0fdfd288c129642fb6192b94`. It now creates test users through Supabase Auth signup under test-only overrides, inserts server-managed memberships, logs in through the password grant, asserts active/revoked tenant claims, and checks PostgREST RLS. The Compose defaults remain restrictive.
 
-Candidate commit `10e736a2fc16c34e0fdfd288c129642fb6192b94` changes the test setup to create users through the supported Auth `/signup` endpoint under one-run overrides (email provider enabled, signup enabled, auto-confirm enabled), then adds membership rows and verifies password-grant token claims plus PostgREST RLS isolation. Compose defaults remain restrictive (signup disabled, auto-confirm disabled, email provider disabled). The candidate has not been pushed to the validation branch and has not run CI.
-
-Before advancing the branch, confirm this handoff. Then inspect Stage 03 and the exact-head matrix, and update this record after results. Keep the production tenant-claim blocker open until the Auth-issued token assertions pass. PR #64 remains draft; PR #63 unchanged. Do not merge or publish.
+Exact-head workflow runs were not visible at the first check. Inspect Stage 03 and the full matrix, then update this handoff with results. The previous direct-SQL fixture failure is recorded above. Keep the production tenant-claim blocker open until the actual Auth-issued token test passes. PR #64 remains draft; PR #63 unchanged. Do not merge or publish.
 
 ## Next checkpoint
 
