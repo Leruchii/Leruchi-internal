@@ -135,13 +135,11 @@ Before continuing:
 6. Treat executable evidence as authoritative over stale documentation.
 7. Do not publish or merge Stage 32 without explicit release approval.
 
-## CI result update — 2026-10-08, MCP route capability enforcement candidate prepared
+## CI result update — 2026-10-08, MCP route capability enforcement head `6ed63d32f395ed30f1105bfa13d98cc7383ab575`
 
-The last validated head `d3b251ddee29e9d16a12a42fa0bbfc87d551962f` completed 17 workflows successfully. Stage 03 real Auth-issued tenant claim and PostgREST isolation passed at https://github.com/Leruchii/Leruchi-development/actions/runs/37773858431; Stage 13 final workflow passed at https://github.com/Leruchii/Leruchi-development/actions/runs/37773858093.
+The isolated validation branch has advanced to `6ed63d32f395ed30f1105bfa13d98cc7383ab575`. This candidate adds Graph API route checks: graph query requires `graph:read`; mutation requires `graph:write`; destructive delete also requires `graph:delete`. Denials should happen before catalog/database access. It adds three tests and wires the Graph API API-level test file into Stage 14 CI. Exact-head runs were not visible at the first check.
 
-A code audit found missing explicit capability checks at the Graph API route boundary: graph queries did not directly require `graph:read`, general mutations did not directly require `graph:write`, and destructive deletes did not directly require `graph:delete`. Candidate commit `6ed63d32f395ed30f1105bfa13d98cc7383ab575` adds fail-closed route checks before catalog/database access, tests for each denial path, adds the Graph API route tests to Stage 14 CI, and updates MCP decision docs. It has not yet been advanced to the validation branch or run.
-
-Next: advance the isolated validation branch after confirming this checkpoint; inspect Stage 14, Stage 02, Stage 25 and the exact-head matrix. Update this handoff after the run. Capability grant issuance/revocation remains a separate follow-up; do not claim the production control plane is integrated. PR #64 remains draft; PR #63 unchanged. Do not merge or publish.
+Inspect Stage 14, Stage 02, Stage 25 and the complete exact-head matrix, then update this handoff with results. Capability grant issuance/revocation control-plane integration remains a follow-up gap. PR #64 remains draft; PR #63 unchanged; no merge or publication.
 
 ## Next checkpoint
 
