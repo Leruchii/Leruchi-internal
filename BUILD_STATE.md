@@ -332,3 +332,8 @@ Latest snapshot: 15 successes, 14 in progress, 1 queued, zero failures. Stage 14
 ## CI progress refresh — exact head 0116e012955d05681ee943d8e89f9d31e99b8c2f
 
 Latest snapshot: 24 successes, 6 in progress, zero failures. Stage 13 and Stage 14 remain in progress; all other currently reported workflows have completed successfully. Await both security-sensitive integration workflows before declaring the matrix green.
+
+
+## CI progress refresh — exact head 0116e012955d05681ee943d8e89f9d31e99b8c2f
+
+Latest snapshot: 29 successes, 1 in progress, zero failures. Stage 14 MCP Agent Gateway passed with EdDSA signed grants, public-key verification, mandatory revocation lookup, and live MCP-to-Graph API integration: https://github.com/Leruchii/Leruchi-development/actions/runs/37780390447. Stage 13 Graph Studio is the only remaining workflow and has passed strict Graph API startup/health and its pre-browser checks; browser tests/build remain.
