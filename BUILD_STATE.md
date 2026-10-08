@@ -408,3 +408,8 @@ Next: add a public self-hosting security guide for the capability authority cont
 The previous exact-head matrix on 7442116a9d1857cb1e8409c97fe80b563333bbd6 passed 30 workflows with zero failures. Canonical BUILD_PLAN.md and OSS_BOUNDARY.md say managed Cloud Control Plane/Billing are deferred and must not be prerequisites for OSS Core. The OSS runtime currently supplies the EdDSA grant verifier and revocation adapter, not a production issuer. A self-hosted/third-party authority is required for strict agent capabilities, and the runtime fails closed without it; this must be documented without requiring Leruchi Cloud.
 
 Candidate commit c42da68705390cd9e8651d5640ec10b56874c0ab adds docs/security/capability-grants.md and links it from README/package docs. It documents the grant claims, revocation endpoint contract, env configuration, key rotation, membership-aware issuance and fail-closed operational requirements. The guide is eligible under OSS_EXPORT_MANIFEST.json docs/**. Candidate has not run CI. Re-read this handoff and confirm branch head 7442116a9d1857cb1e8409c97fe80b563333bbd6 before advancing; then verify Stage 32 export audit and exact-head matrix.
+
+
+## CI restart — self-hosted capability authority guide c42da68705390cd9e8651d5640ec10b56874c0ab
+
+After re-reading the handoff and confirming the validation branch was at 7442116a9d1857cb1e8409c97fe80b563333bbd6, the branch advanced to c42da68705390cd9e8651d5640ec10b56874c0ab. The first observed run is Stage 32 publication candidate, queued: https://github.com/Leruchii/Leruchi-development/actions/runs/37781915041. Other exact-head workflows were not yet visible. No pass claim until the export audit and full matrix finish.
