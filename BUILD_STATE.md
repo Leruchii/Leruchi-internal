@@ -305,3 +305,10 @@ Latest exact-head snapshot: 12 successes, 17 in progress, and one failure. The S
 The Stage 32 publication candidate failed the OWASP ASVS credential/private-key scan because the test fixture committed a PEM-formatted private test key at tests/fixtures/capability-grant-test-key.mjs. This is a test-key fixture hygiene issue, not a production credential leak, but the gate correctly blocks shipping private-key material in source.
 
 Fix plan: remove the static PEM from the repository. Generate an ephemeral Ed25519 keypair during Stage 13/14 CI; pass the public DER key to the Graph API launcher and point the test token helper at the ephemeral private-key file. For unit tests, the helper may generate an in-memory ephemeral pair. This preserves asymmetric signing tests without a committed private key. Re-read this handoff before creating a new candidate and do not rerun until the candidate SHA is recorded here.
+
+
+## Pre-run checkpoint — ephemeral EdDSA CI keys, 2026-10-08
+
+The previous candidate d1a5a2e308e46875045ec39a15f0b1ecfd8bbdf3 failed only the Stage 32 OWASP ASVS credential scan because a PEM private test key was committed under tests/fixtures. The fix removes the static key and generates an ephemeral Ed25519 keypair in Stage 13/14 workflows. The Graph API receives the public DER key; test helpers use the runner's temporary private key. Unit tests generate an in-memory pair. No private key material is embedded in source.
+
+New candidate commit: 0116e012955d05681ee943d8e89f9d31e99b8c2f. It includes the EdDSA public-key verifier, updated production launcher, key rotation documentation, updated strict-grant tests, and the ephemeral CI key workflow fix. It has not run CI. Re-read this handoff and verify the validation branch is still at d1a5a2e308e46875045ec39a15f0b1ecfd8bbdf3 before advancing. After the run, record exact-head results and any failures here. Production control-plane issuance, private-key custody/rotation and operational revocation remain release gates.
