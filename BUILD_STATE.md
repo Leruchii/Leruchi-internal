@@ -135,11 +135,13 @@ Before continuing:
 6. Treat executable evidence as authoritative over stale documentation.
 7. Do not publish or merge Stage 32 without explicit release approval.
 
-## CI result update — 2026-10-08, exact head `07c76120856165c5a4dc98cb9aa223f20cbc8b06`
+## CI result update — 2026-10-08, active branch head `07c76120856165c5a4dc98cb9aa223f20cbc8b06`
 
-Exact-head matrix complete: **35 successes, 0 failures**. Stage 03 Supabase compatibility passed with the four-role credential consistency test and Auth/PostgREST RLS integration: https://github.com/Leruchii/Leruchi-development/actions/runs/37770360944. Final Stage 13 Graph Studio passed: https://github.com/Leruchii/Leruchi-development/actions/runs/37770360696.
+The active branch's exact-head matrix is green: 35 successes, 0 failures. Stage 03 compatibility passed with the four-role credential test at https://github.com/Leruchii/Leruchi-development/actions/runs/37770360944, and final Stage 13 Graph Studio passed at https://github.com/Leruchii/Leruchi-development/actions/runs/37770360696.
 
-PR #63 remains draft/open, not merged; public publication has not occurred. Next action: implement and validate authoritative production tenant-claim issuance/binding through Supabase Auth, then continue scoped MCP/agent authorization and revocation/audit. Do not merge or publish; tenant-claim issuance remains a release blocker.
+The next security design is a Supabase Auth custom access-token hook backed by private, server-managed tenant memberships. Candidate commit object `a22dee14c274f0c9abfddbd0ed45bf3181b2374c` was created with hook SQL, Compose configuration, contract test and Stage 03 checks, but the active PR branch was not advanced to it. It has not run CI and must not be treated as implemented or validated. The current branch remains `07c76120856165c5a4dc98cb9aa223f20cbc8b06`.
+
+Before proceeding, inspect the candidate change and establish a safe, supported way to apply it to the active branch. Do not merge or publish; production tenant-claim issuance remains a release blocker.
 
 ## Next checkpoint
 
