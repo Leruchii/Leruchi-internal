@@ -317,3 +317,8 @@ New candidate commit: 0116e012955d05681ee943d8e89f9d31e99b8c2f. It includes the 
 ## CI restart — ephemeral EdDSA key candidate 0116e012955d05681ee943d8e89f9d31e99b8c2f
 
 After re-reading the handoff and confirming the isolated branch was at d1a5a2e308e46875045ec39a15f0b1ecfd8bbdf3, the branch advanced to 0116e012955d05681ee943d8e89f9d31e99b8c2f. The first observed run is Stage 32 candidate, queued: https://github.com/Leruchii/Leruchi-development/actions/runs/37780381790. Other exact-head workflows were not yet visible at this check. No pass claim until the full matrix completes.
+
+
+## CI progress — ephemeral EdDSA key candidate 0116e012955d05681ee943d8e89f9d31e99b8c2f
+
+Latest exact-head snapshot: 12 successes, 16 in progress, 2 queued, zero failures. Stage 32 publication-candidate workflow passed, and Architecture Regression Audit, Stage State Gate, Stages 04/05/06/16/23/26A/26C/27/28 are among the completed successes. Stage 13 and Stage 14 remain in progress/queued. Continue monitoring the exact SHA; no full-matrix pass claim yet.
