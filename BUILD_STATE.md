@@ -281,3 +281,10 @@ Latest snapshot: 29 successes, 1 in progress, zero failures. Stage 20 Production
 - Stage 20 Production Readiness passed; full matrix has no failures.
 
 Strict grant mode now validates signed tenant-bound grants and checks jti revocation through an authenticated control-plane adapter; optional route/graph scopes are enforced. CI used a test-only control-plane stub. This does not prove production control-plane deployment, secure key lifecycle, production grant issuance, or operational revocation propagation. Those remain release gates. PR #64 remains a draft validation PR; PR #63 remains unchanged. Do not merge or publish without release-gate completion and explicit approval.
+
+
+## Pre-run checkpoint — EdDSA capability grant verifier, 2026-10-08
+
+Handoff was re-read after the 30/0 matrix on exact head 57dd4815d7137945945c234f5d7ca9970e637bef. Next candidate commit: d1a5a2e308e46875045ec39a15f0b1ecfd8bbdf3. It replaces strict-mode HS256/shared-secret grant verification with EdDSA JWT verification using a kid-selected public-key ring, requires actor sub and canonical signed claims, documents public-key rotation, and updates Stage 13/14 integration tests to use a test-only Ed25519 key fixture. The production launcher now needs public keys and issuer configuration, not a shared signing secret. Revocation remains a mandatory external fail-closed check.
+
+This candidate has not run CI. Before advancing the isolated validation branch, re-read this handoff and verify the branch is still at 57dd4815d7137945945c234f5d7ca9970e637bef. After advancing, record exact-head workflow results and inspect any failures. Production control-plane deployment, private-key custody/rotation, membership-aware issuance and operational revocation remain release gates; do not merge or publish.
