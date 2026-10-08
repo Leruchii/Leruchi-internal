@@ -205,3 +205,8 @@ The prior head e268ade8f5caf265e5277fbbccd239fecde69396 had 29 successes and one
 ## CI restart — Stage 13 workflow fix candidate b806511f854b33b125e04d6c787351813acf1fd5
 
 The isolated validation branch advanced from e268ade8f5caf265e5277fbbccd239fecde69396 to b806511f854b33b125e04d6c787351813acf1fd5 after the handoff was re-read. The first observed run is Stage 32 candidate, queued: https://github.com/Leruchii/Leruchi-development/actions/runs/37778305792. The rest of the exact-head workflow matrix was not yet visible at this check. No pass claim; inspect all runs on this exact SHA and update this handoff when the matrix completes.
+
+
+## CI progress — Stage 13 fix candidate b806511f854b33b125e04d6c787351813acf1fd5
+
+Latest exact-head snapshot: 10 successes, 20 in progress, zero failures. Stage 13 Graph Studio is running: https://github.com/Leruchii/Leruchi-development/actions/runs/37778312543. Stage 14 is running: https://github.com/Leruchii/Leruchi-development/actions/runs/37778312512. The Stage 32 candidate passed: https://github.com/Leruchii/Leruchi-development/actions/runs/37778305792. Matrix remains in progress; no overall pass claim yet.
