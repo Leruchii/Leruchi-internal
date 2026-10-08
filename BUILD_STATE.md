@@ -137,11 +137,15 @@ Before continuing:
 
 ## CI result update — 2026-10-08, exact head `07c76120856165c5a4dc98cb9aa223f20cbc8b06`
 
-Current exact-head matrix snapshot: {"success":32,"in_progress":3}; no failures recorded.
+The optional Supabase credential fix matrix now has **33 successes, 2 in progress, 0 failures**.
 
-Stage 03 Supabase compatibility **PASS** — https://github.com/Leruchii/Leruchi-development/actions/runs/37770360944. This run includes the new four-role SQL/Compose credential consistency tests and the Auth/PostgREST RLS integration path. Stage 32 candidate, Stage 31 readiness, Stage State Gate, and the focused architecture/security checks have also passed at this snapshot.
+Stage 03 Supabase compatibility passed, including the new four-role SQL/Compose credential consistency tests and Auth/PostgREST RLS integration: https://github.com/Leruchii/Leruchi-development/actions/runs/37770360944
 
-Wait for remaining exact-head workflows to finish before another development change. Do not merge or publish; production tenant-claim issuance remains a release blocker.
+Only Stage 13 Graph Studio and Stage 14 MCP Agent Gateway remain in progress:
+- https://github.com/Leruchii/Leruchi-development/actions/runs/37770360696
+- https://github.com/Leruchii/Leruchi-development/actions/runs/37770360721
+
+Wait for both results, then update this handoff again before the next development change. Do not merge or publish; production tenant-claim issuance remains a release blocker.
 
 ## Next checkpoint
 
