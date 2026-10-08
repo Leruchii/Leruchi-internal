@@ -135,13 +135,13 @@ Before continuing:
 6. Treat executable evidence as authoritative over stale documentation.
 7. Do not publish or merge Stage 32 without explicit release approval.
 
-## CI result update — 2026-10-08, tenant claim issuance green; MCP authorization audit next
+## CI result update — 2026-10-08, MCP route capability enforcement candidate prepared
 
-The exact-head matrix on `d3b251ddee29e9d16a12a42fa0bbfc87d551962f` is complete: **17 successes, 0 failures**. Stage 03 actual Auth-issued tenant claim and PostgREST RLS integration passed at https://github.com/Leruchii/Leruchi-development/actions/runs/37773858431; Stage 13 was final and passed at https://github.com/Leruchii/Leruchi-development/actions/runs/37773858093.
+The last validated head `d3b251ddee29e9d16a12a42fa0bbfc87d551962f` completed 17 workflows successfully. Stage 03 real Auth-issued tenant claim and PostgREST isolation passed at https://github.com/Leruchii/Leruchi-development/actions/runs/37773858431; Stage 13 final workflow passed at https://github.com/Leruchii/Leruchi-development/actions/runs/37773858093.
 
-Before continuing Stage 32, the MCP/agent authorization code is under review. The current implementation has canonical capability vocabulary, scoped grant validation helpers, route-level checks for catalog/retrieval/context/agent intent, and mutation approval checks. Initial inspection suggests graph query and general graph mutation paths may not enforce `graph:read` / `graph:write` at the Graph API boundary; destructive delete must additionally require `graph:delete`. Verify with current tests, add fail-closed route checks and tests if missing, and keep capability grant/revocation control-plane integration explicit rather than pretending it already exists.
+A code audit found missing explicit capability checks at the Graph API route boundary: graph queries did not directly require `graph:read`, general mutations did not directly require `graph:write`, and destructive deletes did not directly require `graph:delete`. Candidate commit `6ed63d32f395ed30f1105bfa13d98cc7383ab575` adds fail-closed route checks before catalog/database access, tests for each denial path, adds the Graph API route tests to Stage 14 CI, and updates MCP decision docs. It has not yet been advanced to the validation branch or run.
 
-No new workflow run has been triggered for this audit yet. Before triggering the next matrix, update this handoff with the exact candidate SHA and test scope. PR #64 remains draft; PR #63 unchanged. Production rollout configuration still needs confirmation. Do not merge or publish.
+Next: advance the isolated validation branch after confirming this checkpoint; inspect Stage 14, Stage 02, Stage 25 and the exact-head matrix. Update this handoff after the run. Capability grant issuance/revocation remains a separate follow-up; do not claim the production control plane is integrated. PR #64 remains draft; PR #63 unchanged. Do not merge or publish.
 
 ## Next checkpoint
 
