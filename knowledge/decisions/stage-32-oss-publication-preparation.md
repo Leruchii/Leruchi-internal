@@ -84,3 +84,12 @@ The earlier CI diagnosis above is historical and referred to head `db3c71af8b3a5
 The current development head is `6a3a507c2b4494c33115fbf2672cceeb32fda250`. It upgrades legacy workflow action pins across 26 workflow files to `actions/checkout@v5` and `actions/setup-node@v6`, keeping Node.js 24 configured. The exact-head matrix snapshot is 34 successes and 0 failures, with Stage 13 Graph Studio still in progress at https://github.com/Leruchii/Leruchi-development/actions/runs/37769880831. See `BUILD_STATE.md` for the latest run-by-run handoff. Do not make another development change until this final workflow completes.
 
 The separate production tenant-claim issuance blocker remains unresolved. Verifier-side JWT issuer/audience/signature/expiry and tenant-context validation are not proof that the production identity provider issues and binds the authoritative tenant claim.
+
+
+## Final exact-head validation — 2026-10-08
+
+Development head `6a3a507c2b4494c33115fbf2672cceeb32fda250` completed its exact-head workflow matrix with 35 successes and zero failures. Stage 13 Graph Studio was the final workflow to finish successfully: https://github.com/Leruchii/Leruchi-development/actions/runs/37769880831. Stage 32 candidate and Stage 31 readiness also passed on this head. The earlier Stage 03 compatibility password mismatch was fixed and validated at https://github.com/Leruchii/Leruchi-development/actions/runs/37769250756.
+
+Legacy workflow action pins were updated across the remaining 26 workflow files to checkout v5 and setup-node v6, with explicit Node.js 24 setup retained. The current exact-head Stage 32 candidate passed at https://github.com/Leruchii/Leruchi-development/actions/runs/37769880841.
+
+The public repository remains unpublished, PR #63 remains a draft/open PR, and production identity-provider tenant-claim issuance remains a release blocker. The next implementation area is to establish the supported production identity-provider tenant-claim issuance/binding contract, then continue scoped MCP/agent authorization and revocation/audit work. Do not merge or publish without explicit user approval.
