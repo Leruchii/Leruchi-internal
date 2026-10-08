@@ -147,3 +147,10 @@ Shell expansion fix candidate `d3b251ddee29e9d16a12a42fa0bbfc87d551962f` removes
 
 
 Validation branch advanced to `d3b251ddee29e9d16a12a42fa0bbfc87d551962f` to correct shell variable expansion. CI runs were not visible at the first check; inspect Stage 03 and record exact results in `BUILD_STATE.md`. Do not merge or publish.
+
+
+## Real Auth-issued tenant claim integration passed — 2026-10-08
+
+Stage 03 passed on head `d3b251ddee29e9d16a12a42fa0bbfc87d551962f`: https://github.com/Leruchii/Leruchi-development/actions/runs/37773858431. The test creates users via Auth signup, seeds authoritative membership rows, signs in via password grant, asserts an active membership issues `tenant_id=tenant_a`, asserts a revoked tenant selector omits `tenant_id`, and verifies PostgREST tenant isolation. Hook installation, private grants, fail-closed behavior and the existing signed-JWT RLS check passed too.
+
+This validates the self-hosted test deployment's actual Auth issuance path; production readiness still requires verifying equivalent configuration and membership provisioning in the supported production setup. At handoff update time, 11 workflows had passed and 6 remained in progress. PR #64 remains draft, PR #63 unchanged; do not merge or publish.
