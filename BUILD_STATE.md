@@ -135,16 +135,13 @@ Before continuing:
 6. Treat executable evidence as authoritative over stale documentation.
 7. Do not publish or merge Stage 32 without explicit release approval.
 
-## CI result update — 2026-10-08, current head `07c76120856165c5a4dc98cb9aa223f20cbc8b06`
+## CI result update — 2026-10-08, exact head `07c76120856165c5a4dc98cb9aa223f20cbc8b06`
 
-The previous head `6a3a507c2b4494c33115fbf2672cceeb32fda250` completed with 35 successes and zero failures.
+The optional Supabase credential fix is under exact-head validation. Snapshot: 20 successes, 14 in progress, 1 queued, 0 failures.
 
-The next compatibility fix is committed as `07c76120856165c5a4dc98cb9aa223f20cbc8b06`:
-- Align optional Storage and Realtime/Supavisor role passwords with Compose.
-- Add `tests/security/supabase-role-credentials.test.mjs` to assert all four Supabase role credentials match between SQL and Compose.
-- Run this test under Node.js 24 in Stage 03.
+The new Stage 03 credential consistency test passed; the full Stage 03 workflow is still running while the database image builds: https://github.com/Leruchii/Leruchi-development/actions/runs/37770360944
 
-The exact-head matrix is now running. Do not make another development change until it completes. Do not merge or publish; production identity-provider tenant-claim issuance remains a release blocker.
+Stage 32 candidate, Stage 31 readiness, Stage 30 trace, Stage 25 MCP contract, Stage State Gate and Architecture Regression Audit have passed on this head. Wait for the exact-head matrix to finish before another development change. Do not merge or publish; production tenant-claim issuance remains a release blocker.
 
 ## Next checkpoint
 
