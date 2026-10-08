@@ -154,3 +154,10 @@ Validation branch advanced to `d3b251ddee29e9d16a12a42fa0bbfc87d551962f` to corr
 Stage 03 passed on head `d3b251ddee29e9d16a12a42fa0bbfc87d551962f`: https://github.com/Leruchii/Leruchi-development/actions/runs/37773858431. The test creates users via Auth signup, seeds authoritative membership rows, signs in via password grant, asserts an active membership issues `tenant_id=tenant_a`, asserts a revoked tenant selector omits `tenant_id`, and verifies PostgREST tenant isolation. Hook installation, private grants, fail-closed behavior and the existing signed-JWT RLS check passed too.
 
 This validates the self-hosted test deployment's actual Auth issuance path; production readiness still requires verifying equivalent configuration and membership provisioning in the supported production setup. At handoff update time, 11 workflows had passed and 6 remained in progress. PR #64 remains draft, PR #63 unchanged; do not merge or publish.
+
+
+## Final Auth-issued tenant claim integration result — 2026-10-08
+
+Head `d3b251ddee29e9d16a12a42fa0bbfc87d551962f` completed 17 workflow runs successfully with zero failures. Stage 03 passed real Auth signup/password-grant token issuance and PostgREST isolation: https://github.com/Leruchii/Leruchi-development/actions/runs/37773858431. Stage 13 Graph Studio was the final workflow and passed: https://github.com/Leruchii/Leruchi-development/actions/runs/37773858093.
+
+Active membership issues the expected `tenant_id`; revoked tenant selection omits it; PostgREST returns no cross-tenant rows. This validates the self-hosted test configuration, not production deployment. Before release, verify production Auth hook configuration and server-managed membership provisioning. Next development area: scoped MCP/agent capability authorization, tool-level authorization, revocation and audit. PR #64 remains draft; PR #63 unchanged; do not merge or publish without explicit approval.
