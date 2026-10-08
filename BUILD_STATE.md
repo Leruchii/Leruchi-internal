@@ -135,11 +135,13 @@ Before continuing:
 6. Treat executable evidence as authoritative over stale documentation.
 7. Do not publish or merge Stage 32 without explicit release approval.
 
-## CI result update — 2026-10-08, real Auth token test candidate head `b1b2ce78a0cc2e2ef47b1c9700638fae56e8a23a`
+## CI result update — 2026-10-08, real Auth token candidate head `b1b2ce78a0cc2e2ef47b1c9700638fae56e8a23a`
 
-The new exact-head matrix has **6 successes, 11 in progress, 0 failures**. Stage 32 candidate, Stage State Gate, Architecture Regression Audit and Stages 04/05/06/10 have passed. Stage 03 Supabase compatibility is running: https://github.com/Leruchii/Leruchi-development/actions/runs/37772846771.
+Exact-head matrix snapshot: **15 successes, 1 failure, 1 in progress**. Stage 03 failed at the new real Auth token login check; Stage 03 role credential and hook contract tests, database startup, hook installation, grants and fail-closed SQL checks all passed before that point. Run: https://github.com/Leruchii/Leruchi-development/actions/runs/37772846771.
 
-This head adds actual Supabase Auth password-grant requests for two seeded users, checks active-membership claim issuance and revoked-selector claim omission, then verifies PostgREST RLS isolation. The workflow enables email/password only for this test run; the default Compose setting remains disabled. Await the Stage 03 result and remaining exact-head matrix before further changes. Keep the release blocker open until the real token assertions pass. PR #64 remains draft; PR #63 unchanged. Do not merge or publish.
+Failure observed in Auth logs: password-grant request returned `400 invalid_credentials` for a fixture user inserted directly into `auth.users`. The fixture likely needs the corresponding `auth.identities` email-provider row; inspect the Auth schema/identity requirements before changing it. The actual issuance gate remains unproven. Do not claim the tenant hook is production-ready.
+
+Do not advance or change the validation branch until the handoff has been checked. Next: correct the test fixture, update this handoff, and rerun the exact-head matrix. PR #64 remains draft; PR #63 unchanged. Do not merge or publish.
 
 ## Next checkpoint
 
