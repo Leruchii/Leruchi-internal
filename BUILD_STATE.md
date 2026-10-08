@@ -135,11 +135,17 @@ Before continuing:
 6. Treat executable evidence as authoritative over stale documentation.
 7. Do not publish or merge Stage 32 without explicit release approval.
 
-## CI result update — 2026-10-08, shell expansion fix head `d3b251ddee29e9d16a12a42fa0bbfc87d551962f`
+## CI result update — 2026-10-08, real Auth token assertions pass on `d3b251ddee29e9d16a12a42fa0bbfc87d551962f`
 
-The exact-head matrix snapshot is **6 successes, 11 in progress, 0 failures**. Stage 32 candidate, Stage State Gate, Architecture Regression Audit, Stages 05/06/10 have passed. Stage 03 is running at https://github.com/Leruchii/Leruchi-development/actions/runs/37773858431.
+The exact-head matrix snapshot is **11 successes, 6 in progress, 0 failures**. **Stage 03 Supabase compatibility passed**, including the new end-to-end Auth token integration: https://github.com/Leruchii/Leruchi-development/actions/runs/37773858431.
 
-This head removes unintended backslashes from shell variable references in the Auth signup integration test. Watch the Stage 03 step that creates users, adds memberships, obtains Auth-issued tokens, and asserts tenant claims and PostgREST isolation. Wait for exact-head results and update this handoff after completion. Production tenant-claim issuance remains blocked until those assertions pass. PR #64 remains draft; PR #63 unchanged; no merge or publication.
+The test now creates users through the Auth signup endpoint, adds server-managed memberships, logs in through the password grant, and verifies:
+- active membership issues `tenant_id=tenant_a`;
+- selecting a revoked/unassigned tenant omits `tenant_id`;
+- PostgREST RLS returns only Tenant A rows for the authorized token and no tenant rows for the token without an authorized claim.
+The test also confirms hook install, private membership grants, fail-closed behavior, and the existing signed-JWT RLS check.
+
+This is the first successful evidence for the self-hosted Supabase Auth issuance path in this test environment. It does not automatically clear production deployment readiness; verify the same hook configuration and membership provisioning path in the supported production setup before release. Six matrix workflows remain in progress; wait for all results before further development changes. PR #64 remains draft; PR #63 unchanged. Do not merge or publish.
 
 ## Next checkpoint
 
