@@ -137,22 +137,22 @@ Before continuing:
 
 ## CI result update — 2026-10-08, exact head `199e5100557c533cc287573baf2483e377608868`
 
-The Stage 03 credential alignment was committed to `stage32-oss-publication-prep`. GitHub Actions has started the exact-head regression matrix. Snapshot at this handoff update: {"in_progress":15,"success":20}.
+The Stage 03 compatibility role password mismatch was fixed in this commit. GitHub Actions regression matrix snapshot: {"success":27,"in_progress":8}; no failures are recorded at this snapshot.
 
-- Stage 32 OSS Core Publication Candidate: **PASS** — [run 37769250397](https://github.com/Leruchii/Leruchi-development/actions/runs/37769250397). Candidate creation, runtime-policy enforcement, ASVS verification gate, tenant/realtime boundary checks, export manifest, export audit, packaging and artifact upload all passed.
+- Stage 32 OSS Core Publication Candidate: **PASS** — [run 37769250397](https://github.com/Leruchii/Leruchi-development/actions/runs/37769250397). Candidate build, Node runtime policy, ASVS verification gate, tenant/realtime boundary, export manifest/audit, packaging and artifact upload passed.
 - Stage State Gate: **PASS** — [run 37769251598](https://github.com/Leruchii/Leruchi-development/actions/runs/37769251598).
-- Stage 03 Supabase compatibility: still running at snapshot — [run 37769250756](https://github.com/Leruchii/Leruchi-development/actions/runs/37769250756). Do not claim the credential fix validated until this run completes successfully.
-- Other exact-head workflow statuses at snapshot:
-- Stage 12 Graph Realtime: in_progress — [run 37769251173](https://github.com/Leruchii/Leruchi-development/actions/runs/37769251173)
+- Stage 12 Graph Realtime has now completed successfully — [run 37769251173](https://github.com/Leruchii/Leruchi-development/actions/runs/37769251173).
+- Stage 03 Supabase compatibility remains in progress at this snapshot — [run 37769250756](https://github.com/Leruchii/Leruchi-development/actions/runs/37769250756). The password correction is not validated until this run completes.
+- Exact-head workflow snapshot:
 - Stage State Gate: success — [run 37769251598](https://github.com/Leruchii/Leruchi-development/actions/runs/37769251598)
-- Stage 14 MCP Agent Gateway: in_progress — [run 37769250488](https://github.com/Leruchii/Leruchi-development/actions/runs/37769250488)
-- Stage 01 database foundation: in_progress — [run 37769250713](https://github.com/Leruchii/Leruchi-development/actions/runs/37769250713)
+- Stage 12 Graph Realtime: success — [run 37769251173](https://github.com/Leruchii/Leruchi-development/actions/runs/37769251173)
+- Stage 14 MCP Agent Gateway: success — [run 37769250488](https://github.com/Leruchii/Leruchi-development/actions/runs/37769250488)
 - Stage 07 Apache AGE Compiler: in_progress — [run 37769250826](https://github.com/Leruchii/Leruchi-development/actions/runs/37769250826)
 - Stage 13 Graph Studio: in_progress — [run 37769250709](https://github.com/Leruchii/Leruchi-development/actions/runs/37769250709)
 - Stage 02 RLS and AGE security: in_progress — [run 37769250482](https://github.com/Leruchii/Leruchi-development/actions/runs/37769250482)
 - Stage 17 Backup and Recovery: in_progress — [run 37769250805](https://github.com/Leruchii/Leruchi-development/actions/runs/37769250805)
-- Stage 21 PostgreSQL Recursive Compiler: in_progress — [run 37769250711](https://github.com/Leruchii/Leruchi-development/actions/runs/37769250711)
-- Stage 15 GraphRAG: in_progress — [run 37769250920](https://github.com/Leruchii/Leruchi-development/actions/runs/37769250920)
+- Stage 21 PostgreSQL Recursive Compiler: success — [run 37769250711](https://github.com/Leruchii/Leruchi-development/actions/runs/37769250711)
+- Stage 15 GraphRAG: success — [run 37769250920](https://github.com/Leruchii/Leruchi-development/actions/runs/37769250920)
 - Stage 10 JavaScript SDK: success — [run 37769250646](https://github.com/Leruchii/Leruchi-development/actions/runs/37769250646)
 - Stage 25 MCP Agent Tool Contract and Input Safety: success — [run 37769250429](https://github.com/Leruchii/Leruchi-development/actions/runs/37769250429)
 - Stage 26B - Agent Native Context IR: success — [run 37769250849](https://github.com/Leruchii/Leruchi-development/actions/runs/37769250849)
@@ -167,19 +167,20 @@ The Stage 03 credential alignment was committed to `stage32-oss-publication-prep
 - Stage 06 Query Validation: success — [run 37769250446](https://github.com/Leruchii/Leruchi-development/actions/runs/37769250446)
 - Stage 22 Retrieval Planner: success — [run 37769250753](https://github.com/Leruchii/Leruchi-development/actions/runs/37769250753)
 - Stage 26C - Context Resolution: success — [run 37769250393](https://github.com/Leruchii/Leruchi-development/actions/runs/37769250393)
-- Stage 11 CLI: in_progress — [run 37769250776](https://github.com/Leruchii/Leruchi-development/actions/runs/37769250776)
+- Stage 11 CLI: success — [run 37769250776](https://github.com/Leruchii/Leruchi-development/actions/runs/37769250776)
 - Stage 03 Supabase compatibility: in_progress — [run 37769250756](https://github.com/Leruchii/Leruchi-development/actions/runs/37769250756)
 - Stage 08 Secure Execution Engine: in_progress — [run 37769250458](https://github.com/Leruchii/Leruchi-development/actions/runs/37769250458)
 - Stage 20 Production Readiness: in_progress — [run 37769250847](https://github.com/Leruchii/Leruchi-development/actions/runs/37769250847)
-- Stage 09 Graph Mutations: in_progress — [run 37769250616](https://github.com/Leruchii/Leruchi-development/actions/runs/37769250616)
 - Stage 05 Query IR: success — [run 37769250991](https://github.com/Leruchii/Leruchi-development/actions/runs/37769250991)
 - Stage 31 - OSS Core Readiness: success — [run 37769250470](https://github.com/Leruchii/Leruchi-development/actions/runs/37769250470)
 - Stage 24 Retrieval Explainability and Agent Safety: success — [run 37769250453](https://github.com/Leruchii/Leruchi-development/actions/runs/37769250453)
 - Stage 30 Agent Trace Checks: success — [run 37769250412](https://github.com/Leruchii/Leruchi-development/actions/runs/37769250412)
 - Stage 04 Schema Catalog: in_progress — [run 37769250653](https://github.com/Leruchii/Leruchi-development/actions/runs/37769250653)
+- Stage 01 database foundation: success — [run 37769250713](https://github.com/Leruchii/Leruchi-development/actions/runs/37769250713)
+- Stage 09 Graph Mutations: success — [run 37769250616](https://github.com/Leruchii/Leruchi-development/actions/runs/37769250616)
 - Stage 32 - OSS Core Publication Candidate: success — [run 37769243099](https://github.com/Leruchii/Leruchi-development/actions/runs/37769243099)
 
-Do not start another change until the currently running exact-head workflows complete and their failures, if any, are diagnosed. Update this handoff again after each meaningful workflow completion. Do not merge or publish; production identity-provider tenant-claim issuance remains a release blocker.
+Do not start another development change until the running exact-head workflows complete and any failures are diagnosed. Update this handoff again as workflow results arrive. Do not merge or publish; production identity-provider tenant-claim issuance remains a release blocker.
 
 ## Next checkpoint
 
