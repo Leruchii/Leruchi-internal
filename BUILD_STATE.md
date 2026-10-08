@@ -366,3 +366,8 @@ After re-reading the handoff and confirming the branch was at 0116e012955d05681e
 ## CI progress — live revocation integration candidate 7442116a9d1857cb1e8409c97fe80b563333bbd6
 
 Latest exact-head snapshot: 16 successes, 14 in progress, zero failures. Stage 32 candidate and Architecture Regression Audit passed. Stage 14 MCP Agent Gateway is running the new live revoked-grant check: https://github.com/Leruchii/Leruchi-development/actions/runs/37781044047. Stage 13 is also running. Await the full matrix before claiming success.
+
+
+## CI progress refresh — exact head 7442116a9d1857cb1e8409c97fe80b563333bbd6
+
+Latest snapshot: 17 successes, 13 in progress, zero failures. Stage 14 has passed the focused capability and revocation contract tests and is building its live database integration; Stage 13 remains in progress. Continue monitoring for exact-head completion.
