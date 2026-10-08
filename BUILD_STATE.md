@@ -232,3 +232,10 @@ The exact-head matrix completed with 29 successes and one failure. Stage 13 now 
 The strict launcher/configuration fix worked: Graph API startup and health checks passed. The remaining failure is in `tests/browser/live-composition.spec.ts`: its cookie token is legacy-shaped and lacks the new signed-grant claims (`iss`, `jti`, `aud=leruchi`), so `/api/studio/catalog` never returns the expected HTTP 200 and Playwright times out waiting for that response. Six other browser tests passed. This is test-fixture drift from strict grant enforcement, not a Studio renderer failure.
 
 Fix plan: update the browser test token helper to include the configured issuer, unique jti, audience, tenant, expiry and canonical graph capabilities; the test control-plane stub already authorizes active JTIs. Then record a new candidate SHA here before moving the branch, and re-read this handoff before the next run. Keep production control-plane deployment as a release blocker.
+
+
+## Pre-run checkpoint — Stage 13 browser signed-grant fixture, 2026-10-08
+
+Prior exact head b806511f854b33b125e04d6c787351813acf1fd5 completed with 29 successes and one failure in Stage 13 browser evidence. The log showed Playwright timed out waiting for /api/studio/catalog to return 200 because the browser test token lacked strict grant claims. Graph API startup/health and six other browser tests passed.
+
+Candidate commit 57dd4815d7137945945c234f5d7ca9970e637bef updates the Playwright token to include the test control-plane issuer, unique jti, tenant_id, aud=leruchi, expiry and graph:read capability, using the configured JWT secret. The candidate has not run CI. Next: re-read this handoff, confirm the branch still points to b806511f854b33b125e04d6c787351813acf1fd5, then advance the isolated branch and inspect the exact-head matrix. Production control-plane deployment remains a release blocker.
