@@ -192,3 +192,8 @@ Graph query requires `graph:read`; graph mutation requires `graph:write`; destru
 The previously validated MCP route capability head `d754c43aa666cf37cbfba8fe874411e5ff27add1` passed 30 workflows. Candidate `e268ade8f5caf265e5277fbbccd239fecde69396` is prepared on top of that baseline and has not run CI. It wires grant validation and mandatory fail-closed jti revocation checks into strict Graph API authentication, adds optional route/graph scope enforcement, a control-plane HTTP adapter, strict production launcher configuration, and tests.
 
 Next step is exact-head validation on the isolated branch. Record all results in BUILD_STATE.md after the run. Production control-plane deployment, issuer/key lifecycle, and actual grant issuance remain release gates. Do not merge or publish.
+
+
+## Capability grant candidate CI start — 2026-10-08
+
+Candidate `e268ade8f5caf265e5277fbbccd239fecde69396` is now on the isolated validation branch and its workflow matrix is running. Initial snapshot: 4 in progress, 26 queued, zero completed results. Stage 14 has passed the capability vocabulary, catalog capability, Graph API route capability, and MCP contract steps; capability-grant contract tests were still running at the checkpoint. Do not claim success until exact-head matrix completion. See BUILD_STATE.md for run links and next steps.
