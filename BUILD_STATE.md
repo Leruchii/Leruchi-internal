@@ -135,13 +135,13 @@ Before continuing:
 6. Treat executable evidence as authoritative over stale documentation.
 7. Do not publish or merge Stage 32 without explicit release approval.
 
-## CI result update — 2026-10-08, real Auth token candidate head `b1b2ce78a0cc2e2ef47b1c9700638fae56e8a23a`
+## CI result update — 2026-10-08, Auth token integration fixture correction
 
-Exact-head matrix snapshot: **15 successes, 1 failure, 1 in progress**. Stage 03 failed at the new real Auth token login check; Stage 03 role credential and hook contract tests, database startup, hook installation, grants and fail-closed SQL checks all passed before that point. Run: https://github.com/Leruchii/Leruchi-development/actions/runs/37772846771.
+The last run on `b1b2ce78a0cc2e2ef47b1c9700638fae56e8a23a` had **15 successes, 1 failure, 1 in progress**. Stage 03 failed only at the new Auth password-grant integration check with `400 invalid_credentials`; earlier hook installation, permissions and fail-closed checks passed. Run: https://github.com/Leruchii/Leruchi-development/actions/runs/37772846771.
 
-Failure observed in Auth logs: password-grant request returned `400 invalid_credentials` for a fixture user inserted directly into `auth.users`. The fixture likely needs the corresponding `auth.identities` email-provider row; inspect the Auth schema/identity requirements before changing it. The actual issuance gate remains unproven. Do not claim the tenant hook is production-ready.
+Schema review of Supabase Auth migrations confirmed that password-auth users also need an `auth.identities` email-provider row. Candidate fix commit `b651a880f72474a7dbe09557f6efaa291ebea8c7` adds identity rows for both deterministic test users to `tests/security/tenant-claim-hook-fixture.sql`. It is a child of the failed head and has not yet been advanced to the validation branch or run in CI.
 
-Do not advance or change the validation branch until the handoff has been checked. Next: correct the test fixture, update this handoff, and rerun the exact-head matrix. PR #64 remains draft; PR #63 unchanged. Do not merge or publish.
+Next: advance the validation branch after confirming this checkpoint, inspect the new Stage 03 result and update this handoff after the run. Do not mark production claim issuance as complete until real Auth-issued token assertions pass. PR #64 remains draft; PR #63 unchanged. Do not merge or publish.
 
 ## Next checkpoint
 
