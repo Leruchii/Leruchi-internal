@@ -217,3 +217,8 @@ Stage 13 failed because its workflow starts the now-strict production Graph API 
 ## Signed capability grant validation result — 2026-10-08
 
 Exact head 57dd4815d7137945945c234f5d7ca9970e637bef completed with 30 successes and zero failures. Stage 13 Graph Studio and Stage 14 MCP Agent Gateway passed after the Stage 13 strict-grant fixture was corrected. See BUILD_STATE.md for exact run links. CI validates the adapter with a test-only control-plane stub; production issuer/revocation deployment, key lifecycle, issuance policy and operational revocation propagation remain release gates. No merge or public publication without explicit approval.
+
+
+## Pre-run checkpoint — EdDSA grant verifier candidate, 2026-10-08
+
+Candidate d1a5a2e308e46875045ec39a15f0b1ecfd8bbdf3 has been prepared on top of the 30/0 validated head. Strict Graph API grant verification now uses EdDSA and a key-id-selected public-key ring so the OSS data plane need not hold the control-plane signing secret. Candidate has not run CI. See BUILD_STATE.md; re-read before advancing the validation branch. Production issuer/key custody/rotation and revocation remain release gates.
