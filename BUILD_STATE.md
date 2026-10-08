@@ -135,11 +135,18 @@ Before continuing:
 6. Treat executable evidence as authoritative over stale documentation.
 7. Do not publish or merge Stage 32 without explicit release approval.
 
-## CI result update — 2026-10-08, Auth-issued tenant claim test passed
+## CI result update — 2026-10-08, real Auth-issued tenant claims validated
 
-Exact-head matrix on `d3b251ddee29e9d16a12a42fa0bbfc87d551962f`: **16 successes, 1 in progress, 0 failures**. Stage 03 real Auth-issued token and PostgREST isolation test passed: https://github.com/Leruchii/Leruchi-development/actions/runs/37773858431. Stage 32 candidate, Stage State Gate, Architecture Regression Audit, Stages 01/02/04/05/06/07/08/09/10/11/12/14 and Stage 03 have passed at this snapshot. Only Stage 13 Graph Studio remains in progress: https://github.com/Leruchii/Leruchi-development/actions/runs/37773858093.
+**Exact-head matrix complete: 17 successes, 0 failures** on `d3b251ddee29e9d16a12a42fa0bbfc87d551962f`.
 
-The active-membership token contains `tenant_id=tenant_a`; the revoked tenant selection omits `tenant_id`; PostgREST returns only authorized tenant rows. Keep production rollout validation as a separate gate. Wait for Stage 13 completion before further development. PR #64 remains draft; PR #63 unchanged; do not merge or publish.
+- Stage 03 Supabase compatibility, including real Auth-issued tenant claim and PostgREST RLS assertions: PASS — https://github.com/Leruchii/Leruchi-development/actions/runs/37773858431
+- Stage 13 Graph Studio, final workflow: PASS — https://github.com/Leruchii/Leruchi-development/actions/runs/37773858093
+- Stage 32 candidate: PASS — https://github.com/Leruchii/Leruchi-development/actions/runs/37773847082
+- Validation PR #64: https://github.com/Leruchii/Leruchi-development/pull/64
+
+The Stage 03 integration creates users through Auth signup under test-only overrides, adds authoritative memberships, signs in via password grant, verifies active membership issues `tenant_id=tenant_a`, verifies a revoked tenant selector omits `tenant_id`, and verifies PostgREST tenant isolation. It also validates private membership grants, hook installation, fail-closed behavior and the existing signed-JWT RLS path.
+
+This proves the self-hosted test deployment's issuance flow. Production readiness still requires confirming that the supported production deployment uses the same trusted hook configuration and server-side membership provisioning. Next development area after this security gate: scoped MCP/agent capabilities tied to trusted identity/tenant context, tool-level authorization, revocation and audit. PR #64 remains draft; PR #63 unchanged. Do not merge or publish until production configuration is validated and explicit approval is given.
 
 ## Next checkpoint
 
