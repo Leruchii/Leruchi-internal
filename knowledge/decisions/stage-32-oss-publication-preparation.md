@@ -197,3 +197,8 @@ Next step is exact-head validation on the isolated branch. Record all results in
 ## Capability grant candidate CI start — 2026-10-08
 
 Candidate `e268ade8f5caf265e5277fbbccd239fecde69396` is now on the isolated validation branch and its workflow matrix is running. Initial snapshot: 4 in progress, 26 queued, zero completed results. Stage 14 has passed the capability vocabulary, catalog capability, Graph API route capability, and MCP contract steps; capability-grant contract tests were still running at the checkpoint. Do not claim success until exact-head matrix completion. See BUILD_STATE.md for run links and next steps.
+
+
+## Capability grant candidate CI progress — 2026-10-08
+
+On exact head `e268ade8f5caf265e5277fbbccd239fecde69396`, Stage 14 MCP Agent Gateway passed with the grant-validation tests, fail-closed revocation adapter tests, live MCP-to-Graph API path, and architecture audit. Matrix snapshot at this checkpoint: 28 successes, 2 in progress, 0 failures; Stage 03 and Stage 13 remain in progress. See BUILD_STATE.md. Do not mark matrix complete until both finish.
