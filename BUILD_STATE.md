@@ -312,3 +312,8 @@ Fix plan: remove the static PEM from the repository. Generate an ephemeral Ed255
 The previous candidate d1a5a2e308e46875045ec39a15f0b1ecfd8bbdf3 failed only the Stage 32 OWASP ASVS credential scan because a PEM private test key was committed under tests/fixtures. The fix removes the static key and generates an ephemeral Ed25519 keypair in Stage 13/14 workflows. The Graph API receives the public DER key; test helpers use the runner's temporary private key. Unit tests generate an in-memory pair. No private key material is embedded in source.
 
 New candidate commit: 0116e012955d05681ee943d8e89f9d31e99b8c2f. It includes the EdDSA public-key verifier, updated production launcher, key rotation documentation, updated strict-grant tests, and the ephemeral CI key workflow fix. It has not run CI. Re-read this handoff and verify the validation branch is still at d1a5a2e308e46875045ec39a15f0b1ecfd8bbdf3 before advancing. After the run, record exact-head results and any failures here. Production control-plane issuance, private-key custody/rotation and operational revocation remain release gates.
+
+
+## CI restart — ephemeral EdDSA key candidate 0116e012955d05681ee943d8e89f9d31e99b8c2f
+
+After re-reading the handoff and confirming the isolated branch was at d1a5a2e308e46875045ec39a15f0b1ecfd8bbdf3, the branch advanced to 0116e012955d05681ee943d8e89f9d31e99b8c2f. The first observed run is Stage 32 candidate, queued: https://github.com/Leruchii/Leruchi-development/actions/runs/37780381790. Other exact-head workflows were not yet visible at this check. No pass claim until the full matrix completes.
