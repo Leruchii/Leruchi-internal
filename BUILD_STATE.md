@@ -139,20 +139,17 @@ Before continuing:
 
 **Exact-head matrix complete: 35 successes, 0 failures, 0 in progress.**
 
-The Stage 03 credential correction passed, and the legacy action pins were updated across 26 workflow files to `actions/checkout@v5` and `actions/setup-node@v6`, preserving Node.js 24 setup. Key green workflows:
+The Stage 03 Auth/PostgREST credential correction passed. Legacy action pins were updated across 26 workflow files to checkout v5 and setup-node v6, preserving Node.js 24 setup. Key runs:
 - Stage 32 candidate: https://github.com/Leruchii/Leruchi-development/actions/runs/37769880841
 - Stage 31 readiness: https://github.com/Leruchii/Leruchi-development/actions/runs/37769880835
-- Stage 20 production readiness: https://github.com/Leruchii/Leruchi-development/actions/runs/37769881124
+- Stage 20 readiness: https://github.com/Leruchii/Leruchi-development/actions/runs/37769881124
 - Stage 13 Graph Studio: https://github.com/Leruchii/Leruchi-development/actions/runs/37769880831
-- Stage 03 Supabase compatibility: https://github.com/Leruchii/Leruchi-development/actions/runs/37769881251
-- Stage 02 RLS/AGE security: https://github.com/Leruchii/Leruchi-development/actions/runs/37769881011
-- Stage 01 database foundation: https://github.com/Leruchii/Leruchi-development/actions/runs/37769880635
+- Stage 03 compatibility: https://github.com/Leruchii/Leruchi-development/actions/runs/37769881251
 - Stage State Gate: https://github.com/Leruchii/Leruchi-development/actions/runs/37769881298
-- Architecture Regression Audit: https://github.com/Leruchii/Leruchi-development/actions/runs/37769880907
 
-### Newly identified compatibility gap (read-only audit)
+### Next discovered gap
 
-The optional Supabase Storage and Realtime/Supavisor service profiles still have credential mismatches: `infra/supabase/roles.sql` defines `supabase_storage_admin` / `supabase_admin` with old `vibe_compat_*` passwords, while `infra/supabase/docker-compose.yml` uses `leruchi_compat_*` values. Stage 03 currently validates Auth + PostgREST, so this gap was not exercised by its passing workflow. Next action: align these two role passwords and add a focused config consistency regression test, then run and record a fresh exact-head matrix.
+Read-only audit found the optional Storage and Realtime/Supavisor service profiles still have credential mismatches: roles.sql defines storage/admin role passwords with legacy values while Compose expects the Leruchi-prefixed values. Stage 03 validates Auth + PostgREST but does not start those optional profiles. Next action: align both passwords and add a config consistency regression test, then run and record a fresh exact-head matrix.
 
 Do not merge or publish; production identity-provider tenant-claim issuance remains a release blocker.
 
