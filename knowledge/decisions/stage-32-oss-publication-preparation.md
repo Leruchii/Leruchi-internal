@@ -132,3 +132,6 @@ The first real Auth-issued token integration attempt failed with `400 invalid_cr
 
 
 The second real Auth token integration attempt still failed with `400 invalid_credentials` after adding `auth.identities` rows. The direct-SQL user fixture is unreliable for GoTrue login. Proposed correction is to create test users through the supported Auth signup endpoint under test-only Compose overrides, then insert membership rows and sign in again. Keep default signup/email settings unchanged outside CI. This has not yet been implemented or run.
+
+
+The direct-SQL Auth user fixture still failed with `400 invalid_credentials` on commit `b651a880f72474a7dbe09557f6efaa291ebea8c7`, despite identity rows. Candidate `10e736a2fc16c34e0fdfd288c129642fb6192b94` replaces direct user inserts with Auth's supported signup endpoint under test-only overrides, then seeds tenant memberships and checks issued claims plus PostgREST isolation. Candidate is not yet on the validation branch and has not run CI.
