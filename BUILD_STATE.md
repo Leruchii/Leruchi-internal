@@ -135,17 +135,13 @@ Before continuing:
 6. Treat executable evidence as authoritative over stale documentation.
 7. Do not publish or merge Stage 32 without explicit release approval.
 
-## CI result update — 2026-10-08, validation PR #64, exact head `e93dde43445fd2f665e04679a049640abb72c4dc`
+## CI result update — 2026-10-08, exact validated head `e93dde43445fd2f665e04679a049640abb72c4dc`
 
-**Exact-head matrix complete: 17 successes, 0 failures.** Stage 03 Supabase compatibility and Stage 13 Graph Studio both passed:
-- Stage 03: https://github.com/Leruchii/Leruchi-development/actions/runs/37772310562
-- Stage 13: https://github.com/Leruchii/Leruchi-development/actions/runs/37772310466
-- Stage 32 candidate: https://github.com/Leruchii/Leruchi-development/actions/runs/37772233615
-- Validation PR #64: https://github.com/Leruchii/Leruchi-development/pull/64
+The exact-head matrix completed with **17 successes, 0 failures**. Stage 03 passed hook installation, permission checks and fail-closed SQL behavior; Stage 13 passed. See https://github.com/Leruchii/Leruchi-development/actions/runs/37772310562 and https://github.com/Leruchii/Leruchi-development/actions/runs/37772310466.
 
-Stage 03 proves Node.js 24 checks, SQL hook installation, least-privilege function/table grants, fail-closed removal of an unbound caller-supplied tenant claim, and the existing signed-JWT RLS test all pass. It still does **not** exercise an actual Auth-issued access token with valid/revoked membership. Production tenant-claim issuance remains a release blocker.
+The next candidate commit is `b1b2ce78a0cc2e2ef47b1c9700638fae56e8a23a`, a child of the validated commit. It adds a deterministic Auth user/membership fixture, enables email/password authentication only via a workflow environment override (default remains false), and adds a test that signs in through Supabase Auth, checks the issued `tenant_id` for an active membership, verifies a revoked tenant selection omits the claim, and checks PostgREST RLS isolation. This candidate has not been pushed to the validation branch and has not run CI.
 
-PR #64 remains a draft validation PR into the active Stage 32 branch; PR #63 remains unchanged. Next step is to add real Auth-issued token integration coverage, then scoped MCP/agent capability authorization with tenant-bound tool access, revocation, and audit. Do not merge or publish until the real issuance gate and all release criteria pass and explicit approval is given.
+Before advancing the validation branch, preserve this checkpoint. Once CI runs, update the handoff with the exact new head and every failure/success. Keep the production tenant-claim gate open until real Auth-issued token evidence passes. PR #64 remains draft; PR #63 unchanged. Do not merge or publish.
 
 ## Next checkpoint
 
