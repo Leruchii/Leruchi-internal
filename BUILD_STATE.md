@@ -137,13 +137,11 @@ Before continuing:
 
 ## CI result update — 2026-10-08, exact head `199e5100557c533cc287573baf2483e377608868`
 
-Stage 03 compatibility role password alignment is in the tested code head. Regression matrix snapshot: {"success":34,"in_progress":1}; no failures are recorded so far.
+Stage 03 Supabase compatibility now **PASS** on the exact fix commit — [run 37769250756](https://github.com/Leruchii/Leruchi-development/actions/runs/37769250756). This validates that the compatibility role credentials now align with the Auth/PostgREST connection configuration and the integration workflow completes successfully. Job evidence: `[{"job":"supabase-compatibility","conclusion":"success","failedSteps":[]}]`.
 
-- Stage 32 OSS Core Publication Candidate: **PASS** — [run 37769250397](https://github.com/Leruchii/Leruchi-development/actions/runs/37769250397).
-- Stage State Gate: **PASS** — [run 37769251598](https://github.com/Leruchii/Leruchi-development/actions/runs/37769251598).
-- Stage 12 Graph Realtime: **PASS** — [run 37769251173](https://github.com/Leruchii/Leruchi-development/actions/runs/37769251173).
-- Stage 03 Supabase compatibility is still in progress — [run 37769250756](https://github.com/Leruchii/Leruchi-development/actions/runs/37769250756). Do not claim its fix is validated until completion.
-- Exact-head workflow snapshot:
+Stage 32 OSS Core Publication Candidate **PASS** — [run 37769250397](https://github.com/Leruchii/Leruchi-development/actions/runs/37769250397). Stage State Gate **PASS** — [run 37769251598](https://github.com/Leruchii/Leruchi-development/actions/runs/37769251598). Stage 12 Graph Realtime **PASS** — [run 37769251173](https://github.com/Leruchii/Leruchi-development/actions/runs/37769251173).
+
+Exact-head workflow snapshot: {"success":34,"in_progress":1}.
 - Stage State Gate: success — [run 37769251598](https://github.com/Leruchii/Leruchi-development/actions/runs/37769251598)
 - Stage 12 Graph Realtime: success — [run 37769251173](https://github.com/Leruchii/Leruchi-development/actions/runs/37769251173)
 - Stage 13 Graph Studio: in_progress — [run 37769250709](https://github.com/Leruchii/Leruchi-development/actions/runs/37769250709)
@@ -180,7 +178,7 @@ Stage 03 compatibility role password alignment is in the tested code head. Regre
 - Stage 07 Apache AGE Compiler: success — [run 37769250826](https://github.com/Leruchii/Leruchi-development/actions/runs/37769250826)
 - Stage 32 - OSS Core Publication Candidate: success — [run 37769243099](https://github.com/Leruchii/Leruchi-development/actions/runs/37769243099)
 
-Five workflows remain in progress at this snapshot. Wait for completion, record the Stage 03 outcome and diagnose any failures before another development change. Do not merge or publish; production identity-provider tenant-claim issuance remains a release blocker.
+One workflow remains in progress at this update: Stage 13 Graph Studio [run 37769250709](https://github.com/Leruchii/Leruchi-development/actions/runs/37769250709). Wait for its result and refresh this handoff. No failures are recorded. Do not merge or publish; production identity-provider tenant-claim issuance remains a release blocker.
 
 ## Next checkpoint
 
