@@ -298,3 +298,10 @@ After re-reading the handoff and confirming the validation branch was still at 5
 ## CI result in progress — EdDSA grant verifier candidate d1a5a2e308e46875045ec39a15f0b1ecfd8bbdf3
 
 Latest exact-head snapshot: 12 successes, 17 in progress, and one failure. The Stage 32 OSS Core Publication Candidate workflow failed: https://github.com/Leruchii/Leruchi-development/actions/runs/37779927286. Other workflows are still running, so this is not the final matrix result. Do not change the branch or rerun until the Stage 32 failure log is inspected and this handoff is re-read. The EdDSA candidate is not validated yet.
+
+
+## EdDSA candidate failure diagnosis — exact head d1a5a2e308e46875045ec39a15f0b1ecfd8bbdf3
+
+The Stage 32 publication candidate failed the OWASP ASVS credential/private-key scan because the test fixture committed a PEM-formatted private test key at tests/fixtures/capability-grant-test-key.mjs. This is a test-key fixture hygiene issue, not a production credential leak, but the gate correctly blocks shipping private-key material in source.
+
+Fix plan: remove the static PEM from the repository. Generate an ephemeral Ed25519 keypair during Stage 13/14 CI; pass the public DER key to the Graph API launcher and point the test token helper at the ephemeral private-key file. For unit tests, the helper may generate an in-memory ephemeral pair. This preserves asymmetric signing tests without a committed private key. Re-read this handoff before creating a new candidate and do not rerun until the candidate SHA is recorded here.
