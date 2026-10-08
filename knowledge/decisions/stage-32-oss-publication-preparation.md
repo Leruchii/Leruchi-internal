@@ -129,3 +129,6 @@ The real Auth token integration candidate `b1b2ce78a0cc2e2ef47b1c9700638fae56e8a
 
 
 The first real Auth-issued token integration attempt failed with `400 invalid_credentials` because the deterministic fixture created `auth.users` rows without their associated `auth.identities` email-provider rows. Supabase Auth migration review confirmed the required identity table fields. Candidate fix `b651a880f72474a7dbe09557f6efaa291ebea8c7` adds those rows. It is not yet on the validation branch and has not run CI. Production tenant-claim issuance remains blocked.
+
+
+The second real Auth token integration attempt still failed with `400 invalid_credentials` after adding `auth.identities` rows. The direct-SQL user fixture is unreliable for GoTrue login. Proposed correction is to create test users through the supported Auth signup endpoint under test-only Compose overrides, then insert membership rows and sign in again. Keep default signup/email settings unchanged outside CI. This has not yet been implemented or run.
