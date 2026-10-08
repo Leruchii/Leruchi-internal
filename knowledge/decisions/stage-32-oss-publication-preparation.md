@@ -227,3 +227,8 @@ Candidate d1a5a2e308e46875045ec39a15f0b1ecfd8bbdf3 has been prepared on top of t
 ## Asymmetric capability grant matrix result — 2026-10-08
 
 Exact head 0116e012955d05681ee943d8e89f9d31e99b8c2f completed with 30 successes and zero failures. The Graph API strict-grant path now verifies EdDSA-signed grants using a kid-selected public-key ring; CI generates ephemeral test keys and commits no private key. Stage 13 and Stage 14 passed. This validates the OSS verifier and adapter contract, not a production control plane. Production issuer deployment, private-key custody/rotation, membership-aware grant issuance, operational revocation and production tenant-claim deployment remain release gates. Cloud control plane and billing/metering stages remain deferred. No merge or public publication without explicit approval.
+
+
+## Live revocation enforcement result — 2026-10-08
+
+Exact head 7442116a9d1857cb1e8409c97fe80b563333bbd6 completed with 30 successes and zero failures. Stage 14 now verifies both active and revoked grants through the real HTTP adapter path; Stage 13 also passed. CI uses a test-only control-plane stub. Production control-plane deployment, private-key custody/rotation, membership-aware issuance and operational revocation remain release gates. No merge or publication without explicit approval.
