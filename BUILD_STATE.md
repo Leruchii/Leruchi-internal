@@ -137,7 +137,7 @@ Before continuing:
 
 ## CI result update — 2026-10-08, exact head `07c76120856165c5a4dc98cb9aa223f20cbc8b06`
 
-Exact-head matrix complete: 35 successes, 0 failures. The Stage 03 compatibility workflow passed with the new four-role credential consistency test: https://github.com/Leruchii/Leruchi-development/actions/runs/37770360944. The final Stage 13 Graph Studio workflow also passed: https://github.com/Leruchii/Leruchi-development/actions/runs/37770360696.
+Exact-head matrix complete: **35 successes, 0 failures**. Stage 03 Supabase compatibility passed with the four-role credential consistency test and Auth/PostgREST RLS integration: https://github.com/Leruchii/Leruchi-development/actions/runs/37770360944. Final Stage 13 Graph Studio passed: https://github.com/Leruchii/Leruchi-development/actions/runs/37770360696.
 
 PR #63 remains draft/open, not merged; public publication has not occurred. Next action: implement and validate authoritative production tenant-claim issuance/binding through Supabase Auth, then continue scoped MCP/agent authorization and revocation/audit. Do not merge or publish; tenant-claim issuance remains a release blocker.
 
