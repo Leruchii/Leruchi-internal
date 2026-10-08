@@ -135,11 +135,11 @@ Before continuing:
 6. Treat executable evidence as authoritative over stale documentation.
 7. Do not publish or merge Stage 32 without explicit release approval.
 
-## CI result update — 2026-10-08, Node.js 24 and MCP route authorization candidate head `d754c43aa666cf37cbfba8fe874411e5ff27add1`
+## CI result update — 2026-10-08, MCP route authorization + Node.js 24 fix head `d754c43aa666cf37cbfba8fe874411e5ff27add1`
 
-The isolated validation branch has advanced to `d754c43aa666cf37cbfba8fe874411e5ff27add1`. This includes the Graph API route capability guards, corrected 403 expectation in the tenant isolation matrix, explicit Node.js 24 setup in Stage 02/06/07/08, and a refreshed development `BUILD_STATE.md`. Exact-head Actions runs were not visible at the first check.
+Current exact-head matrix snapshot: **15 successes, 14 in progress, 1 queued, 0 failures**. Stage 25 MCP Agent Tool Contract passed: https://github.com/Leruchii/Leruchi-development/actions/runs/37775397907. Stage 02 RLS/AGE security is running: https://github.com/Leruchii/Leruchi-development/actions/runs/37775397959. Stage 14 MCP Agent Gateway is running: https://github.com/Leruchii/Leruchi-development/actions/runs/37775398178.
 
-Inspect Stage 02, Stage 14, Stage 25 and the full exact-head matrix as runs appear, then update this handoff with results. Capability grant issuance/revocation control-plane integration remains open. PR #64 draft; PR #63 unchanged; do not merge or publish.
+This head fixes the previous Stage 02 expectation to 403/CAPABILITY_DENIED and pins Node.js 24 in Stage 02/06/07/08. Watch the Stage 02 assertion and Stage 14 API capability tests. Wait for the exact-head matrix and update the handoff after results. Production capability grant issuance/revocation remains a separate open gate. PR #64 draft; PR #63 unchanged; no merge or publication.
 
 ## Next checkpoint
 
