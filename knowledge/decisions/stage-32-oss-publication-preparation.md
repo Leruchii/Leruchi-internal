@@ -141,3 +141,6 @@ The Auth-signup test candidate `10e736a2fc16c34e0fdfd288c129642fb6192b94` has be
 
 
 The Auth-signup test candidate `10e736a2fc16c34e0fdfd288c129642fb6192b94` successfully signed up both test users and logs confirm the custom access-token hook ran for each signup, but the Stage 03 integration step failed before claim assertions because shell variables were accidentally stored with literal backslashes (for example `\${SIGNUP_A}`). Correct the shell expansion and rerun; actual token claim assertions remain unvalidated.
+
+
+Shell expansion fix candidate `d3b251ddee29e9d16a12a42fa0bbfc87d551962f` removes unintended backslashes from the integration script's variable references. It is not yet on the validation branch and has not run CI. Keep the production claim issuance blocker open until the real Auth-issued claim and RLS assertions pass.
