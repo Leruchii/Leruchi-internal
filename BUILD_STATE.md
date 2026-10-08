@@ -259,3 +259,8 @@ Latest matrix snapshot: 16 successes, 13 in progress, 1 queued, zero failures. S
 ## CI progress refresh — exact head 57dd4815d7137945945c234f5d7ca9970e637bef
 
 Latest snapshot: 19 successes, 11 in progress, zero failures. The previously queued workflow has started; Stage 13 and Stage 14 remain in progress. No failures are reported on this head so far.
+
+
+## CI progress refresh — exact head 57dd4815d7137945945c234f5d7ca9970e637bef
+
+Latest snapshot: 28 successes, 2 in progress, zero failures. Stage 14 MCP Agent Gateway passed again with strict grant/revocation integration: https://github.com/Leruchii/Leruchi-development/actions/runs/37778853920. Stage 13 is still installing Chromium; Stage 20 Production Readiness is the other outstanding workflow. Await both before declaring the matrix complete.
