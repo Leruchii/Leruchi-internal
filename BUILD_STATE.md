@@ -200,3 +200,8 @@ Fix plan before the next run: update Stage 13 workflow to start the same test-on
 ## Pre-run checkpoint — Stage 13 workflow fix, 2026-10-08
 
 The prior head e268ade8f5caf265e5277fbbccd239fecde69396 had 29 successes and one Stage 13 failure. The log showed the launcher exited because the Stage 13 workflow omitted required strict capability-grant configuration. Candidate b806511f854b33b125e04d6c787351813acf1fd5 adds the test-only control-plane service and passes its configuration to the launcher. It has not run CI. Before advancing the branch, re-read this handoff and confirm the branch is still on e268ade8f5caf265e5277fbbccd239fecde69396. Production control-plane deployment remains a release blocker; do not merge or publish.
+
+
+## CI restart — Stage 13 workflow fix candidate b806511f854b33b125e04d6c787351813acf1fd5
+
+The isolated validation branch advanced from e268ade8f5caf265e5277fbbccd239fecde69396 to b806511f854b33b125e04d6c787351813acf1fd5 after the handoff was re-read. The first observed run is Stage 32 candidate, queued: https://github.com/Leruchii/Leruchi-development/actions/runs/37778305792. The rest of the exact-head workflow matrix was not yet visible at this check. No pass claim; inspect all runs on this exact SHA and update this handoff when the matrix completes.
