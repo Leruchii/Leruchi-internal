@@ -174,3 +174,10 @@ Do not claim this candidate passed until every exact-head workflow finishes. Aft
 ## CI progress refresh — exact head e268ade8f5caf265e5277fbbccd239fecde69396
 
 Latest exact-head snapshot: **16 successes, 14 in progress, 0 failures**. Stage 14 has now also passed the capability-grant contract tests and mutation-approval/audit tests; database image build is running. No failure has been observed yet. The full matrix is still running, so this is not a green-matrix claim.
+
+
+## CI progress refresh — exact head e268ade8f5caf265e5277fbbccd239fecde69396
+
+Latest snapshot: **28 successes, 2 in progress, 0 failures**. Stage 14 MCP Agent Gateway passed, including strict grant tests, control-plane adapter contract tests, Graph API route checks, live MCP → Graph API → PostgreSQL integration, and architecture regression audit: https://github.com/Leruchii/Leruchi-development/actions/runs/37777685258.
+
+Only Stage 03 Supabase compatibility and Stage 13 Graph Studio remain in progress. Wait for both before declaring the exact-head matrix complete. The live workflow used a test-only control-plane stub; it does not prove production issuer/revocation deployment.
