@@ -269,3 +269,15 @@ Latest snapshot: 28 successes, 2 in progress, zero failures. Stage 14 MCP Agent 
 ## CI progress refresh — exact head 57dd4815d7137945945c234f5d7ca9970e637bef
 
 Latest snapshot: 29 successes, 1 in progress, zero failures. Stage 20 Production Readiness passed. Stage 13 Graph Studio has completed Chromium installation and is running the browser tenant/responsive evidence suite. It is the only remaining workflow.
+
+
+## CI result — signed capability grants and Stage 13 browser fix, exact head 57dd4815d7137945945c234f5d7ca9970e637bef
+
+**Exact-head matrix complete: 30 successes, 0 failures.**
+
+- Stage 13 Graph Studio passed, including strict Graph API startup, browser tenant/responsive evidence, typecheck, and production build: https://github.com/Leruchii/Leruchi-development/actions/runs/37778853869
+- Stage 14 MCP Agent Gateway passed, including grant/revocation contract tests and live MCP-to-Graph API integration: https://github.com/Leruchii/Leruchi-development/actions/runs/37778853920
+- Stage 32 publication-candidate workflow passed: https://github.com/Leruchii/Leruchi-development/actions/runs/37778842705
+- Stage 20 Production Readiness passed; full matrix has no failures.
+
+Strict grant mode now validates signed tenant-bound grants and checks jti revocation through an authenticated control-plane adapter; optional route/graph scopes are enforced. CI used a test-only control-plane stub. This does not prove production control-plane deployment, secure key lifecycle, production grant issuance, or operational revocation propagation. Those remain release gates. PR #64 remains a draft validation PR; PR #63 remains unchanged. Do not merge or publish without release-gate completion and explicit approval.
