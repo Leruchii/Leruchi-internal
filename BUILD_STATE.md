@@ -135,11 +135,13 @@ Before continuing:
 6. Treat executable evidence as authoritative over stale documentation.
 7. Do not publish or merge Stage 32 without explicit release approval.
 
-## CI result update — 2026-10-08, MCP capability route candidate `6ed63d32f395ed30f1105bfa13d98cc7383ab575`
+## CI result update — 2026-10-08, MCP route capability candidate `6ed63d32f395ed30f1105bfa13d98cc7383ab575`
 
-The exact-head matrix has progressed to **25 successes, 1 Stage 02 failure, 1 in progress**. Stage 13 Graph Studio remains in progress: https://github.com/Leruchii/Leruchi-development/actions/runs/37774718065. The only completed failure is Stage 02: https://github.com/Leruchii/Leruchi-development/actions/runs/37774717752. The cause is recorded above: the tenant isolation test needs to expect 403/`CAPABILITY_DENIED`, and the workflow must explicitly set Node.js 24.
+**Exact-head matrix complete: 26 successes, 1 failure.** Stage 13 Graph Studio passed last: https://github.com/Leruchii/Leruchi-development/actions/runs/37774718065. The only failure is Stage 02 RLS and AGE security: https://github.com/Leruchii/Leruchi-development/actions/runs/37774717752.
 
-Wait for Stage 13 to finish, then fix both issues and audit the remaining workflows for explicit Node.js 24 setup before the next run. Do not change the branch while this matrix is still running. Capability grant revocation integration remains open. PR #64 draft; PR #63 unchanged; no merge or publication.
+Root cause is confirmed: route-level graph-read enforcement now correctly returns HTTP 403 `CAPABILITY_DENIED` before query validation, but the existing tenant-isolation test expected HTTP 400 `VALIDATION_FAILED`. Update the assertion to the new authorization contract. Stage 02 also ran Node.js 22 because its workflow lacks explicit setup-node; pin it to `actions/setup-node@v6` with `node-version: 24`. Audit remaining workflows for the same gap before the next matrix.
+
+The Graph API authorization candidate otherwise passed 26 workflows, including Stage 14, Stage 03, Stage 32 candidate, architecture audit and all other completed stages. Capability grant/revocation control-plane integration remains open. Do not merge or publish. PR #64 draft; PR #63 unchanged.
 
 ## Next checkpoint
 
