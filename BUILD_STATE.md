@@ -137,11 +137,9 @@ Before continuing:
 
 ## CI result update — 2026-10-08, real Auth token test candidate head `b1b2ce78a0cc2e2ef47b1c9700638fae56e8a23a`
 
-The previous exact-head matrix on `e93dde43445fd2f665e04679a049640abb72c4dc` passed 17 workflows with zero failures. The validation branch has now advanced to `b1b2ce78a0cc2e2ef47b1c9700638fae56e8a23a` to add a real Auth-issued token integration test.
+The new exact-head matrix has **6 successes, 11 in progress, 0 failures**. Stage 32 candidate, Stage State Gate, Architecture Regression Audit and Stages 04/05/06/10 have passed. Stage 03 Supabase compatibility is running: https://github.com/Leruchii/Leruchi-development/actions/runs/37772846771.
 
-The new Stage 03 path seeds two users with memberships, enables email/password only for this test invocation (Compose default remains false), signs in through Supabase Auth, asserts that an active membership yields `tenant_id=tenant_a`, asserts that a revoked tenant selector yields no `tenant_id`, and checks PostgREST tenant RLS. The candidate is pushed to the isolated validation branch; exact-head Actions runs were not yet visible at the last check.
-
-Next: inspect the exact-head matrix and Stage 03 result; update this handoff when results arrive. Keep the production tenant-claim gate open until the real token test passes. PR #64 remains draft, PR #63 unchanged; do not merge or publish.
+This head adds actual Supabase Auth password-grant requests for two seeded users, checks active-membership claim issuance and revoked-selector claim omission, then verifies PostgREST RLS isolation. The workflow enables email/password only for this test run; the default Compose setting remains disabled. Await the Stage 03 result and remaining exact-head matrix before further changes. Keep the release blocker open until the real token assertions pass. PR #64 remains draft; PR #63 unchanged. Do not merge or publish.
 
 ## Next checkpoint
 
