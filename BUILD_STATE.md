@@ -135,17 +135,16 @@ Before continuing:
 6. Treat executable evidence as authoritative over stale documentation.
 7. Do not publish or merge Stage 32 without explicit release approval.
 
-## CI result update — 2026-10-08, exact head `199e5100557c533cc287573baf2483e377608868`
+## CI result update — 2026-10-08, current head `6a3a507c2b4494c33115fbf2672cceeb32fda250`
 
-The exact-head regression matrix is complete: 35 workflow runs succeeded and 0 failed.
+The prior exact head `199e5100557c533cc287573baf2483e377608868` completed with 35 workflow successes and no failures, including Stage 03 Supabase compatibility after aligning compatibility role passwords.
 
-- Stage 03 Supabase compatibility: PASS — https://github.com/Leruchii/Leruchi-development/actions/runs/37769250756
-- Stage 13 Graph Studio: PASS — https://github.com/Leruchii/Leruchi-development/actions/runs/37769250709
-- Stage 32 OSS Core Publication Candidate: PASS — https://github.com/Leruchii/Leruchi-development/actions/runs/37769250397
-- Stage State Gate: PASS — https://github.com/Leruchii/Leruchi-development/actions/runs/37769251598
-- Stage 12 Graph Realtime: PASS — https://github.com/Leruchii/Leruchi-development/actions/runs/37769251173
+A workflow-only commit `6a3a507c2b4494c33115fbf2672cceeb32fda250` now updates legacy GitHub Action pins across 26 workflow files: `actions/checkout@v4` → `@v5` and `actions/setup-node@v4` → `@v6`. Existing explicit `node-version: 24` values are preserved. This enforces the Node.js 24-only action/runtime policy; the current exact-head regression matrix has been triggered and is in progress.
 
-The Stage 03 credential mismatch is fixed and validated. The audit also found older `actions/checkout@v4` pins and some `actions/setup-node@v4` pins in earlier workflows. To enforce the project-wide Node.js 24-only policy, update these to checkout v5 and setup-node v6, retaining `node-version: 24`. This is the next change and requires a fresh exact-head workflow matrix. Do not merge or publish; production identity-provider tenant-claim issuance remains a release blocker.
+Current run snapshot: {"queued":1}.
+- Stage 32 - OSS Core Publication Candidate: queued — [run 37769873602](https://github.com/Leruchii/Leruchi-development/actions/runs/37769873602)
+
+Do not make another development change until this exact-head matrix completes. Update this handoff as run results arrive. Do not merge or publish; production identity-provider tenant-claim issuance remains a release blocker.
 
 ## Next checkpoint
 
