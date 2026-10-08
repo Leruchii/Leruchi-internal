@@ -237,3 +237,10 @@ Exact head 7442116a9d1857cb1e8409c97fe80b563333bbd6 completed with 30 successes 
 ## OSS publication vs hosted control-plane gate clarification — 2026-10-08
 
 Per BUILD_PLAN.md and OSS_BOUNDARY.md, Stages 18/19 (managed Cloud Control Plane and Billing/Metering) are deferred and are not prerequisites for publishing OSS Core. The strict-grant runtime does require an authorization authority for agent capabilities, but OSS must support a self-hosted or third-party implementation and must not require Leruchi Cloud. The repository currently supplies the EdDSA verifier and revocation adapter, not a production issuer. The OSS publication gate is to document this integration, ensure fail-closed behavior, and make the external authority contract explicit. Production deployment of an authority and Supabase tenant-claim hook is an operator deployment responsibility; hosted service readiness remains deferred.
+
+
+## Live capability-authority documentation validation — 2026-10-08
+
+The live validation branch is now `c42da68705390cd9e8651d5640ec10b56874c0ab`. Its exact-head matrix completed with 30 successes and zero failures, including Stage 32 candidate, Stage 03 Supabase compatibility, Stage 14 MCP Agent Gateway, Stage 25 tool contract, Architecture Regression Audit and Stage 13 Graph Studio.
+
+This head adds the self-hosted/third-party EdDSA capability authority contract and deployment guidance. The OSS runtime remains a verifier/revocation adapter; production issuer, durable revocation service, private-key custody/rotation and operator-side membership-aware issuance are not shipped. Per OSS boundary clarification, managed Cloud Control Plane/Billing remain deferred and are not prerequisites for OSS publication. Do not merge or publish without completing the OSS export gate and explicit approval.
