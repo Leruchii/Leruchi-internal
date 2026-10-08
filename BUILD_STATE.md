@@ -139,20 +139,22 @@ Before continuing:
 
 **Exact-head matrix complete: 35 successes, 0 failures, 0 in progress.**
 
-The compatibility role-password fix was validated on parent head `199e5100557c533cc287573baf2483e377608868`; Stage 03 passed at run https://github.com/Leruchii/Leruchi-development/actions/runs/37769250756.
-
-The current head upgrades all 26 remaining legacy workflow action pins to `actions/checkout@v5` and `actions/setup-node@v6`, preserving Node.js 24 setup. The exact-head matrix is green:
-- Stage 32 OSS Core Publication Candidate: https://github.com/Leruchii/Leruchi-development/actions/runs/37769880841
-- Stage 31 OSS Core Readiness: https://github.com/Leruchii/Leruchi-development/actions/runs/37769880835
-- Stage 20 Production Readiness: https://github.com/Leruchii/Leruchi-development/actions/runs/37769881124
+The Stage 03 credential correction passed, and the legacy action pins were updated across 26 workflow files to `actions/checkout@v5` and `actions/setup-node@v6`, preserving Node.js 24 setup. Key green workflows:
+- Stage 32 candidate: https://github.com/Leruchii/Leruchi-development/actions/runs/37769880841
+- Stage 31 readiness: https://github.com/Leruchii/Leruchi-development/actions/runs/37769880835
+- Stage 20 production readiness: https://github.com/Leruchii/Leruchi-development/actions/runs/37769881124
 - Stage 13 Graph Studio: https://github.com/Leruchii/Leruchi-development/actions/runs/37769880831
 - Stage 03 Supabase compatibility: https://github.com/Leruchii/Leruchi-development/actions/runs/37769881251
-- Stage 02 RLS and AGE security: https://github.com/Leruchii/Leruchi-development/actions/runs/37769881011
+- Stage 02 RLS/AGE security: https://github.com/Leruchii/Leruchi-development/actions/runs/37769881011
 - Stage 01 database foundation: https://github.com/Leruchii/Leruchi-development/actions/runs/37769880635
 - Stage State Gate: https://github.com/Leruchii/Leruchi-development/actions/runs/37769881298
 - Architecture Regression Audit: https://github.com/Leruchii/Leruchi-development/actions/runs/37769880907
 
-Next implementation checkpoint remains authoritative production tenant-claim issuance/binding, then scoped MCP/agent capability authorization and revocation/audit controls. The production identity-provider claim issuance blocker remains open. Do not merge or publish without explicit approval.
+### Newly identified compatibility gap (read-only audit)
+
+The optional Supabase Storage and Realtime/Supavisor service profiles still have credential mismatches: `infra/supabase/roles.sql` defines `supabase_storage_admin` / `supabase_admin` with old `vibe_compat_*` passwords, while `infra/supabase/docker-compose.yml` uses `leruchi_compat_*` values. Stage 03 currently validates Auth + PostgREST, so this gap was not exercised by its passing workflow. Next action: align these two role passwords and add a focused config consistency regression test, then run and record a fresh exact-head matrix.
+
+Do not merge or publish; production identity-provider tenant-claim issuance remains a release blocker.
 
 ## Next checkpoint
 
